@@ -10,7 +10,7 @@
 
 <style>
 * { box-sizing: border-box; margin:0; padding:0; }
-body { font-family: 'Inter', sans-serif; background: #0f172a; color: #e5e7eb; overflow-x:hidden; cursor:none; }
+body { font-family: 'Inter', sans-serif; background: #0f172a; color: #e5e7eb; cursor:none; }
 a { text-decoration:none; }
 
 /* CURSORE + PARTICELLE */
@@ -29,29 +29,22 @@ header img { width:120px; }
 
 /* HERO ANIMATO */
 .hero { padding:60px 20px; text-align:center; overflow:hidden; }
-.animated-marquee { display:flex; width:200%; animation: marquee 10s linear infinite; font-size:24px; font-weight:700; color:#22d3ee; text-shadow:0 0 5px #22d3ee,0 0 15px #22d3eeaa; }
-.animated-marquee span { flex:1 0 50%; text-align:center; }
-@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-
-/* FILTRI */
-.filters-bar { max-width:1300px; margin:20px auto; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; padding:0 20px; }
-.filters-bar input, .filters-bar select { padding:12px 15px; border-radius:10px; border:none; outline:none; font-size:16px; flex:1; }
+.animated-text { font-size:28px; font-weight:700; color:#22d3ee; text-shadow:0 0 5px #22d3ee,0 0 15px #22d3eeaa; animation: pulse 1s linear infinite; }
+@keyframes pulse { 0%,100%{ transform: scale(1); } 50% { transform: scale(1.05); } }
 
 /* STORE CARDS */
-.store { max-width:1300px; margin:auto; display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:20px; padding:40px 20px; perspective:1000px; }
-.card { background:#111827; border-radius:20px; overflow:hidden; position:relative; cursor:pointer; opacity:0; transform:translateY(50px) scale(0.95); transition: transform 0.5s ease, opacity 0.5s ease, box-shadow 0.4s ease; will-change:transform,opacity; }
-.card.in-view { opacity:1; transform:translateY(0) scale(1); }
-.card img { width:100%; height:260px; object-fit:cover; transition: all 0.5s ease; transform-origin:center; }
+.store { max-width:1300px; margin:auto; display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:20px; padding:40px 20px; }
+.card { background:#111827; border-radius:20px; overflow:hidden; position:relative; cursor:pointer; transition: all 0.3s ease; }
+.card img { width:100%; height:260px; object-fit:cover; transition: transform 0.3s ease; transform-origin:center; }
+.card:hover img { transform: scale(1.1); }
 
-/* HOVER + 3D TILT */
-.card:hover { box-shadow:0 40px 80px rgba(0,0,0,0.6),0 0 30px #22d3ee77 inset; }
+/* CARD CONTENT */
 .card-content { padding:20px; }
 .card-content h3 { margin-bottom:10px; font-size:18px; }
 .price { font-size:20px; font-weight:700; margin-bottom:15px; }
 .badge { display:inline-block; padding:6px 12px; font-size:12px; border-radius:999px; margin-bottom:12px; background:#22d3ee22; color:#22d3ee; }
 .buttons { display:flex; gap:10px; flex-wrap:wrap; }
 .buttons a { flex:1; text-align:center; padding:12px; border-radius:12px; font-weight:600; color:#020617; background:linear-gradient(135deg, #22d3ee, #38bdf8); transition: all 0.2s ease; position:relative; overflow:hidden; }
-.buttons a::after { content:''; position:absolute; width:200%; height:200%; top:-50%; left:-50%; background:radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%); transform:translate(-100%, -100%); transition:transform 0.3s ease; pointer-events:none; }
 .buttons a:hover::after { transform:translate(0,0); }
 .buttons a:hover { transform:translateY(-3px) scale(1.05); }
 
@@ -66,11 +59,11 @@ footer .social a:hover { color:#38ddf8; transform:scale(1.2) rotate(-5deg); }
   header { flex-direction:column; gap:15px; text-align:center; }
   .social-icons a { font-size:28px; }
   .hero { padding:40px 10px; }
-  .animated-marquee { font-size:18px; animation-duration:8s; }
-  .filters-bar { flex-direction:column; }
-  .filters-bar input, .filters-bar select { font-size:14px; padding:10px; }
+  .animated-text { font-size:22px; }
+  .store { grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); gap:15px; padding:20px 10px; }
   .card-content h3 { font-size:16px; }
   .price { font-size:18px; }
+  .buttons a { font-size:14px; padding:10px; }
 }
 </style>
 </head>
@@ -92,24 +85,10 @@ footer .social a:hover { color:#38ddf8; transform:scale(1.2) rotate(-5deg); }
 </header>
 
 <section class="hero">
-  <div class="animated-marquee">
-    <span>Strano Store – Shopping sicuro e facile su Vinted & Subito</span>
-    <span>Strano Store – Shopping sicuro e facile su Vinted & Subito</span>
+  <div class="animated-text">
+    Strano Store – Acquista subito su Vinted e Subito con sicurezza!
   </div>
 </section>
-
-<div class="filters-bar">
-  <input type="text" id="searchInput" placeholder="Cerca prodotto...">
-  <select id="filterCategory" onchange="filterProducts()">
-    <option value="all">Tutti i prodotti</option>
-    <option value="camicia">Camicia</option>
-    <option value="giubbotto">Giubbotto</option>
-    <option value="iphone">iPhone</option>
-    <option value="pantaloni">Pantaloni</option>
-    <option value="stivali">Stivali</option>
-    <option value="delfino">Scultura</option>
-  </select>
-</div>
 
 <section class="store" id="store"></section>
 
@@ -123,32 +102,12 @@ footer .social a:hover { color:#38ddf8; transform:scale(1.2) rotate(-5deg); }
 </footer>
 
 <script>
-/* CURSORE + PARTICELLE */
+/* CURSORE */
 const cursor = document.getElementById('cursor');
-const particles = [];
-for(let i=0;i<10;i++){
-  const p = document.createElement('div');
-  p.className='particle';
-  document.body.appendChild(p);
-  particles.push({el:p,x:0,y:0,tx:0,ty:0});
-}
 document.addEventListener('mousemove', e=>{
   cursor.style.left = e.clientX + 'px';
   cursor.style.top = e.clientY + 'px';
-  particles.forEach((p,i)=>{
-    p.tx = e.clientX + (Math.random()-0.5)*50;
-    p.ty = e.clientY + (Math.random()-0.5)*50;
-  });
 });
-function animateParticles(){
-  particles.forEach(p=>{
-    p.x += (p.tx-p.x)*0.2;
-    p.y += (p.ty-p.y)*0.2;
-    p.el.style.transform = `translate(${p.x}px,${p.y}px)`;
-  });
-  requestAnimationFrame(animateParticles);
-}
-animateParticles();
 document.querySelectorAll('a, .buttons a, .card').forEach(el=>{
   el.addEventListener('mouseenter',()=>cursor.classList.add('cursor-hover'));
   el.addEventListener('mouseleave',()=>cursor.classList.remove('cursor-hover'));
@@ -170,10 +129,9 @@ const store = document.getElementById('store');
 
 function renderProducts(filteredProducts){
   store.innerHTML='';
-  filteredProducts.forEach((p,index)=>{
+  filteredProducts.forEach(p=>{
     const card=document.createElement('div');
     card.className='card';
-    card.style.transitionDelay = (index*0.1)+'s';
     card.innerHTML=`
       <img src="${p.img}" alt="${p.nome}" />
       <div class="card-content">
@@ -187,44 +145,9 @@ function renderProducts(filteredProducts){
       </div>
     `;
     store.appendChild(card);
-
-    /* 3D TILT IMAGES solo desktop */
-    if(window.innerWidth>768){
-      const img = card.querySelector('img');
-      card.addEventListener('mousemove', e=>{
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left - rect.width/2;
-        const y = e.clientY - rect.top - rect.height/2;
-        img.style.transform = `rotateY(${x*0.05}deg) rotateX(${-y*0.05}deg) scale(1.1)`;
-      });
-      card.addEventListener('mouseleave', ()=>{
-        img.style.transform = 'rotateY(0deg) rotateX(0deg) scale(1)';
-      });
-    }
-  });
-  scrollAnimations();
-}
-
-function filterProducts(){
-  const search=document.getElementById('searchInput').value.toLowerCase();
-  const category=document.getElementById('filterCategory').value;
-  const filtered=prodotti.filter(p=>{
-    return (p.nome.toLowerCase().includes(search))&&(category==='all'||p.categoria===category);
-  });
-  renderProducts(filtered);
-}
-
-/* SCROLL + IN VIEW */
-function scrollAnimations(){
-  const cards=document.querySelectorAll('.card');
-  const windowHeight=window.innerHeight;
-  cards.forEach((card,index)=>{
-    const pos=card.getBoundingClientRect().top;
-    if(pos<windowHeight-100) { card.classList.add('in-view'); }
   });
 }
 
-window.addEventListener('scroll', scrollAnimations);
 renderProducts(prodotti);
 </script>
 
