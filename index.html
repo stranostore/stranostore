@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Strano Store – Vetrina ufficiale</title>
-<meta name="description" content="Strano Store: scopri le nostre felpe, smartphone e accessori in vendita. Acquista in sicurezza tramite Vinted o Subito.">
+<meta name="description" content="Strano Store: scopri i nostri prodotti in vendita, tra cui iPhone 15 Pro e sculture in vetro di Murano.">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -22,10 +22,8 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: 'Inter', sans-serif; background: radial-gradient(circle at top, #1e293b, #020617); color: var(--text); }
 
-/* HEADER */
 header {
-  padding: 40px 20px 20px;
-  text-align: center;
+  padding: 40px 20px 20px; text-align: center;
 }
 header img { width: 140px; margin-bottom: 15px; }
 header h1 { font-size: 42px; margin-bottom: 10px; }
@@ -40,26 +38,12 @@ header .social-icons a:hover {
   transform: scale(1.2); background: var(--accent); color: #020617; box-shadow: 0 8px 20px var(--shadow);
 }
 
-/* HERO */
 .hero { text-align: center; padding: 40px 20px; }
 .hero h2 { font-size: 28px; margin-bottom: 15px; }
 .hero p { font-size: 16px; color: var(--muted); }
 
-/* FILTRI & SEARCH */
-.controls {
-  display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; margin: 20px;
-}
-.controls select, .controls input {
-  padding: 10px 15px; border-radius: 8px; border: none; font-size: 14px;
-  outline: none;
-}
-.controls select { background: var(--card); color: var(--text); }
-.controls input { flex: 1; min-width: 200px; background: var(--card); color: var(--text); }
-
-/* STORE GRID */
 .store { max-width: 1200px; margin: auto; padding: 20px; display: grid; gap: 30px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
 
-/* CARD */
 .card {
   background: var(--card); border-radius: 18px; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -79,11 +63,9 @@ header .social-icons a:hover {
 }
 .card-content .buttons a:hover { opacity: 0.85; }
 
-/* FOOTER */
 footer { text-align: center; padding: 30px; color: var(--muted); font-size: 14px; }
 
-/* RESPONSIVE */
-@media(max-width:600px){ header h1 { font-size:32px; } .hero h2{ font-size:24px; } .controls{flex-direction:column;} }
+@media(max-width:600px){ header h1 { font-size:32px; } .hero h2{ font-size:24px; } }
 </style>
 </head>
 <body>
@@ -100,18 +82,8 @@ footer { text-align: center; padding: 30px; color: var(--muted); font-size: 14px
 </header>
 
 <section class="hero">
-  <h2>Scopri i nostri prodotti unici!</h2>
-  <p>Dalla moda agli accessori tech, tutto selezionato per te.</p>
-</section>
-
-<section class="controls">
-  <select id="filterCategory">
-    <option value="tutti">Tutti</option>
-    <option value="Moda">Moda</option>
-    <option value="Tech">Tech</option>
-    <option value="Accessori">Accessori</option>
-  </select>
-  <input type="text" id="searchInput" placeholder="Cerca un prodotto...">
+  <h2>I nostri prodotti in evidenza</h2>
+  <p>Scegli tra i prodotti disponibili nella nostra vetrina.</p>
 </section>
 
 <section class="store" id="store">
@@ -123,57 +95,30 @@ footer { text-align: center; padding: 30px; color: var(--muted); font-size: 14px
 </footer>
 
 <script>
-// Lista prodotti con categorie
+// Lista prodotti aggiornata
 const prodotti = [
-  { img: 'prodotto1.jpg', nome: 'Felpa Nike Vintage', prezzo: '35', badge: 'Disponibile', categoria: 'Moda', link: 'https://www.vinted.it/member/156457000-stranostore' },
-  { img: 'prodotto2.jpg', nome: 'iPhone 12', prezzo: '450', badge: 'Venduto', categoria: 'Tech', link: 'https://www.subito.it/utente/16474204' },
-  { img: 'prodotto3.jpg', nome: 'Zaino Herschel', prezzo: '50', badge: 'Disponibile', categoria: 'Accessori', link: '#' },
-  { img: 'prodotto4.jpg', nome: 'Felpa Adidas', prezzo: '40', badge: 'Disponibile', categoria: 'Moda', link: '#' }
+  { img: 'iphone.png', nome: 'iPhone 15 Pro', prezzo: '599', badge: 'Disponibile', categoria: 'Tech', link: 'https://www.subito.it/utente/16474204' },
+  { img: 'delfini.png', nome: 'Scultura in vetro di Murano “Delfini”', prezzo: '99', badge: 'Disponibile', categoria: 'Accessori', link: '#' }
 ];
 
-// Funzione per generare card
-function mostraProdotti(prodottiArray){
-  const store = document.getElementById('store');
-  store.innerHTML = '';
-  prodottiArray.forEach(p => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.innerHTML = `
-      <img src="${p.img}" alt="${p.nome}">
-      <div class="card-content">
-        <span class="badge ${p.badge==='Disponibile'?'available':'sold'}">${p.badge}</span>
-        <h3>${p.nome}</h3>
-        <div class="price">€${p.prezzo}</div>
-        <div class="buttons">
-          <a href="${p.link}" target="_blank">${p.badge==='Disponibile'?'Acquista':'Vedi'}</a>
-        </div>
+// Generazione card
+const store = document.getElementById('store');
+prodotti.forEach(p => {
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.innerHTML = `
+    <img src="${p.img}" alt="${p.nome}">
+    <div class="card-content">
+      <span class="badge available">${p.badge}</span>
+      <h3>${p.nome}</h3>
+      <div class="price">€${p.prezzo}</div>
+      <div class="buttons">
+        <a href="${p.link}" target="_blank">Acquista</a>
       </div>
-    `;
-    store.appendChild(card);
-  });
-}
-
-// Filtri e ricerca
-const filterCategory = document.getElementById('filterCategory');
-const searchInput = document.getElementById('searchInput');
-
-function filtraECerca(){
-  const categoria = filterCategory.value;
-  const search = searchInput.value.toLowerCase();
-  const filtrati = prodotti.filter(p=>{
-    const matchCat = categoria==='tutti' ? true : p.categoria===categoria;
-    const matchSearch = p.nome.toLowerCase().includes(search);
-    return matchCat && matchSearch;
-  });
-  mostraProdotti(filtrati);
-}
-
-// Eventi
-filterCategory.addEventListener('change', filtraECerca);
-searchInput.addEventListener('input', filtraECerca);
-
-// Mostra tutti all'avvio
-mostraProdotti(prodotti);
+    </div>
+  `;
+  store.appendChild(card);
+});
 </script>
 
 </body>
