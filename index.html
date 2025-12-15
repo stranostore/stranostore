@@ -24,6 +24,19 @@ a { text-decoration:none; }
 }
 .cursor-hover { transform:translate(-50%,-50%) scale(2); background:#22d3ee33; }
 
+/* PARTICELLE */
+.particle {
+  position: fixed;
+  width: 6px; height: 6px;
+  background: #22d3ee;
+  border-radius:50%;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  z-index: 9998;
+  opacity:0.8;
+  transition: transform 0.1s ease, opacity 0.5s ease;
+}
+
 /* HEADER */
 header { display:flex; justify-content:space-between; align-items:center; padding:20px 40px; flex-wrap:wrap; }
 header img { width:120px; }
@@ -70,7 +83,6 @@ footer .social a:hover { color:#38bdf8; transform:scale(1.2) rotate(-5deg); }
 
 /* ANIMAZIONI */
 @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
-@keyframes float { 0%, 100% { transform: translateY(-10px) scale(1.03); } 50% { transform: translateY(-5px) scale(1.03); } }
 </style>
 </head>
 
@@ -121,15 +133,36 @@ footer .social a:hover { color:#38bdf8; transform:scale(1.2) rotate(-5deg); }
 </footer>
 
 <script>
-/* CURSORE MODERNO VELOCE */
+/* CURSORE + PARTICELLE */
 const cursor = document.getElementById('cursor');
-document.addEventListener('mousemove', e => {
+const particles = [];
+for(let i=0;i<10;i++){
+  const p = document.createElement('div');
+  p.className='particle';
+  document.body.appendChild(p);
+  particles.push({el:p,x:0,y:0,tx:0,ty:0});
+}
+document.addEventListener('mousemove', e=>{
   cursor.style.left = e.clientX + 'px';
   cursor.style.top = e.clientY + 'px';
+  particles.forEach((p,i)=>{
+    p.tx = e.clientX + (Math.random()-0.5)*50;
+    p.ty = e.clientY + (Math.random()-0.5)*50;
+  });
 });
-document.querySelectorAll('a, .buttons a, .card').forEach(el => {
-  el.addEventListener('mouseenter', () => cursor.classList.add('cursor-hover'));
-  el.addEventListener('mouseleave', () => cursor.classList.remove('cursor-hover'));
+function animateParticles(){
+  particles.forEach(p=>{
+    p.x += (p.tx-p.x)*0.2;
+    p.y += (p.ty-p.y)*0.2;
+    p.el.style.transform = `translate(${p.x}px,${p.y}px)`;
+  });
+  requestAnimationFrame(animateParticles);
+}
+animateParticles();
+
+document.querySelectorAll('a, .buttons a, .card').forEach(el=>{
+  el.addEventListener('mouseenter',()=>cursor.classList.add('cursor-hover'));
+  el.addEventListener('mouseleave',()=>cursor.classList.remove('cursor-hover'));
 });
 
 /* PRODOTTI */
@@ -145,12 +178,12 @@ const prodotti = [
 ];
 
 const store = document.getElementById('store');
-function renderProducts(filteredProducts) {
-  store.innerHTML = '';
-  filteredProducts.forEach(p => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.innerHTML = `
+function renderProducts(filteredProducts){
+  store.innerHTML='';
+  filteredProducts.forEach(p=>{
+    const card=document.createElement('div');
+    card.className='card';
+    card.innerHTML=`
       <img src="${p.img}" alt="${p.nome}" />
       <div class="card-content">
         <span class="badge available">${p.badge}</span>
@@ -167,21 +200,21 @@ function renderProducts(filteredProducts) {
   scrollAnimations();
 }
 
-function filterProducts() {
-  const search = document.getElementById('searchInput').value.toLowerCase();
-  const category = document.getElementById('filterCategory').value;
-  const filtered = prodotti.filter(p => {
-    return (p.nome.toLowerCase().includes(search)) && (category === 'all' || p.categoria === category);
+function filterProducts(){
+  const search=document.getElementById('searchInput').value.toLowerCase();
+  const category=document.getElementById('filterCategory').value;
+  const filtered=prodotti.filter(p=>{
+    return (p.nome.toLowerCase().includes(search))&&(category==='all'||p.categoria===category);
   });
   renderProducts(filtered);
 }
 
-function scrollAnimations() {
-  const cards = document.querySelectorAll('.card');
-  const windowHeight = window.innerHeight;
-  cards.forEach(card => {
-    const pos = card.getBoundingClientRect().top;
-    if(pos < windowHeight - 100) card.classList.add('in-view');
+function scrollAnimations(){
+  const cards=document.querySelectorAll('.card');
+  const windowHeight=window.innerHeight;
+  cards.forEach(card=>{
+    const pos=card.getBoundingClientRect().top;
+    if(pos<windowHeight-100) card.classList.add('in-view');
   });
 }
 
