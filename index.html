@@ -1,257 +1,269 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Strano Store – Vetrina ufficiale</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Strano Store – Vetrina ufficiale</title>
 
-<style>
-  :root {
-    --bg: #0f172a;
-    --card: #111827;
-    --text: #e5e7eb;
-    --muted: #9ca3af;
-    --accent: #22d3ee;
-    --accent2: #f97316;
-    --shadow: rgba(0,0,0,0.6);
-  }
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  body {
-    font-family: 'Inter', sans-serif;
-    background: radial-gradient(circle at top, #1e293b, #020617);
-    color: var(--text);
-  }
-  header {
-    padding: 40px 20px 20px;
-    text-align: center;
-  }
-  header img {
-    width: 140px;
-    margin-bottom: 15px;
-  }
-  header h1 {
-    font-size: 42px;
-    margin-bottom: 10px;
-  }
-  header p {
-    font-size: 16px;
-    color: var(--muted);
-    max-width: 600px;
-    margin: auto;
-  }
-  .social-icons {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-  }
-  .social-icons a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 50px;
-    height: 50px;
-    background: var(--card);
-    border-radius: 50%;
-    color: var(--accent);
-    font-size: 24px;
-    transition: all 0.3s ease;
-  }
-  .social-icons a:hover {
-    transform: scale(1.2);
-    background: var(--accent);
-    color: #020617;
-    box-shadow: 0 8px 20px var(--shadow);
-  }
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="logo.png" />
 
-  .hero {
-    text-align: center;
-    padding: 40px 20px;
-  }
-  .hero h2 {
-    font-size: 28px;
-    margin-bottom: 15px;
-  }
-  .hero p {
-    font-size: 16px;
-    color: var(--muted);
-  }
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-  .store {
-    max-width: 1200px;
-    margin: auto;
-    padding: 20px;
-    display: grid;
-    gap: 30px;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  }
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #111827;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --accent: #22d3ee;
+      --accent2: #f97316;
+    }
 
-  .card {
-    background: var(--card);
-    border-radius: 18px;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
-  }
-  .card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 25px 50px var(--shadow);
-  }
-  .card img {
-    width: 100%;
-    height: 260px;
-    object-fit: cover;
-    display: block;
-  }
-  .card-content {
-    padding: 20px;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  .card-content h3 {
-    margin-bottom: 8px;
-    font-size: 20px;
-  }
-  .price {
-    font-size: 20px;
-    font-weight: 700;
-    margin-bottom: 12px;
-  }
-  .badge {
-    display: inline-block;
-    padding: 5px 10px;
-    font-size: 12px;
-    border-radius: 999px;
-    margin-bottom: 10px;
-  }
-  .badge.available {
-    background: #22d3ee22;
-    color: var(--accent);
-  }
-  .badge.sold {
-    background: #f9731622;
-    color: var(--accent2);
-  }
-  .buttons {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-  .buttons a {
-    flex: 1 1 48%;
-    text-align: center;
-    padding: 12px;
-    border-radius: 12px;
-    font-weight: 600;
-    text-decoration: none;
-    color: #020617;
-    background: linear-gradient(135deg, var(--accent), #38bdf8);
-    transition: opacity 0.2s ease;
-  }
-  .buttons a:hover {
-    opacity: 0.85;
-  }
-  .buttons a.vinted {
-    background: #3abff8;
-    color: white;
-  }
-  .buttons a.subito {
-    background: #f97316;
-    color: white;
-  }
+    * { box-sizing: border-box; }
 
-  footer {
-    text-align: center;
-    padding: 30px;
-    color: var(--muted);
-    font-size: 14px;
-  }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: radial-gradient(circle at top, #1e293b, #020617);
+      color: var(--text);
+    }
 
-  @media(max-width:600px){
-    header h1 { font-size:32px; }
-    .hero h2 { font-size:24px; }
-  }
-</style>
+    /* HEADER */
+    header {
+      padding: 60px 20px 40px;
+      text-align: center;
+    }
+
+    .logo {
+      width: 150px;
+      margin-bottom: 15px;
+    }
+
+    header h1 {
+      font-size: 46px;
+      margin: 0;
+      letter-spacing: -1px;
+    }
+
+    header p {
+      max-width: 600px;
+      margin: 10px auto 20px;
+      font-size: 18px;
+      color: var(--muted);
+    }
+
+    /* SOCIAL ICONS sotto titolo */
+    .social-icons {
+      margin-top: 10px;
+      margin-bottom: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .social-icons p {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: 16px;
+      color: var(--muted);
+    }
+
+    /* Icone tonde con hover */
+    .social-icons a {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: 60px;
+      height: 60px;
+      background: var(--card);
+      border-radius: 50%;
+      color: var(--accent);
+      font-size: 28px;
+      transition: all 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      transform: scale(1.2);
+      color: #fff;
+      background: var(--accent);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    }
+
+    /* STORE */
+    .store {
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 20px 80px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    /* CARD */
+    .card {
+      background: linear-gradient(180deg, #020617, #020617) padding-box,
+                  linear-gradient(135deg, transparent, #22d3ee55, transparent) border-box;
+      border: 1px solid transparent;
+      border-radius: 18px;
+      overflow: hidden;
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 30px 60px rgba(0,0,0,.6);
+    }
+
+    .card img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+    }
+
+    /* CONTENT */
+    .card-content {
+      padding: 22px;
+    }
+
+    .card-content h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }
+
+    .price {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    /* BADGE */
+    .badge {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 12px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+
+    .available {
+      background: #22d3ee22;
+      color: var(--accent);
+    }
+
+    .sold {
+      background: #f9731622;
+      color: var(--accent2);
+    }
+
+    /* BUTTONS */
+    .buttons a {
+      display: inline-block;
+      text-align: center;
+      padding: 12px 18px;
+      margin-right: 10px;
+      border-radius: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      color: #020617;
+      background: linear-gradient(135deg, var(--accent), #38bdf8);
+      transition: opacity .2s ease;
+      min-width: 130px;
+    }
+
+    .buttons a:last-child {
+      margin-right: 0;
+      background: linear-gradient(135deg, var(--accent2), #fb923c);
+      color: #020617;
+    }
+
+    .buttons a:hover {
+      opacity: .85;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+  </style>
 </head>
+
 <body>
+  <header>
+    <img src="logo.png" alt="Strano Store" class="logo" />
+    <h1>Strano Store</h1>
+    <p>
+      Vetrina ufficiale degli oggetti in vendita.<br />
+      Acquisto sicuro tramite Vinted o Subito.
+    </p>
 
-<header>
-  <img src="logo.png" alt="Strano Store Logo" />
-  <h1>Strano Store</h1>
-  <p>Vetrina ufficiale degli oggetti in vendita. Acquisto sicuro tramite Vinted o Subito.</p>
-  <div class="social-icons">
-    <a href="https://www.tiktok.com/@stranostore" target="_blank" aria-label="TikTok Strano Store"><i class="fab fa-tiktok"></i></a>
-    <a href="https://www.vinted.it/member/156457000-stranostore" target="_blank" aria-label="Vinted Strano Store"><i class="fas fa-tshirt"></i></a>
-    <a href="https://www.subito.it/utente/16474204" target="_blank" aria-label="Subito Strano Store"><i class="fas fa-shopping-bag"></i></a>
-  </div>
-</header>
+    <div class="social-icons">
+      <p>Qui trovi tutti i miei link personali per comprare o visitare i miei profili:</p>
+      <a href="https://www.tiktok.com/@stranostore" target="_blank"><i class="fab fa-tiktok"></i></a>
+      <a href="https://www.vinted.it/member/156457000-stranostore" target="_blank"><i class="fas fa-tshirt"></i></a>
+      <a href="https://www.subito.it/utente/16474204" target="_blank"><i class="fas fa-shopping-bag"></i></a>
+    </div>
+  </header>
 
-<section class="hero">
-  <h2>I nostri prodotti in evidenza</h2>
-  <p>Scegli tra i prodotti disponibili nella nostra vetrina.</p>
-</section>
+  <section class="store" id="store">
+    <!-- Le card saranno generate da JavaScript -->
+  </section>
 
-<section class="store" id="store"></section>
+  <footer>
+    <p>© 2025 Strano Store — Sito vetrina non e-commerce</p>
+  </footer>
 
-<footer>
-  <p>© 2025 Strano Store — Sito vetrina non e-commerce</p>
-</footer>
+  <script>
+    const prodotti = [
+      { 
+        img: 'iphone.png', 
+        nome: 'iPhone 15 Pro', 
+        prezzo: '599', 
+        badge: 'Disponibile', 
+        linkVinted: 'https://www.vinted.it/member/156457000-stranostore', 
+        linkSubito: 'https://www.subito.it/utente/16474204' 
+      },
+      { 
+        img: 'delfino.png', 
+        nome: 'Scultura in vetro di Murano “Delfini”', 
+        prezzo: '99', 
+        badge: 'Disponibile', 
+        linkVinted: 'https://www.vinted.it/member/156457000-stranostore', 
+        linkSubito: 'https://www.subito.it/utente/16474204' 
+      },
+      { img: 'camicia1.png', nome: 'Camicia Uomo Elegante', prezzo: '45', badge: 'Disponibile', linkVinted: 'https://www.vinted.it/member/156457000-stranostore', linkSubito: 'https://www.subito.it/utente/16474204' },
+      { img: 'camicia2.png', nome: 'Camicia Donna Casual', prezzo: '40', badge: 'Disponibile', linkVinted: 'https://www.vinted.it/member/156457000-stranostore', linkSubito: 'https://www.subito.it/utente/16474204' },
+      { img: 'giubotto.png', nome: 'Giubbotto Invernale', prezzo: '120', badge: 'Disponibile', linkVinted: 'https://www.vinted.it/member/156457000-stranostore', linkSubito: 'https://www.subito.it/utente/16474204' },
+      { img: 'moncler.webp', nome: 'Giacca Moncler', prezzo: '350', badge: 'Disponibile', linkVinted: 'https://www.vinted.it/member/156457000-stranostore', linkSubito: 'https://www.subito.it/utente/16474204' },
+      { img: 'pantaloni.png', nome: 'Pantaloni Jeans Uomo', prezzo: '50', badge: 'Disponibile', linkVinted: 'https://www.vinted.it/member/156457000-stranostore', linkSubito: 'https://www.subito.it/utente/16474204' },
+      { img: 'stivali.png', nome: 'Stivali Donna', prezzo: '80', badge: 'Disponibile', linkVinted: 'https://www.vinted.it/member/156457000-stranostore', linkSubito: 'https://www.subito.it/utente/16474204' }
+    ];
 
-<script>
-  const prodotti = [
-    { 
-      img: 'iphone.png', 
-      nome: 'iPhone 15 Pro', 
-      prezzo: '599', 
-      badge: 'Disponibile', 
-      linkVinted: 'https://www.vinted.it/member/156457000-stranostore', 
-      linkSubito: 'https://www.subito.it/utente/16474204' 
-    },
-    { 
-      img: 'delfino.png', 
-      nome: 'Scultura in vetro di Murano “Delfini”', 
-      prezzo: '99', 
-      badge: 'Disponibile', 
-      linkVinted: 'https://www.vinted.it/member/156457000-stranostore', 
-      linkSubito: 'https://www.subito.it/utente/16474204' 
-    },
-    { img: 'camicia1.png', nome: 'Camicia Uomo Elegante', prezzo: '19,99', badge: 'Disponibile', linkVinted: 'https://www.vinted.it/member/156457000-stranostore', linkSubito: 'https://www.subito.it/utente/16474204' },
-    { img: 'camicia2.png', nome: 'Camicia Donna Casual', prezzo: '19,99', badge: 'Disponibile', linkVinted: 'https://www.vinted.it/member/156457000-stranostore', linkSubito: 'https://www.subito.it/utente/16474204' },
-    { img: 'giubotto.png', nome: 'Giubbotto Invernale', prezzo: '19,99', badge: 'Disponibile', linkVinted: 'https://www.vinted.it/member/156457000-stranostore', linkSubito: 'https://www.subito.it/utente/16474204' },
-    { img: 'moncler.webp', nome: 'Giacca Moncler', prezzo: '29,99', badge: 'Disponibile', linkVinted: 'https://www.vinted.it/member/156457000-stranostore', linkSubito: 'https://www.subito.it/utente/16474204' },
-    { img: 'pantaloni.png', nome: 'Pantaloni Jeans Uomo', prezzo: '19,99', badge: 'Disponibile', linkVinted: 'https://www.vinted.it/member/156457000-stranostore', linkSubito: 'https://www.subito.it/utente/16474204' },
-    { img: 'stivali.png', nome: 'Stivali Donna', prezzo: '39,99', badge: 'Disponibile', linkVinted: 'https://www.vinted.it/member/156457000-stranostore', linkSubito: 'https://www.subito.it/utente/16474204' }
-  ];
-
-  const store = document.getElementById('store');
-  store.innerHTML = '';
-  prodotti.forEach(p => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.innerHTML = `
-      <img src="${p.img}" alt="${p.nome}" />
-      <div class="card-content">
-        <span class="badge available">${p.badge}</span>
-        <h3>${p.nome}</h3>
-        <div class="price">€${p.prezzo}</div>
-        <div class="buttons">
-          <a href="${p.linkVinted}" target="_blank" class="vinted">Acquista su Vinted</a>
-          <a href="${p.linkSubito}" target="_blank" class="subito">Acquista su Subito</a>
+    const store = document.getElementById('store');
+    store.innerHTML = '';
+    prodotti.forEach(p => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <img src="${p.img}" alt="${p.nome}" />
+        <div class="card-content">
+          <span class="badge available">${p.badge}</span>
+          <h3>${p.nome}</h3>
+          <div class="price">€${p.prezzo}</div>
+          <div class="buttons">
+            <a href="${p.linkVinted}" target="_blank" class="vinted">Acquista su Vinted</a>
+            <a href="${p.linkSubito}" target="_blank" class="subito">Acquista su Subito</a>
+          </div>
         </div>
-      </div>
-    `;
-    store.appendChild(card);
-  });
-</script>
-
+      `;
+      store.appendChild(card);
+    });
+  </script>
 </body>
 </html>
