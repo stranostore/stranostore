@@ -42,18 +42,20 @@ header img { width:120px; }
 
 /* STORE CARDS */
 .store { max-width:1300px; margin:auto; display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:30px; padding:40px 20px; }
-.card { background:#111827; border-radius:20px; overflow:hidden; transition: all 0.4s ease; position:relative; cursor:pointer; opacity:0; transform:translateY(50px); }
+.card { background:#111827; border-radius:20px; overflow:hidden; transition: all 0.4s ease; position:relative; cursor:pointer; opacity:0; transform:translateY(50px); perspective:1000px; }
 .card.in-view { opacity:1; transform:translateY(0); transition: all 0.6s ease-out; }
-.card:hover { transform: translateY(-10px) scale(1.02); box-shadow:0 30px 60px rgba(0,0,0,0.5); }
-.card img { width:100%; height:260px; object-fit:cover; transition: all 0.4s ease; }
-.card:hover img { transform:scale(1.05); }
+.card:hover { transform: translateY(-10px) scale(1.03); box-shadow:0 30px 60px rgba(0,0,0,0.5); animation: float 3s ease-in-out infinite; }
+.card img { width:100%; height:260px; object-fit:cover; transition: all 0.5s ease; transform-origin:center; }
+.card:hover img { transform: scale(1.1) rotateY(5deg) rotateX(3deg); }
+
+/* CARD CONTENT */
 .card-content { padding:20px; }
 .card-content h3 { margin-bottom:10px; font-size:20px; }
 .price { font-size:22px; font-weight:700; margin-bottom:15px; }
 .badge { display:inline-block; padding:6px 12px; font-size:12px; border-radius:999px; margin-bottom:12px; background:#22d3ee22; color:#22d3ee; }
 .buttons { display:flex; gap:10px; flex-wrap:wrap; }
-.buttons a { flex:1; text-align:center; padding:12px; border-radius:12px; font-weight:600; color:#020617; background:linear-gradient(135deg, #22d3ee, #38bdf8); transition: all 0.3s ease; }
-.buttons a:hover { opacity:0.9; transform:translateY(-3px); }
+.buttons a { flex:1; text-align:center; padding:12px; border-radius:12px; font-weight:600; color:#020617; background:linear-gradient(135deg, #22d3ee, #38bdf8); transition: all 0.3s ease; animation: pulse 2s infinite; }
+.buttons a:hover { opacity:0.9; transform:translateY(-3px) scale(1.05); }
 
 /* FOOTER */
 footer { text-align:center; padding:40px 20px; color:#9ca3af; }
@@ -64,6 +66,12 @@ footer .social a:hover { color:#38bdf8; transform:scale(1.2) rotate(-5deg); }
 /* ANIMAZIONI HERO */
 @keyframes fadeInDown { 0% {opacity:0; transform:translateY(-50px);} 100% {opacity:1; transform:translateY(0);} }
 @keyframes fadeInUp { 0% {opacity:0; transform:translateY(50px);} 100% {opacity:1; transform:translateY(0);} }
+
+/* ANIMAZIONE PULSANTE */
+@keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+
+/* FLOAT CARD */
+@keyframes float { 0%, 100% { transform: translateY(-10px) scale(1.03); } 50% { transform: translateY(-5px) scale(1.03); } }
 </style>
 </head>
 
@@ -116,10 +124,7 @@ footer .social a:hover { color:#38bdf8; transform:scale(1.2) rotate(-5deg); }
 <script>
 /* CURSORE */
 const cursor = document.getElementById('cursor');
-document.addEventListener('mousemove', e => {
-  cursor.style.left = e.clientX + 'px';
-  cursor.style.top = e.clientY + 'px';
-});
+document.addEventListener('mousemove', e => { cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px'; });
 document.querySelectorAll('a, .buttons a, .card').forEach(el => {
   el.addEventListener('mouseenter', () => cursor.classList.add('cursor-hover'));
   el.addEventListener('mouseleave', () => cursor.classList.remove('cursor-hover'));
