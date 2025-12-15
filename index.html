@@ -221,14 +221,7 @@
 
   <script>
     const prodotti = [
-  { 
-    img: 'iphone.png', 
-    nome: 'iPhone 15 Pro', 
-    prezzo: '599', 
-    badge: 'Disponibile', 
-    linkVinted: 'https://www.vinted.it/member/156457000-stranostore', 
-    linkSubito: 'https://www.subito.it/utente/16474204' 
-  },
+const prodotti = [
   { 
     img: 'delfino.png', 
     nome: 'Scultura in vetro di Murano “Delfini”', 
@@ -237,13 +230,56 @@
     linkVinted: 'https://www.vinted.it/member/156457000-stranostore', 
     linkSubito: 'https://www.subito.it/utente/16474204' 
   },
-  { img: 'camicia1.png', nome: 'Camicia Polo Ralph Lauren', prezzo: '19.99', badge: 'Disponibile', linkVinted: 'https://www.vinted.it/member/156457000-stranostore', linkSubito: 'https://www.subito.it/utente/16474204' },
-  { img: 'camicia2.png', nome: 'Camicia Polo Ralph Lauren 2', prezzo: '19.99', badge: 'Disponibile', linkVinted: 'https://www.vinted.it/member/156457000-stranostore', linkSubito: 'https://www.subito.it/utente/16474204' },
-  { img: 'giubotto.png', nome: 'Giubbotto Invernale', prezzo: '19.99', badge: 'Disponibile', linkVinted: 'https://www.vinted.it/member/156457000-stranostore', linkSubito: 'https://www.subito.it/utente/16474204' },
-  { img: 'moncler.webp', nome: 'Polo Moncler', prezzo: '29.99', badge: 'Disponibile', linkVinted: 'https://www.vinted.it/member/156457000-stranostore', linkSubito: 'https://www.subito.it/utente/16474204' },
-  { img: 'pantaloni.png', nome: 'Pantaloni Roy Roger's', prezzo: '19.99', badge: 'Disponibile', linkVinted: 'https://www.vinted.it/member/156457000-stranostore', linkSubito: 'https://www.subito.it/utente/16474204' },
-  { img: 'stivali.png', nome: 'Stivali Donna', prezzo: '39.99', badge: 'Disponibile', linkVinted: 'https://www.vinted.it/member/156457000-stranostore', linkSubito: 'https://www.subito.it/utente/16474204' }
+  { 
+    img: 'camicia1.png', 
+    nome: 'Camicia Polo Ralph Lauren', 
+    prezzo: '19.99', 
+    badge: 'Disponibile', 
+    linkVinted: 'https://www.vinted.it/member/156457000-stranostore', 
+    linkSubito: 'https://www.subito.it/utente/16474204' 
+  },
+  { 
+    img: 'camicia2.png', 
+    nome: 'Camicia Polo Ralph Lauren 2', 
+    prezzo: '19.99', 
+    badge: 'Disponibile', 
+    linkVinted: 'https://www.vinted.it/member/156457000-stranostore', 
+    linkSubito: 'https://www.subito.it/utente/16474204' 
+  },
+  { 
+    img: 'giubotto.png', 
+    nome: 'Giubbotto Invernale', 
+    prezzo: '19.99', 
+    badge: 'Disponibile', 
+    linkVinted: 'https://www.vinted.it/member/156457000-stranostore', 
+    linkSubito: 'https://www.subito.it/utente/16474204' 
+  },
+  { 
+    img: 'moncler.webp', 
+    nome: 'Polo Moncler', 
+    prezzo: '29.99', 
+    badge: 'Disponibile', 
+    linkVinted: 'https://www.vinted.it/member/156457000-stranostore', 
+    linkSubito: 'https://www.subito.it/utente/16474204' 
+  },
+  { 
+    img: 'pantaloni.png', 
+    nome: "Pantaloni Roy Roger's", 
+    prezzo: '19.99', 
+    badge: 'Disponibile', 
+    linkVinted: 'https://www.vinted.it/member/156457000-stranostore', 
+    linkSubito: 'https://www.subito.it/utente/16474204' 
+  },
+  { 
+    img: 'stivali.png', 
+    nome: 'Stivali Donna', 
+    prezzo: '39.99', 
+    badge: 'Disponibile', 
+    linkVinted: 'https://www.vinted.it/member/156457000-stranostore', 
+    linkSubito: 'https://www.subito.it/utente/16474204' 
+  }
 ];
+
 
 
     const store = document.getElementById('store');
