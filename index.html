@@ -207,7 +207,6 @@
 </footer>
 
 <script>
-  // Lista prodotti aggiornata con link multipli corretti
   const prodotti = [
     { 
       img: 'iphone.png', 
@@ -224,12 +223,17 @@
       badge: 'Disponibile', 
       linkVinted: 'https://www.vinted.it/member/156457000-stranostore', 
       linkSubito: 'https://www.subito.it/utente/16474204' 
-    }
+    },
+    { img: 'camicia1.png', nome: 'Camicia Uomo Elegante', prezzo: '19,99', badge: 'Disponibile', linkVinted: 'https://www.vinted.it/member/156457000-stranostore', linkSubito: 'https://www.subito.it/utente/16474204' },
+    { img: 'camicia2.png', nome: 'Camicia Donna Casual', prezzo: '19,99', badge: 'Disponibile', linkVinted: 'https://www.vinted.it/member/156457000-stranostore', linkSubito: 'https://www.subito.it/utente/16474204' },
+    { img: 'giubotto.png', nome: 'Giubbotto Invernale', prezzo: '19,99', badge: 'Disponibile', linkVinted: 'https://www.vinted.it/member/156457000-stranostore', linkSubito: 'https://www.subito.it/utente/16474204' },
+    { img: 'moncler.webp', nome: 'Giacca Moncler', prezzo: '29,99', badge: 'Disponibile', linkVinted: 'https://www.vinted.it/member/156457000-stranostore', linkSubito: 'https://www.subito.it/utente/16474204' },
+    { img: 'pantaloni.png', nome: 'Pantaloni Jeans Uomo', prezzo: '19,99', badge: 'Disponibile', linkVinted: 'https://www.vinted.it/member/156457000-stranostore', linkSubito: 'https://www.subito.it/utente/16474204' },
+    { img: 'stivali.png', nome: 'Stivali Donna', prezzo: '39,99', badge: 'Disponibile', linkVinted: 'https://www.vinted.it/member/156457000-stranostore', linkSubito: 'https://www.subito.it/utente/16474204' }
   ];
 
-  // Generazione card con 2 pulsanti
   const store = document.getElementById('store');
-  store.innerHTML = ''; // pulisce eventuali card esistenti
+  store.innerHTML = '';
   prodotti.forEach(p => {
     const card = document.createElement('div');
     card.className = 'card';
