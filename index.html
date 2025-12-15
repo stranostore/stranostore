@@ -31,7 +31,6 @@ body {
 header {
   padding: 60px 20px 40px;
   text-align: center;
-  position: relative;
 }
 
 .logo {
@@ -47,28 +46,48 @@ header h1 {
 
 header p {
   max-width: 600px;
-  margin: 10px auto 0;
+  margin: 10px auto 20px;
   font-size: 18px;
   color: var(--muted);
 }
 
-/* SOCIAL ICONS HEADER */
+/* SOCIAL ICONS sotto titolo */
 .social-icons {
-  position: absolute;
-  top: 20px;
-  right: 20px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
 
+.social-icons p {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: var(--muted);
+}
+
+/* Icone tonde con hover */
 .social-icons a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  background: var(--card);
+  border-radius: 50%;
   color: var(--accent);
   font-size: 28px;
-  margin-left: 15px;
-  transition: transform .2s, color .2s;
+  transition: all 0.3s ease;
 }
 
 .social-icons a:hover {
-  color: #f97316;
   transform: scale(1.2);
+  color: #fff;
+  background: var(--accent);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
 }
 
 /* STORE */
@@ -167,17 +186,19 @@ footer {
 <body>
 
 <header>
-  <div class="social-icons">
-    <a href="https://www.tiktok.com/@stranostore" target="_blank"><i class="fab fa-tiktok"></i></a>
-    <a href="https://www.vinted.it/member/156457000-stranostore" target="_blank"><i class="fas fa-tshirt"></i></a>
-    <a href="https://www.subito.it/utente/16474204" target="_blank"><i class="fas fa-shopping-bag"></i></a>
-  </div>
   <img src="logo.png" alt="Strano Store" class="logo">
   <h1>Strano Store</h1>
   <p>
     Vetrina ufficiale degli oggetti in vendita.<br>
     Acquisto sicuro tramite Vinted o Subito.
   </p>
+
+  <div class="social-icons">
+    <p>Qui trovi tutti i miei link personali per comprare o visitare i miei profili:</p>
+    <a href="https://www.tiktok.com/@stranostore" target="_blank"><i class="fab fa-tiktok"></i></a>
+    <a href="https://www.vinted.it/member/156457000-stranostore" target="_blank"><i class="fas fa-tshirt"></i></a>
+    <a href="https://www.subito.it/utente/16474204" target="_blank"><i class="fas fa-shopping-bag"></i></a>
+  </div>
 </header>
 
 <section class="store">
