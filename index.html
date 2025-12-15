@@ -25,13 +25,16 @@ header img { width:120px; }
 .social-icons { display:flex; gap:20px; align-items:center; flex-wrap:wrap; }
 .social-icons a { display:flex; flex-direction:column; align-items:center; color:#22d3ee; font-size:32px; transition: all 0.3s ease; }
 .social-icons a span { font-size:14px; margin-top:5px; color:#e5e7eb; }
-.social-icons a:hover { color:#38bdf8; transform:scale(1.3) rotate(-10deg); }
+.social-icons a:hover { color:#38dff8; transform:scale(1.3) rotate(-10deg); }
 
 /* HERO ANIMATO */
-.hero { text-align:center; padding:80px 20px 40px; }
-.animated-title, .animated-subtitle { display:inline-block; color:#22d3ee; font-weight:700; letter-spacing:1px; text-shadow: 0 0 5px #22d3ee, 0 0 15px #22d3ee66; overflow:hidden; white-space:nowrap; }
-.animated-title span, .animated-subtitle span { display:inline-block; opacity:0; transform:translateY(-20px) rotate(-5deg); animation: letterIn 0.3s forwards; }
-@keyframes letterIn { 0% { opacity:0; transform:translateY(-20px) rotate(-5deg);} 50% { opacity:1; transform:translateY(5px) rotate(3deg);} 100% { opacity:1; transform:translateY(0) rotate(0deg);} }
+.hero { padding:60px 20px; text-align:center; overflow:hidden; }
+.animated-marquee { display:flex; width:200%; animation: marquee 15s linear infinite; font-size:28px; font-weight:700; color:#22d3ee; text-shadow:0 0 5px #22d3ee,0 0 15px #22d3eeaa; }
+.animated-marquee span { flex:1 0 50%; text-align:center; }
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
 
 /* FILTRI */
 .filters-bar { max-width:1300px; margin:20px auto; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; padding:0 20px; }
@@ -61,8 +64,6 @@ footer .social { display:flex; justify-content:center; gap:20px; margin-top:15px
 footer .social a { color:#22d3ee; font-size:28px; transition:0.3s; }
 footer .social a:hover { color:#38ddf8; transform:scale(1.2) rotate(-5deg); }
 
-/* ANIMAZIONI */
-@keyframes pulse { 0%,100%{ transform: scale(1);} 50%{transform: scale(1.05);} }
 </style>
 </head>
 
@@ -83,8 +84,10 @@ footer .social a:hover { color:#38ddf8; transform:scale(1.2) rotate(-5deg); }
 </header>
 
 <section class="hero">
-  <h1 id="store-title" class="animated-title">Strano Store</h1>
-  <p id="store-subtitle" class="animated-subtitle">Acquista in tutta sicurezza tramite Vinted o Subito</p>
+  <div class="animated-marquee">
+    <span>Strano Store – Shopping sicuro e facile su Vinted & Subito</span>
+    <span>Strano Store – Shopping sicuro e facile su Vinted & Subito</span>
+  </div>
 </section>
 
 <div class="filters-bar">
@@ -143,21 +146,6 @@ document.querySelectorAll('a, .buttons a, .card').forEach(el=>{
   el.addEventListener('mouseleave',()=>cursor.classList.remove('cursor-hover'));
 });
 
-/* HERO ANIMATO */
-function animateText(id) {
-  const element = document.getElementById(id);
-  const text = element.innerText;
-  element.innerText = '';
-  for (let i = 0; i < text.length; i++) {
-    const span = document.createElement('span');
-    span.innerText = text[i];
-    span.style.animationDelay = (i * 0.02) + 's';
-    element.appendChild(span);
-  }
-}
-animateText('store-title');
-animateText('store-subtitle');
-
 /* PRODOTTI */
 const prodotti = [
   { img: 'iphone.png', nome: 'iPhone 15 Pro', prezzo: '599', badge: 'Disponibile', categoria:'iphone', linkVinted: 'https://www.vinted.it/member/156457000-stranostore', linkSubito: 'https://www.subito.it/utente/16474204' },
@@ -202,17 +190,6 @@ function renderProducts(filteredProducts){
     });
     card.addEventListener('mouseleave', ()=>{
       img.style.transform = 'rotateY(0deg) rotateX(0deg) scale(1)';
-    });
-
-    /* BUTTON GLOW FOLLOW */
-    card.querySelectorAll('.buttons a').forEach(btn=>{
-      btn.addEventListener('mousemove', e=>{
-        const rect = btn.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        btn.style.setProperty('--x', x+'px');
-        btn.style.setProperty('--y', y+'px');
-      });
     });
   });
   scrollAnimations();
