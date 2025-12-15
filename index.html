@@ -5,18 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Strano Store – Vetrina ufficiale</title>
 <link rel="icon" type="image/png" href="logo.png">
-
-<!-- Font e icone -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 :root {
-  --bg: #0f172a;
-  --card: #111827;
-  --text: #e5e7eb;
-  --muted: #9ca3af;
-  --accent: #22d3ee;
+  --bg: #f5f5f5;
+  --card: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+  --accent: #3b82f6;
   --accent2: #f97316;
 }
 
@@ -25,95 +23,43 @@
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background: radial-gradient(circle at top, #1e293b, #020617);
+  background: var(--bg);
   color: var(--text);
 }
 
 /* HEADER */
 header {
-  padding: 60px 20px 40px;
-  text-align: center;
-  background: linear-gradient(90deg, #0f172a, #1e293b);
-  border-bottom-left-radius: 40px;
-  border-bottom-right-radius: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 20px 40px;
+  background: linear-gradient(90deg, #1f2937, #111827);
+  color: #fff;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
 }
 
 .logo {
-  width: 150px;
-  margin-bottom: 15px;
+  width: 120px;
+  margin-bottom: 20px;
 }
 
 header h1 {
   font-size: 48px;
-  margin: 0;
-  letter-spacing: -1px;
+  margin: 0 0 10px;
 }
 
 header p {
-  max-width: 650px;
-  margin: 10px auto 30px;
   font-size: 18px;
-  color: var(--muted);
-}
-
-/* SOCIAL ICONS */
-.social-icons {
+  color: #d1d5db;
   text-align: center;
-  margin-bottom: 50px;
-}
-
-.social-icons p {
-  font-size: 16px;
-  color: var(--muted);
-  margin-bottom: 20px;
-}
-
-.icons-container {
-  display: flex;
-  justify-content: center;
-  gap: 25px;
-  flex-wrap: wrap;
-}
-
-.icons-container a {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: var(--card);
-  padding: 15px;
-  border-radius: 20px;
-  width: 100px;
-  transition: all 0.3s ease;
-  color: var(--accent);
-  text-decoration: none;
-}
-
-.icons-container a i {
-  font-size: 32px;
-  margin-bottom: 8px;
-}
-
-.icons-container a span {
-  font-size: 14px;
-  color: var(--text);
-  text-align: center;
-}
-
-.icons-container a:hover {
-  transform: translateY(-5px);
-  background: var(--accent);
-  color: #fff;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-}
-
-.icons-container a:hover span {
-  color: #fff;
+  max-width: 600px;
 }
 
 /* STORE */
 .store {
-  max-width: 1300px;
-  margin: 50px auto 80px;
+  max-width: 1200px;
+  margin: 50px auto;
   padding: 0 20px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -122,17 +68,16 @@ header p {
 
 /* CARD */
 .card {
-  background: linear-gradient(180deg, #020617, #020617) padding-box,
-              linear-gradient(135deg, transparent, #22d3ee55, transparent) border-box;
-  border: 1px solid transparent;
-  border-radius: 18px;
+  background: var(--card);
+  border-radius: 20px;
   overflow: hidden;
-  transition: transform .3s ease, box-shadow .3s ease;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 30px 60px rgba(0,0,0,.6);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
 }
 
 .card img {
@@ -142,11 +87,11 @@ header p {
 }
 
 .card-content {
-  padding: 22px;
+  padding: 20px;
 }
 
 .card-content h3 {
-  margin: 0 0 8px;
+  margin: 0 0 10px;
   font-size: 20px;
 }
 
@@ -154,58 +99,70 @@ header p {
   font-size: 22px;
   font-weight: 700;
   margin-bottom: 15px;
+  color: var(--accent);
 }
 
 .badge {
   display: inline-block;
-  padding: 6px 12px;
+  padding: 5px 12px;
   font-size: 12px;
   border-radius: 999px;
   margin-bottom: 12px;
 }
 
 .available {
-  background: #22d3ee22;
+  background: #dbeafe;
   color: var(--accent);
-}
-
-.sold {
-  background: #f9731622;
-  color: var(--accent2);
 }
 
 .buttons a {
   display: inline-block;
   text-align: center;
-  padding: 12px 18px;
+  padding: 10px 16px;
   margin-right: 10px;
   border-radius: 12px;
   font-weight: 600;
   text-decoration: none;
-  min-width: 130px;
+  color: #fff;
+  transition: all 0.2s ease;
 }
 
 .buttons a.vinted {
-  background: linear-gradient(135deg, var(--accent), #38bdf8);
-  color: #020617;
+  background: var(--accent);
 }
 
 .buttons a.subito {
-  background: linear-gradient(135deg, var(--accent2), #fb923c);
-  color: #020617;
+  background: var(--accent2);
 }
 
 .buttons a:hover {
-  opacity: .85;
+  opacity: 0.85;
 }
 
 /* FOOTER */
 footer {
   text-align: center;
-  padding: 30px;
-  color: var(--muted);
-  font-size: 14px;
-  border-top: 1px solid #111827;
+  padding: 30px 20px;
+  background: #111827;
+  color: #d1d5db;
+  margin-top: 50px;
+}
+
+footer .social {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+footer .social a {
+  color: #d1d5db;
+  font-size: 20px;
+  transition: color 0.3s;
+}
+
+footer .social a:hover {
+  color: var(--accent);
 }
 </style>
 </head>
@@ -215,30 +172,17 @@ footer {
   <img src="logo.png" alt="Strano Store" class="logo">
   <h1>Strano Store</h1>
   <p>Vetrina ufficiale degli oggetti in vendita.<br>Acquisto sicuro tramite Vinted o Subito.</p>
-
-  <div class="social-icons">
-    <p>Visita i miei profili e negozi online:</p>
-    <div class="icons-container">
-      <a href="https://www.tiktok.com/@stranostore" target="_blank" title="TikTok">
-        <i class="fab fa-tiktok"></i>
-        <span>TikTok</span>
-      </a>
-      <a href="https://www.vinted.it/member/156457000-stranostore" target="_blank" title="Vinted">
-        <i class="fas fa-tshirt"></i>
-        <span>Vinted</span>
-      </a>
-      <a href="https://www.subito.it/utente/16474204" target="_blank" title="Subito">
-        <i class="fas fa-shopping-bag"></i>
-        <span>Subito</span>
-      </a>
-    </div>
-  </div>
 </header>
 
 <section class="store" id="store"></section>
 
 <footer>
   <p>© 2025 Strano Store — Sito vetrina non e-commerce</p>
+  <div class="social">
+    <a href="https://www.tiktok.com/@stranostore" target="_blank"><i class="fab fa-tiktok"></i></a>
+    <a href="https://www.vinted.it/member/156457000-stranostore" target="_blank"><i class="fas fa-tshirt"></i></a>
+    <a href="https://www.subito.it/utente/16474204" target="_blank"><i class="fas fa-shopping-bag"></i></a>
+  </div>
 </footer>
 
 <script>
