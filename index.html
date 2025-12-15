@@ -9,53 +9,35 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-/* RESET E BASE */
+/* RESET */
 * { box-sizing: border-box; margin:0; padding:0; }
-body { font-family: 'Inter', sans-serif; background: #0f172a; color: #e5e7eb; overflow-x: hidden; cursor: none; }
+body { font-family: 'Inter', sans-serif; background: #0f172a; color: #e5e7eb; overflow-x:hidden; cursor:none; }
 a { text-decoration:none; }
 
-/* CURSORE ANIMATO */
+/* PUNTATORE MODERNO */
 .cursor {
-  width: 20px; height: 20px; border:2px solid #22d3ee; border-radius:50%;
+  width: 20px; height: 20px;
+  border:2px solid #22d3ee; border-radius:50%;
   position:fixed; pointer-events:none; transform:translate(-50%, -50%);
-  transition: all 0.15s ease; z-index:9999;
+  transition: transform 0.05s ease, background 0.2s ease, width 0.15s ease, height 0.15s ease;
+  z-index:9999;
 }
 .cursor-hover { transform:translate(-50%,-50%) scale(2); background:#22d3ee33; }
 
 /* HEADER */
 header { display:flex; justify-content:space-between; align-items:center; padding:20px 40px; flex-wrap:wrap; }
 header img { width:120px; }
-.header-left p { font-weight:600; }
+.header-left p { font-weight:600; color:#9ca3af; }
 .social-icons { display:flex; gap:20px; align-items:center; flex-wrap:wrap; }
 .social-icons a { display:flex; flex-direction:column; align-items:center; color:#22d3ee; font-size:32px; transition: all 0.3s ease; }
 .social-icons a span { font-size:14px; margin-top:5px; color:#e5e7eb; }
 .social-icons a:hover { color:#38bdf8; transform:scale(1.3) rotate(-10deg); }
 
-/* HERO CON ANIMAZIONE TESTO */
+/* HERO FLUTTUANTE */
 .hero { text-align:center; padding:80px 20px 40px; }
-.animated-text {
-  display:inline-block;
-  color:#22d3ee;
-  font-size:48px;
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: .15em solid #22d3ee;
-  animation: typing 3s steps(20, end), blink-caret 0.75s step-end infinite;
-}
-.animated-text-2 {
-  display:inline-block;
-  color:#9ca3af;
-  font-size:20px;
-  margin-top:10px;
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: .15em solid #9ca3af;
-  animation: typing2 4s steps(50, end), blink-caret2 0.75s step-end infinite;
-}
-@keyframes typing { from { width: 0 } to { width: 14ch; } }
-@keyframes typing2 { from { width: 0 } to { width: 50ch; } }
-@keyframes blink-caret { 50% { border-color: transparent; } }
-@keyframes blink-caret2 { 50% { border-color: transparent; } }
+.hero h1 { font-size:48px; color:#22d3ee; animation: floatText 3s ease-in-out infinite; }
+.hero p { font-size:20px; color:#9ca3af; margin-top:10px; animation: floatText 3s ease-in-out infinite alternate; }
+@keyframes floatText { 0% { transform:translateY(0);} 50% { transform:translateY(-10px);} 100% { transform:translateY(0);} }
 
 /* FILTRI */
 .filters-bar { max-width:1300px; margin:20px auto; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; padding:0 20px; }
@@ -63,11 +45,13 @@ header img { width:120px; }
 
 /* STORE CARDS */
 .store { max-width:1300px; margin:auto; display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:30px; padding:40px 20px; }
-.card { background:#111827; border-radius:20px; overflow:hidden; transition: all 0.4s ease; position:relative; cursor:pointer; opacity:0; transform:translateY(50px); perspective:1000px; }
+.card { background:#111827; border-radius:20px; overflow:hidden; transition: transform 0.4s ease, box-shadow 0.4s ease; position:relative; cursor:pointer; opacity:0; transform:translateY(50px); perspective:1000px; }
 .card.in-view { opacity:1; transform:translateY(0); transition: all 0.6s ease-out; }
-.card:hover { transform: translateY(-10px) scale(1.03); box-shadow:0 30px 60px rgba(0,0,0,0.5); animation: float 3s ease-in-out infinite; }
+
+/* HOVER CARDS 3D + LEVITAZIONE + GLOW */
+.card:hover { transform: translateY(-15px) scale(1.05) rotateX(2deg) rotateY(5deg); box-shadow:0 30px 60px rgba(0,0,0,0.6),0 0 20px #22d3ee77 inset; }
 .card img { width:100%; height:260px; object-fit:cover; transition: all 0.5s ease; transform-origin:center; }
-.card:hover img { transform: scale(1.1) rotateY(5deg) rotateX(3deg); }
+.card:hover img { transform: scale(1.15) rotateY(5deg) rotateX(3deg); filter:brightness(1.1) drop-shadow(0 0 15px #22d3ee); }
 
 /* CARD CONTENT */
 .card-content { padding:20px; }
@@ -108,8 +92,8 @@ footer .social a:hover { color:#38bdf8; transform:scale(1.2) rotate(-5deg); }
 </header>
 
 <section class="hero">
-  <h1 class="animated-text">Strano Store</h1>
-  <p class="animated-text-2">Acquista in tutta sicurezza tramite Vinted o Subito</p>
+  <h1>Strano Store</h1>
+  <p>Acquista in tutta sicurezza tramite Vinted o Subito</p>
 </section>
 
 <div class="filters-bar">
@@ -137,9 +121,12 @@ footer .social a:hover { color:#38bdf8; transform:scale(1.2) rotate(-5deg); }
 </footer>
 
 <script>
-/* CURSORE */
+/* CURSORE MODERNO VELOCE */
 const cursor = document.getElementById('cursor');
-document.addEventListener('mousemove', e => { cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px'; });
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+});
 document.querySelectorAll('a, .buttons a, .card').forEach(el => {
   el.addEventListener('mouseenter', () => cursor.classList.add('cursor-hover'));
   el.addEventListener('mouseleave', () => cursor.classList.remove('cursor-hover'));
@@ -177,7 +164,7 @@ function renderProducts(filteredProducts) {
     `;
     store.appendChild(card);
   });
-  scrollAnimations(); // attiva animazioni scroll
+  scrollAnimations();
 }
 
 function filterProducts() {
@@ -189,7 +176,6 @@ function filterProducts() {
   renderProducts(filtered);
 }
 
-/* ANIMAZIONE SCROLL */
 function scrollAnimations() {
   const cards = document.querySelectorAll('.card');
   const windowHeight = window.innerHeight;
@@ -198,6 +184,7 @@ function scrollAnimations() {
     if(pos < windowHeight - 100) card.classList.add('in-view');
   });
 }
+
 window.addEventListener('scroll', scrollAnimations);
 renderProducts(prodotti);
 </script>
