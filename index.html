@@ -6,6 +6,7 @@
 <title>Strano Store – Vetrina ufficiale</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 :root {
@@ -140,6 +141,21 @@ footer {
   color: var(--muted);
   font-size: 14px;
 }
+
+.footer-links a {
+  color: var(--accent);
+  text-decoration: none;
+  margin: 0 10px;
+  font-weight: 600;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.footer-links i {
+  margin-right: 6px;
+}
 </style>
 </head>
 
@@ -156,28 +172,28 @@ footer {
 
 <section class="store">
 
-  <!-- PRODOTTO -->
+  <!-- PRODOTTO 1 -->
   <div class="card">
-    <img src="prodotto1.jpg">
+    <img src="prodotto1.jpg" alt="Felpa Nike">
     <div class="card-content">
       <span class="badge available">Disponibile</span>
       <h3>Felpa Nike Vintage</h3>
       <div class="price">€35</div>
       <div class="buttons">
-        <a href="https://www.vinted.it/" target="_blank">Vedi su Vinted</a>
+        <a href="https://www.vinted.it/member/156457000-stranostore" target="_blank">Vedi su Vinted</a>
       </div>
     </div>
   </div>
 
-  <!-- PRODOTTO -->
+  <!-- PRODOTTO 2 -->
   <div class="card">
-    <img src="prodotto2.jpg">
+    <img src="prodotto2.jpg" alt="iPhone 12">
     <div class="card-content">
       <span class="badge sold">Venduto</span>
       <h3>iPhone 12</h3>
       <div class="price">€450</div>
       <div class="buttons">
-        <a href="https://www.subito.it/" target="_blank">Vedi su Subito</a>
+        <a href="https://www.subito.it/utente/16474204" target="_blank">Vedi su Subito</a>
       </div>
     </div>
   </div>
@@ -186,14 +202,12 @@ footer {
 
 <footer>
   <p>© 2025 Strano Store — Sito vetrina non e-commerce</p>
-  <p>
-    Seguici su: 
-    <a href="https://www.tiktok.com/@stranostore" target="_blank" style="color:#22d3ee; text-decoration:none;">TikTok</a> | 
-    <a href="https://www.vinted.it/member/156457000-stranostore" target="_blank" style="color:#22d3ee; text-decoration:none;">Vinted</a> | 
-    <a href="https://www.subito.it/utente/16474204" target="_blank" style="color:#22d3ee; text-decoration:none;">Subito</a>
+  <p class="footer-links">
+    <a href="https://www.tiktok.com/@stranostore" target="_blank"><i class="fab fa-tiktok"></i>TikTok</a> | 
+    <a href="https://www.vinted.it/member/156457000-stranostore" target="_blank"><i class="fas fa-tshirt"></i>Vinted</a> | 
+    <a href="https://www.subito.it/utente/16474204" target="_blank"><i class="fas fa-shopping-bag"></i>Subito</a>
   </p>
 </footer>
-
 
 </body>
 </html>
