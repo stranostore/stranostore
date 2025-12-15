@@ -18,10 +18,9 @@
   --accent2: #f97316;
 }
 
-* { box-sizing: border-box; }
+* { box-sizing: border-box; margin:0; padding:0; }
 
 body {
-  margin: 0;
   font-family: 'Inter', sans-serif;
   background: var(--bg);
   color: var(--text);
@@ -29,38 +28,87 @@ body {
 
 /* HEADER */
 header {
+  background: #111827;
+  color: #fff;
+  padding: 30px 20px 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 50px 20px 40px;
-  background: linear-gradient(90deg, #1f2937, #111827);
-  color: #fff;
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
 }
 
 .logo {
   width: 120px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 header h1 {
-  font-size: 48px;
-  margin: 0 0 10px;
+  font-size: 42px;
+  margin-bottom: 10px;
 }
 
 header p {
-  font-size: 18px;
+  font-size: 16px;
   color: #d1d5db;
   text-align: center;
   max-width: 600px;
+  margin-bottom: 20px;
+}
+
+/* SEARCH BAR */
+.search-bar {
+  display: flex;
+  max-width: 400px;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.search-bar input {
+  flex: 1;
+  padding: 10px 15px;
+  border-radius: 12px 0 0 12px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+}
+
+.search-bar button {
+  padding: 10px 15px;
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  border-radius: 0 12px 12px 0;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.search-bar button:hover {
+  opacity: 0.85;
+}
+
+/* FILTERS */
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.filters select {
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  font-size: 14px;
 }
 
 /* STORE */
 .store {
-  max-width: 1200px;
-  margin: 50px auto;
-  padding: 0 20px;
+  max-width: 1300px;
+  margin: auto;
+  padding: 0 20px 80px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 30px;
@@ -73,6 +121,8 @@ header p {
   overflow: hidden;
   box-shadow: 0 6px 18px rgba(0,0,0,0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .card:hover {
@@ -88,11 +138,15 @@ header p {
 
 .card-content {
   padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .card-content h3 {
-  margin: 0 0 10px;
   font-size: 20px;
+  margin-bottom: 8px;
 }
 
 .price {
@@ -115,16 +169,22 @@ header p {
   color: var(--accent);
 }
 
+/* BUTTONS */
+.buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
 .buttons a {
-  display: inline-block;
+  flex: 1;
   text-align: center;
-  padding: 10px 16px;
-  margin-right: 10px;
+  padding: 10px;
   border-radius: 12px;
   font-weight: 600;
   text-decoration: none;
   color: #fff;
-  transition: all 0.2s ease;
+  transition: opacity 0.2s;
 }
 
 .buttons a.vinted {
@@ -142,10 +202,9 @@ header p {
 /* FOOTER */
 footer {
   text-align: center;
-  padding: 30px 20px;
+  padding: 40px 20px;
   background: #111827;
   color: #d1d5db;
-  margin-top: 50px;
 }
 
 footer .social {
@@ -171,7 +230,24 @@ footer .social a:hover {
 <header>
   <img src="logo.png" alt="Strano Store" class="logo">
   <h1>Strano Store</h1>
-  <p>Vetrina ufficiale degli oggetti in vendita.<br>Acquisto sicuro tramite Vinted o Subito.</p>
+  <p>Vetrina ufficiale degli oggetti in vendita. Acquisto sicuro tramite Vinted o Subito.</p>
+
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Cerca prodotto...">
+    <button onclick="filterProducts()">Cerca</button>
+  </div>
+
+  <div class="filters">
+    <select id="filterCategory" onchange="filterProducts()">
+      <option value="all">Tutti i prodotti</option>
+      <option value="camicia">Camicia</option>
+      <option value="giubbotto">Giubbotto</option>
+      <option value="iphone">iPhone</option>
+      <option value="pantaloni">Pantaloni</option>
+      <option value="stivali">Stivali</option>
+      <option value="delfino">Scultura</option>
+    </select>
+  </div>
 </header>
 
 <section class="store" id="store"></section>
@@ -187,35 +263,51 @@ footer .social a:hover {
 
 <script>
 const prodotti = [
-  { img: 'iphone.png', nome: 'iPhone 15 Pro', prezzo: '599', badge: 'Disponibile', linkVinted: 'https://www.vinted.it/member/156457000-stranostore', linkSubito: 'https://www.subito.it/utente/16474204' },
-  { img: 'delfino.png', nome: 'Scultura in vetro di Murano “Delfini”', prezzo: '99', badge: 'Disponibile', linkVinted: 'https://www.vinted.it/member/156457000-stranostore', linkSubito: 'https://www.subito.it/utente/16474204' },
-  { img: 'camicia1.png', nome: 'Camicia Polo Ralph Lauren', prezzo: '19.99', badge: 'Disponibile', linkVinted: 'https://www.vinted.it/member/156457000-stranostore', linkSubito: 'https://www.subito.it/utente/16474204' },
-  { img: 'camicia2.png', nome: 'Camicia Polo Ralph Lauren 2', prezzo: '19.99', badge: 'Disponibile', linkVinted: 'https://www.vinted.it/member/156457000-stranostore', linkSubito: 'https://www.subito.it/utente/16474204' },
-  { img: 'giubotto.png', nome: 'Giubbotto Invernale', prezzo: '19.99', badge: 'Disponibile', linkVinted: 'https://www.vinted.it/member/156457000-stranostore', linkSubito: 'https://www.subito.it/utente/16474204' },
-  { img: 'moncler.webp', nome: 'Polo Moncler', prezzo: '29.99', badge: 'Disponibile', linkVinted: 'https://www.vinted.it/member/156457000-stranostore', linkSubito: 'https://www.subito.it/utente/16474204' },
-  { img: 'pantaloni.png', nome: "Pantaloni Roy Roger's", prezzo: '19.99', badge: 'Disponibile', linkVinted: 'https://www.vinted.it/member/156457000-stranostore', linkSubito: 'https://www.subito.it/utente/16474204' },
-  { img: 'stivali.png', nome: 'Stivali Donna', prezzo: '39.99', badge: 'Disponibile', linkVinted: 'https://www.vinted.it/member/156457000-stranostore', linkSubito: 'https://www.subito.it/utente/16474204' }
+  { img: 'iphone.png', nome: 'iPhone 15 Pro', prezzo: '599', badge: 'Disponibile', categoria:'iphone', linkVinted: 'https://www.vinted.it/member/156457000-stranostore', linkSubito: 'https://www.subito.it/utente/16474204' },
+  { img: 'delfino.png', nome: 'Scultura in vetro di Murano “Delfini”', prezzo: '99', badge: 'Disponibile', categoria:'delfino', linkVinted: 'https://www.vinted.it/member/156457000-stranostore', linkSubito: 'https://www.subito.it/utente/16474204' },
+  { img: 'camicia1.png', nome: 'Camicia Polo Ralph Lauren', prezzo: '19.99', badge: 'Disponibile', categoria:'camicia', linkVinted: 'https://www.vinted.it/member/156457000-stranostore', linkSubito: 'https://www.subito.it/utente/16474204' },
+  { img: 'camicia2.png', nome: 'Camicia Polo Ralph Lauren 2', prezzo: '19.99', badge: 'Disponibile', categoria:'camicia', linkVinted: 'https://www.vinted.it/member/156457000-stranostore', linkSubito: 'https://www.subito.it/utente/16474204' },
+  { img: 'giubotto.png', nome: 'Giubbotto Invernale', prezzo: '19.99', badge: 'Disponibile', categoria:'giubbotto', linkVinted: 'https://www.vinted.it/member/156457000-stranostore', linkSubito: 'https://www.subito.it/utente/16474204' },
+  { img: 'moncler.webp', nome: 'Polo Moncler', prezzo: '29.99', badge: 'Disponibile', categoria:'giubbotto', linkVinted: 'https://www.vinted.it/member/156457000-stranostore', linkSubito: 'https://www.subito.it/utente/16474204' },
+  { img: 'pantaloni.png', nome: "Pantaloni Roy Roger's", prezzo: '19.99', badge: 'Disponibile', categoria:'pantaloni', linkVinted: 'https://www.vinted.it/member/156457000-stranostore', linkSubito: 'https://www.subito.it/utente/16474204' },
+  { img: 'stivali.png', nome: 'Stivali Donna', prezzo: '39.99', badge: 'Disponibile', categoria:'stivali', linkVinted: 'https://www.vinted.it/member/156457000-stranostore', linkSubito: 'https://www.subito.it/utente/16474204' }
 ];
 
 const store = document.getElementById('store');
-store.innerHTML = '';
-prodotti.forEach(p => {
-  const card = document.createElement('div');
-  card.className = 'card';
-  card.innerHTML = `
-    <img src="${p.img}" alt="${p.nome}" />
-    <div class="card-content">
-      <span class="badge available">${p.badge}</span>
-      <h3>${p.nome}</h3>
-      <div class="price">€${p.prezzo}</div>
-      <div class="buttons">
-        <a href="${p.linkVinted}" target="_blank" class="vinted">Acquista su Vinted</a>
-        <a href="${p.linkSubito}" target="_blank" class="subito">Acquista su Subito</a>
+
+function renderProducts(filteredProducts) {
+  store.innerHTML = '';
+  filteredProducts.forEach(p => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <img src="${p.img}" alt="${p.nome}" />
+      <div class="card-content">
+        <span class="badge available">${p.badge}</span>
+        <h3>${p.nome}</h3>
+        <div class="price">€${p.prezzo}</div>
+        <div class="buttons">
+          <a href="${p.linkVinted}" target="_blank" class="vinted">Acquista su Vinted</a>
+          <a href="${p.linkSubito}" target="_blank" class="subito">Acquista su Subito</a>
+        </div>
       </div>
-    </div>
-  `;
-  store.appendChild(card);
-});
+    `;
+    store.appendChild(card);
+  });
+}
+
+// Filtra prodotti per ricerca e categoria
+function filterProducts() {
+  const search = document.getElementById('searchInput').value.toLowerCase();
+  const category = document.getElementById('filterCategory').value;
+  const filtered = prodotti.filter(p => {
+    return (p.nome.toLowerCase().includes(search)) && (category === 'all' || p.categoria === category);
+  });
+  renderProducts(filtered);
+}
+
+// Mostra tutti all'avvio
+renderProducts(prodotti);
 </script>
 </body>
 </html>
