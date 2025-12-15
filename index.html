@@ -74,9 +74,9 @@ header img { width:120px; }
 .filters-bar input, .filters-bar select { padding:12px 15px; border-radius:10px; border:none; outline:none; font-size:16px; }
 
 /* STORE CARDS */
-.store { max-width:1300px; margin:auto; display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:30px; padding:40px 20px; }
-.card { background:#111827; border-radius:20px; overflow:hidden; transition: transform 0.4s ease, box-shadow 0.4s ease; position:relative; cursor:pointer; opacity:0; transform:translateY(50px); perspective:1000px; }
-.card.in-view { opacity:1; transform:translateY(0); transition: all 0.6s ease-out; }
+.store { max-width:1300px; margin:auto; display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:30px; padding:40px 20px; perspective:1000px; }
+.card { background:#111827; border-radius:20px; overflow:hidden; transition: transform 0.4s ease, box-shadow 0.4s ease; position:relative; cursor:pointer; opacity:0; transform:translateY(50px); will-change:transform,opacity; }
+.card.in-view { opacity:1; transform:translateY(0); transition: all 0.6s cubic-bezier(0.35,0,0.25,1); }
 
 /* HOVER CARDS 3D + LEVITAZIONE + GLOW */
 .card:hover { transform: translateY(-15px) scale(1.05) rotateX(2deg) rotateY(5deg); box-shadow:0 30px 60px rgba(0,0,0,0.6),0 0 20px #22d3ee77 inset; }
@@ -209,11 +209,13 @@ const prodotti = [
 ];
 
 const store = document.getElementById('store');
+
 function renderProducts(filteredProducts){
   store.innerHTML='';
-  filteredProducts.forEach(p=>{
+  filteredProducts.forEach((p,index)=>{
     const card=document.createElement('div');
     card.className='card';
+    card.style.transitionDelay = (index*0.1)+'s'; // animazione sequenziale
     card.innerHTML=`
       <img src="${p.img}" alt="${p.nome}" />
       <div class="card-content">
@@ -240,12 +242,16 @@ function filterProducts(){
   renderProducts(filtered);
 }
 
+/* SCROLL + PARALLAX + SEQUENZA */
 function scrollAnimations(){
   const cards=document.querySelectorAll('.card');
   const windowHeight=window.innerHeight;
-  cards.forEach(card=>{
+  cards.forEach((card,index)=>{
     const pos=card.getBoundingClientRect().top;
-    if(pos<windowHeight-100) card.classList.add('in-view');
+    if(pos<windowHeight-100) {
+      card.classList.add('in-view');
+      card.style.transform = `translateY(0) rotateX(${Math.sin(index*0.5)*5}deg) rotateY(${Math.cos(index*0.5)*5}deg)`;
+    }
   });
 }
 
