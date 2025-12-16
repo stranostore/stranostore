@@ -3,7 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Strano Store – Premium Resale</title>
+
+<!-- SEO Ottimizzato -->
+<title>Strano Store | Abbigliamento, oggetti unici e tecnologia</title>
+<meta name="description" content="Strano Store: abbigliamento selezionato, prodotti unici e tecnologia. Acquista in sicurezza su Vinted e Subito. Spedizione tracciata e articoli verificati.">
 
 <link rel="icon" href="logo.png">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -196,7 +199,7 @@ footer{
 <body>
 
 <header>
-  <img src="logo.png">
+  <img src="logo.png" alt="Logo Strano Store">
   <div class="social">
     <a href="https://www.tiktok.com/@stranostore" target="_blank"><i class="fab fa-tiktok"></i></a>
     <a href="https://www.vinted.it/member/156457000-stranostore" target="_blank"><i class="fas fa-tshirt"></i></a>
@@ -208,7 +211,7 @@ footer{
   <div class="hero-text">
     <h1>Strano <span>Store</span></h1>
     <p>Abbigliamento selezionato, oggetti unici e tecnologia.  
-    Acquista in sicurezza su Vinted e Subito.</p>
+    Acquista in sicurezza su Vinted e Subito. Spedizione tracciata e articoli verificati.</p>
 
     <div class="hero-buttons">
       <a class="hero-btn vinted" href="https://www.vinted.it/member/156457000-stranostore" target="_blank">
@@ -253,7 +256,7 @@ const store=document.getElementById('store');
 prodotti.forEach(p=>{
  store.innerHTML+=`
   <div class="card">
-    <img src="${p.img}">
+    <img src="${p.img}" alt="${p.nome}">
     <div class="card-content">
       <span class="badge">Disponibile</span>
       <h3>${p.nome}</h3>
@@ -263,7 +266,7 @@ prodotti.forEach(p=>{
         <a class="btn subito" href="https://www.subito.it/utente/16474204" target="_blank">Subito</a>
       </div>
     </div>
-  </div>`;
+  </div>`; 
 });
 </script>
 
