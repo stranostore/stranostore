@@ -158,14 +158,16 @@ footer{text-align:center;padding:60px;color:#64748b}
 (function(){emailjs.init("HCRQeVuO9W2k5c9HH");})();
 
 const prodotti = [
-    {n:'iPhone 15 Pro + Caricatore + Cover', p:'599', c:'Tecnologia', img:'iphone.png', v:'📱 iPhone 15 Pro – Come Nuovo! Sempre con cover e vetro. Zero graffi. Completo di scatola.' , linkV:'https://www.vinted.it/items/7764182241-iphone-15-pro-caricatore-cover', linkS:'https://www.subito.it/telefonia/iphone-15-pro-caricatore-cover-catania-628165680.htm'},
+    {n:'iPhone 15 Pro + Caricatore + Cover', p:'599', c:'Tecnologia', img:'iphone.png', v:'📱 iPhone 15 Pro – Come Nuovo! Sempre con cover e vetro. Zero graffi. Completo di scatola.', linkV:'https://www.vinted.it/items/7764182241-iphone-15-pro-caricatore-cover', linkS:'https://www.subito.it/telefonia/iphone-15-pro-caricatore-cover-catania-628165680.htm'},
     {n:'Scultura in vetro di Murano delfini', p:'99.99', c:'Abbigliamento', img:'delfino.png', v:'Scultura artistica in vetro di Murano con delfini e foglia oro.', linkV:'https://www.vinted.it/items/7725614209-scultura-in-vetro-di-murano-con-delfini-lavorazione-artistica-con-foglia-oro', linkS:'https://www.subito.it/arredamento-casalinghi/scultura-in-vetro-di-murano-con-delfini-catania-627414368.htm'},
     {n:'Jeans Roy Roger’s', p:'19.99', c:'Abbigliamento', img:'pantaloni.png', v:'Jeans uomo Roy Roger’s, taglia M, colore blu marino, ottime condizioni.', linkV:'https://www.vinted.it/items/7682389652-jeans-roy-rogers', linkS:''},
     {n:'Polo Moncler', p:'29.99', c:'Abbigliamento', img:'moncler.webp', v:'Polo Moncler bianca, taglia M, in ottimo stato.', linkV:'https://www.vinted.it/items/7019057147-moncler-polo-taglia-m', linkS:''},
     {n:'Stivali donna Unisa', p:'39.99', c:'Abbigliamento', img:'stivali.png', v:'Stivali neri Unisa, taglia 38, come nuovi.', linkV:'https://www.vinted.it/items/7591507417-stivali-donna-unisa-38', linkS:''},
-    {n:'Camicia Polo Ralph Lauren', p:'19.99', c:'Abbigliamento', img:'camicia1.png', v:'Camicia Polo Ralph Lauren, taglia XS, colore azzurro, nuovo senza cartellino.', linkV:'https://www.vinted.it/items/6274339172-camicia-polo-ralph-lauren', linkS:''},
+    {n:'Camicia Fred Perry', p:'19.99', c:'Abbigliamento', img:'camicia1.png', v:'Camicia Fred Perry, taglia S, colore azzurro, nuova senza cartellino.', linkV:'', linkS:''},
+    {n:'Camicia Polo Ralph Lauren', p:'19.99', c:'Abbigliamento', img:'camicia2.png', v:'Camicia Polo Ralph Lauren, taglia XS, colore azzurro, nuova senza cartellino.', linkV:'https://www.vinted.it/items/6274339172-camicia-polo-ralph-lauren', linkS:''},
     {n:'Giubbotto di pelle S', p:'19.99', c:'Abbigliamento', img:'giubotto.png', v:'Giubbotto di pelle S, ottime condizioni, colore marrone.', linkV:'https://www.vinted.it/items/4461806005-giubbotto-di-pelle-s', linkS:''}
 ];
+
 
 function renderStore(filter = 'Tutti', query = '') {
     const grid = document.getElementById('storeGrid');
