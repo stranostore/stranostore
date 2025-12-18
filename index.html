@@ -24,7 +24,6 @@
   header img {
     width: 120px;
   }
-  /* ... qui puoi aggiungere il resto del tuo CSS esistente ... */
 
   /* Assistenza Icona */
   #assist-icon {
@@ -130,8 +129,6 @@
   <!-- Puoi aggiungere il resto del tuo header -->
 </header>
 
-<!-- Qui puoi mettere il resto del tuo contenuto -->
-
 <!-- Icona assistenza -->
 <div id="assist-icon" title="Assistenza">
   <!-- Icona WhatsApp SVG -->
@@ -157,21 +154,19 @@
 
 <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 <script>
-  // Inizializza EmailJS: metti la tua Public Key qui sotto
-  emailjs.init("LA_TUA_PUBLIC_KEY");
+  // Inserisci la tua Public Key qui sotto
+  emailjs.init("HCRQeVuO9W2k5c9HH");
 
   const assistIcon = document.getElementById('assist-icon');
   const assistPopup = document.getElementById('assist-popup');
   const assistForm = document.getElementById('assist-form');
   const statusMessage = document.getElementById('status-message');
 
-  // Mostra/nascondi popup assistenza
   assistIcon.addEventListener('click', () => {
     assistPopup.classList.toggle('active');
     statusMessage.textContent = '';
   });
 
-  // Invio form assistenza
   assistForm.addEventListener('submit', (e) => {
     e.preventDefault();
     statusMessage.style.color = '#22d3ee';
