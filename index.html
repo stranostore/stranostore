@@ -6,369 +6,331 @@
 
 <title>Strano Store | Premium Resale</title>
 
-<meta name="description" content="Strano Store: tecnologia e abbigliamento premium selezionato. Venditore affidabile con oltre 160 recensioni positive.">
-<meta property="og:title" content="Strano Store | Premium Resale">
-<meta property="og:image" content="logo.png">
-<meta property="og:type" content="website">
-
+<meta name="description" content="Strano Store: tecnologia e abbigliamento premium selezionato. Oltre 160 recensioni positive su Vinted e Subito.">
 <link rel="icon" href="logo.png">
+
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
+<!-- ⭐ RICH SNIPPET GOOGLE -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Store",
+  "name": "Strano Store",
+  "url": "https://www.stranostore.it",
+  "description": "Resale premium di tecnologia e abbigliamento. Venditore affidabile.",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "161"
+  },
+  "sameAs": [
+    "https://www.tiktok.com/@stranostore",
+    "https://www.vinted.it/member/156457000-stranostore",
+    "https://www.subito.it/utente/16474204"
+  ]
+}
+</script>
+
 <style>
 :root{
-  --primary:#22d3ee;
-  --vinted:#22c55e;
-  --subito:#f97316;
-  --bg:#020617;
-  --card:#0f172a;
-  --gold:#facc15;
+ --primary:#22d3ee;
+ --vinted:#22c55e;
+ --subito:#f97316;
+ --bg:#020617;
+ --card:#0f172a;
+ --gold:#facc15;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 body{
-  font-family:'Inter',sans-serif;
-  background:linear-gradient(180deg,var(--bg),#0f172a);
-  color:#e5e7eb;
-  line-height:1.6
+ font-family:'Inter',sans-serif;
+ background:linear-gradient(180deg,var(--bg),#0f172a);
+ color:#e5e7eb;
 }
 
 /* HEADER */
 header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:16px 20px;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ padding:16px 20px;
 }
 header img{width:95px}
-.social a{
-  margin-left:12px;
-  font-size:22px;
-  color:var(--primary)
-}
+.social a{margin-left:12px;font-size:22px;color:var(--primary)}
 
 /* HERO */
 .hero{
-  max-width:1200px;
-  margin:auto;
-  padding:50px 20px 30px;
+ max-width:1200px;
+ margin:auto;
+ padding:50px 20px 30px;
 }
-.hero h1{
-  font-size:52px;
-  font-weight:800;
-  line-height:1.05;
-}
-.hero h1 span{color:var(--primary)}
-.hero p{
-  margin:18px 0 25px;
-  max-width:520px;
-  color:#cbd5f5;
-  font-size:1.05rem
-}
+.hero h1{font-size:48px;font-weight:800}
+.hero span{color:var(--primary)}
+.hero p{margin:15px 0 25px;color:#cbd5f5}
 
 /* CATEGORIES */
-.categories{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap
-}
+.categories{display:flex;gap:10px;flex-wrap:wrap}
 .cat-btn{
-  padding:10px 22px;
-  border-radius:999px;
-  border:1px solid var(--primary);
-  background:transparent;
-  color:var(--primary);
-  font-weight:800;
-  cursor:pointer
+ padding:10px 22px;
+ border-radius:999px;
+ border:1px solid var(--primary);
+ background:transparent;
+ color:var(--primary);
+ font-weight:800;
+ cursor:pointer
 }
-.cat-btn.active{
-  background:var(--primary);
-  color:#020617
-}
+.cat-btn.active{background:var(--primary);color:#020617}
 
 /* SEARCH */
-.search-container{
-  max-width:1200px;
-  margin:auto;
-  padding:15px 20px
-}
+.search-container{max-width:1200px;margin:auto;padding:15px 20px}
 .search-bar{
-  width:100%;
-  padding:16px 24px;
-  border-radius:50px;
-  background:var(--card);
-  border:1px solid rgba(34,211,238,.3);
-  color:#fff;
-  font-size:1rem
+ width:100%;
+ padding:16px 24px;
+ border-radius:50px;
+ background:var(--card);
+ border:1px solid rgba(34,211,238,.3);
+ color:#fff
 }
 
 /* STORE */
 .store{
-  max-width:1200px;
-  margin:auto;
-  padding:30px 20px;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:22px
+ max-width:1200px;
+ margin:auto;
+ padding:30px 20px;
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+ gap:22px
 }
 .card{
-  background:var(--card);
-  border-radius:20px;
-  overflow:hidden;
-  border:1px solid rgba(255,255,255,.05)
+ background:var(--card);
+ border-radius:20px;
+ overflow:hidden;
+ border:1px solid rgba(255,255,255,.05)
 }
-.card img{
-  width:100%;
-  height:230px;
-  object-fit:cover
-}
+.card img{width:100%;height:220px;object-fit:cover}
 .card-content{padding:18px}
-.badge{
-  font-size:.65rem;
-  background:rgba(34,211,238,.15);
-  color:var(--primary);
-  padding:4px 10px;
-  border-radius:20px;
-  display:inline-block;
-  margin-bottom:6px
-}
-.price{
-  font-size:22px;
-  font-weight:800;
-  color:var(--primary);
-  margin:8px 0
-}
-.btn-group{
-  display:flex;
-  gap:10px
-}
+.price{font-size:22px;font-weight:800;color:var(--primary)}
+.btn-group{display:flex;gap:10px;margin-top:10px}
 .btn-s{
-  flex:1;
-  padding:12px;
-  border-radius:12px;
-  font-weight:800;
-  text-align:center;
-  color:#000;
-  text-decoration:none
+ flex:1;
+ padding:12px;
+ border-radius:12px;
+ font-weight:800;
+ text-align:center;
+ color:#000;
+ text-decoration:none
 }
 .btn-v{background:var(--vinted)}
 .btn-sub{background:var(--subito)}
 
 /* REVIEWS */
 .reviews-section{
-  max-width:1000px;
-  margin:50px auto;
-  padding:35px 20px;
-  background:rgba(255,255,255,.02);
-  border-radius:30px;
-  text-align:center
+ max-width:1000px;
+ margin:50px auto;
+ padding:40px 20px;
+ background:rgba(255,255,255,.02);
+ border-radius:30px;
+ text-align:center
 }
-.stars-top{
-  color:var(--gold);
-  font-size:2.2rem;
-}
+.stars-top{color:var(--gold);font-size:2.3rem}
 .dropdown-reviews{
-  margin-top:20px;
-  background:var(--card);
-  border-radius:15px;
-  border:1px solid rgba(34,211,238,.2)
+ margin-top:20px;
+ background:var(--card);
+ border-radius:16px;
+ border:1px solid rgba(34,211,238,.2)
 }
 .dropdown-reviews summary{
-  padding:16px;
-  font-weight:800;
-  color:var(--primary);
-  cursor:pointer
+ padding:16px;
+ font-weight:800;
+ color:var(--primary);
+ cursor:pointer;
+ list-style:none
 }
-.all-reviews-list{
-  padding:18px;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:15px;
-  max-height:420px;
-  overflow:auto
+.all-reviews{
+ padding:20px;
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+ gap:15px;
+ max-height:420px;
+ overflow:auto
 }
-.review-item{
-  background:rgba(255,255,255,.03);
-  padding:14px;
-  border-radius:10px;
-  border-left:3px solid var(--primary)
+.review{
+ background:rgba(255,255,255,.03);
+ padding:14px;
+ border-radius:10px;
+ border-left:3px solid var(--primary);
+ font-size:.9rem
 }
 
 /* ASSISTENZA */
-#assistenza{
-  position:fixed;
-  bottom:18px;
-  right:18px;
-  width:58px;
-  height:58px;
-  background:var(--primary);
-  border-radius:50%;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  box-shadow:0 8px 20px rgba(0,0,0,.4);
-  cursor:pointer;
-  z-index:9999
+#assist{
+ position:fixed;
+ bottom:18px;
+ right:18px;
+ width:58px;
+ height:58px;
+ background:var(--primary);
+ border-radius:50%;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ cursor:pointer;
+ z-index:9999
 }
-#assistenza i{font-size:24px;color:#020617}
+#assist i{color:#020617;font-size:22px}
 
 /* MODAL */
 #modal{
-  position:fixed;
-  inset:0;
-  background:rgba(2,6,23,.75);
-  display:none;
-  justify-content:center;
-  align-items:center;
-  z-index:10000
+ position:fixed;
+ inset:0;
+ background:rgba(2,6,23,.8);
+ display:none;
+ justify-content:center;
+ align-items:center;
 }
-#modal .box{
-  background:var(--card);
-  width:92%;
-  max-width:380px;
-  border-radius:20px;
-  overflow:hidden
+.modal-box{
+ background:var(--card);
+ width:92%;
+ max-width:380px;
+ border-radius:20px;
+ overflow:hidden
 }
-#modal header{
-  padding:16px;
-  background:#020617;
-  display:flex;
-  justify-content:space-between;
-  font-weight:800
+.modal-box header{
+ padding:16px;
+ background:#020617;
+ display:flex;
+ justify-content:space-between;
+ font-weight:800
 }
-#modal form{
-  padding:18px;
-  display:flex;
-  flex-direction:column;
-  gap:12px
+.modal-box form{
+ padding:18px;
+ display:flex;
+ flex-direction:column;
+ gap:12px
 }
-#modal input,#modal textarea{
-  padding:14px;
-  border-radius:10px;
-  border:1px solid #1e293b;
-  background:#1e293b;
-  color:#fff
+.modal-box input,.modal-box textarea{
+ padding:14px;
+ border-radius:10px;
+ border:1px solid #1e293b;
+ background:#1e293b;
+ color:#fff
 }
-#modal button{
-  background:var(--primary);
-  color:#020617;
-  padding:14px;
-  border:none;
-  border-radius:10px;
-  font-weight:800
-}
-
-footer{
-  padding:40px 20px;
-  text-align:center;
-  color:#64748b
+.modal-box button{
+ background:var(--primary);
+ color:#020617;
+ padding:14px;
+ border:none;
+ border-radius:10px;
+ font-weight:800
 }
 
-/* MOBILE EXTRA */
-@media(max-width:600px){
-  .hero h1{font-size:42px}
-  .card img{height:200px}
-}
+footer{text-align:center;padding:40px;color:#64748b}
 </style>
 </head>
 
 <body>
 
 <header>
-  <img src="logo.png" alt="Strano Store">
-  <div class="social">
-    <a href="https://www.tiktok.com/@stranostore" target="_blank"><i class="fab fa-tiktok"></i></a>
-    <a href="https://www.vinted.it/member/156457000-stranostore" target="_blank"><i class="fas fa-tshirt"></i></a>
-    <a href="https://www.subito.it/utente/16474204" target="_blank"><i class="fas fa-shopping-bag"></i></a>
-  </div>
+ <img src="logo.png">
+ <div class="social">
+  <a href="https://www.tiktok.com/@stranostore" target="_blank"><i class="fab fa-tiktok"></i></a>
+  <a href="https://www.vinted.it/member/156457000-stranostore" target="_blank"><i class="fas fa-tshirt"></i></a>
+  <a href="https://www.subito.it/utente/16474204" target="_blank"><i class="fas fa-shopping-bag"></i></a>
+ </div>
 </header>
 
 <section class="hero">
-  <h1>Strano<span>Store</span></h1>
-  <p>Selezione premium di tecnologia e abbigliamento. Venditore affidabile e verificato.</p>
-  <div class="categories">
-    <button class="cat-btn active" onclick="filterCat('Tutti',this)">Tutti</button>
-    <button class="cat-btn" onclick="filterCat('Tecnologia',this)">Tecnologia</button>
-    <button class="cat-btn" onclick="filterCat('Abbigliamento',this)">Abbigliamento</button>
-  </div>
+ <h1>Strano<span>Store</span></h1>
+ <p>Resale premium di tecnologia e abbigliamento verificato.</p>
+ <div class="categories">
+  <button class="cat-btn active" onclick="filterCat('Tutti',this)">Tutti</button>
+  <button class="cat-btn" onclick="filterCat('Tecnologia',this)">Tecnologia</button>
+  <button class="cat-btn" onclick="filterCat('Abbigliamento',this)">Abbigliamento</button>
+ </div>
 </section>
 
 <div class="search-container">
-  <input id="searchInput" class="search-bar" placeholder="Cerca articoli..." onkeyup="searchProd()">
+ <input class="search-bar" id="search" placeholder="Cerca articoli..." onkeyup="searchProd()">
 </div>
 
-<section class="store" id="storeGrid"></section>
+<section class="store" id="store"></section>
 
 <section class="reviews-section">
-  <div class="stars-top">★★★★★</div>
-  <h2>Dicono di noi</h2>
-  <p>4.7/5 Vinted — 4.9/5 Subito</p>
+ <div class="stars-top">★★★★★</div>
+ <h2>Dicono di noi</h2>
+ <p>4.7/5 Vinted · 4.9/5 Subito</p>
+
+ <details class="dropdown-reviews">
+  <summary>Leggi tutte le recensioni</summary>
+  <div class="all-reviews">
+   <div class="review">"Ottimo articolo e persona disponibile!" – Subito</div>
+   <div class="review">"Venditore serio e affidabile." – Subito</div>
+   <div class="review">"Spedizione veloce e comunicazione top." – Vinted</div>
+   <div class="review">"Oggetto perfetto come descritto." – Vinted</div>
+   <div class="review">"Consigliatissimo A++" – Vinted</div>
+   <div class="review">"Persona super gentile e professionale." – Subito</div>
+  </div>
+ </details>
 </section>
 
 <footer>© 2025 Strano Store — Premium Resale</footer>
 
-<div id="assistenza"><i class="fas fa-envelope"></i></div>
+<div id="assist"><i class="fas fa-envelope"></i></div>
 
 <div id="modal">
-  <div class="box">
-    <header>
-      <span>Contattaci</span>
-      <span style="cursor:pointer" onclick="closeModal()">&times;</span>
-    </header>
-    <form id="contactForm">
-      <input name="name" placeholder="Il tuo nome" required>
-      <input name="email" type="email" placeholder="La tua email" required>
-      <textarea name="message" rows="4" placeholder="Come possiamo aiutarti?" required></textarea>
-      <button type="submit">Invia messaggio</button>
-    </form>
-  </div>
+ <div class="modal-box">
+  <header>
+   <span>Contattaci</span>
+   <span style="cursor:pointer" onclick="closeModal()">×</span>
+  </header>
+  <form>
+   <input placeholder="Nome" required>
+   <input type="email" placeholder="Email" required>
+   <textarea rows="4" placeholder="Messaggio" required></textarea>
+   <button>Invia</button>
+  </form>
+ </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 <script>
-emailjs.init("HCRQeVuO9W2k5c9HH");
-
 const prodotti=[
-  {n:'iPhone 15 Pro',p:'599',c:'Tecnologia',img:'iphone.png'},
-  {n:'Giacca Moncler (Usato)',p:'29.99',c:'Abbigliamento',img:'moncler.webp'},
-  {n:'Camicia Elegante',p:'19.99',c:'Abbigliamento',img:'camicia1.png'},
-  {n:'Stivali Donna',p:'39.99',c:'Abbigliamento',img:'stivali.png'}
+ {n:'iPhone 15 Pro',p:'599',c:'Tecnologia',img:'iphone.png'},
+ {n:'Giacca Moncler',p:'29.99',c:'Abbigliamento',img:'moncler.webp'},
+ {n:'Camicia Elegante',p:'19.99',c:'Abbigliamento',img:'camicia1.png'},
+ {n:'Stivali Donna',p:'39.99',c:'Abbigliamento',img:'stivali.png'}
 ];
 
-function renderStore(cat='Tutti',q=''){
-  const grid=document.getElementById('storeGrid');
-  grid.innerHTML='';
-  prodotti.forEach(i=>{
-    if((cat==='Tutti'||i.c===cat)&&i.n.toLowerCase().includes(q.toLowerCase())){
-      grid.innerHTML+=`
-      <div class="card">
-        <img src="${i.img}" loading="lazy">
-        <div class="card-content">
-          <span class="badge">USATO CERTIFICATO</span>
-          <h3>${i.n}</h3>
-          <div class="price">€${i.p}</div>
-          <div class="btn-group">
-            <a class="btn-s btn-v" target="_blank" href="#">Vinted</a>
-            <a class="btn-s btn-sub" target="_blank" href="#">Subito</a>
-          </div>
-        </div>
-      </div>`;
-    }
-  });
+function render(cat='Tutti',q=''){
+ store.innerHTML='';
+ prodotti.forEach(p=>{
+  if((cat==='Tutti'||p.c===cat)&&p.n.toLowerCase().includes(q.toLowerCase())){
+   store.innerHTML+=`
+   <div class="card">
+    <img src="${p.img}">
+    <div class="card-content">
+     <h3>${p.n}</h3>
+     <div class="price">€${p.p}</div>
+     <div class="btn-group">
+      <a class="btn-s btn-v" href="#">Vinted</a>
+      <a class="btn-s btn-sub" href="#">Subito</a>
+     </div>
+    </div>
+   </div>`;
+  }
+ });
 }
-function filterCat(cat,el){
-  document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active'));
-  el.classList.add('active');
-  renderStore(cat,searchInput.value);
+function filterCat(c,el){
+ document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active'));
+ el.classList.add('active');
+ render(c,search.value);
 }
-function searchProd(){
-  renderStore(document.querySelector('.cat-btn.active').innerText,searchInput.value);
-}
+function searchProd(){render(document.querySelector('.cat-btn.active').innerText,search.value)}
 
-const modal=document.getElementById('modal');
-document.getElementById('assistenza').onclick=()=>modal.style.display='flex';
+assist.onclick=()=>modal.style.display='flex';
 function closeModal(){modal.style.display='none'}
 
-renderStore();
+render();
 </script>
 
 </body>
