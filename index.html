@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 /* STILE GENERALE */
-:root { --primary: #22d3ee; --vinted: #22c55e; --subito: #f97316; --bg: #020617; --card-bg: #0f172a; }
+:root { --primary: #22d3ee; --vinted: #22c55e; --subito: #f97316; --bg: #020617; --card-bg: #0f172a; --gold: #facc15; }
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Inter',sans-serif;background:linear-gradient(180deg, var(--bg), #0f172a);color:#e5e7eb;line-height:1.6}
 
@@ -25,17 +25,16 @@ header .social a:hover{transform:translateY(-3px); color:#fff}
 .hero-text h1 span{color:var(--primary)}
 .hero-text p{font-size:1.1rem;color:#cbd5f5;margin-bottom:30px;max-width:500px}
 
-/* SEARCH & FILTER */
-.search-container { max-width: 1200px; margin: 20px auto; padding: 0 20px; display: flex; flex-direction: column; gap: 20px; }
-.search-bar { width: 100%; padding: 15px 25px; border-radius: 50px; border: 1px solid rgba(34, 211, 238, 0.3); background: var(--card-bg); color: #fff; font-size: 1rem; outline: none; }
+/* SEARCH & CATEGORIES */
+.search-container { max-width: 1200px; margin: 20px auto; padding: 0 20px; }
+.search-bar { width: 100%; padding: 15px 25px; border-radius: 50px; border: 1px solid rgba(34, 211, 238, 0.3); background: var(--card-bg); color: #fff; font-size: 1rem; outline: none; margin-bottom: 20px; }
 .categories { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
 .cat-btn { padding: 8px 20px; border-radius: 20px; border: 1px solid var(--primary); background: transparent; color: var(--primary); cursor: pointer; font-weight: 600; transition: 0.3s; }
 .cat-btn.active, .cat-btn:hover { background: var(--primary); color: var(--bg); }
 
 /* STORE GRID */
 .store{max-width:1200px;margin:auto;padding:40px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px}
-.card{background:var(--card-bg);border-radius:20px;overflow:hidden;transition:.3s;border:1px solid rgba(255,255,255,0.05); position: relative;}
-.card:hover{transform:translateY(-10px);box-shadow:0 20px 40px rgba(0,0,0,0.4); border-color: var(--primary);}
+.card{background:var(--card-bg);border-radius:20px;overflow:hidden;transition:.3s;border:1px solid rgba(255,255,255,0.05)}
 .card img{width:100%;height:260px;object-fit:cover}
 .card-content{padding:20px}
 .price{font-size:22px;font-weight:800;color:var(--primary);margin:10px 0}
@@ -44,22 +43,22 @@ header .social a:hover{transform:translateY(-3px); color:#fff}
 .btn-v {background:var(--vinted); color:#000}
 .btn-sub {background:var(--subito); color:#000}
 
-/* INFO SHIPPING */
-.shipping-info { max-width: 1200px; margin: 40px auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; padding: 20px; }
-.ship-item { text-align: center; background: rgba(255,255,255,0.02); padding: 20px; border-radius: 15px; }
-.ship-item i { font-size: 2rem; color: var(--primary); margin-bottom: 10px; }
+/* REVIEWS SECTION */
+.reviews-section {max-width:1000px;margin:60px auto;padding:40px 20px; background: rgba(255,255,255,0.02); border-radius: 30px; text-align: center;}
+.stars-top { color: var(--gold); font-size: 2.5rem; margin-bottom: 10px; filter: drop-shadow(0 0 10px rgba(250, 204, 21, 0.3)); }
+.reviews-grid-main {display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-bottom: 30px;}
 
-/* REVIEWS */
-.reviews-section {max-width:1200px;margin:60px auto;padding:20px}
-.review-card {background:rgba(255,255,255,0.03);padding:25px;border-radius:15px;border-left:4px solid var(--primary);margin-bottom:20px}
+/* MENU A TENDINA RECENSIONI */
+.dropdown-reviews { margin-top: 20px; border-radius: 15px; overflow: hidden; background: var(--card-bg); border: 1px solid rgba(34, 211, 238, 0.2); }
+.dropdown-reviews summary { padding: 15px; cursor: pointer; font-weight: 700; color: var(--primary); list-style: none; display: flex; justify-content: center; align-items: center; gap: 10px; }
+.dropdown-reviews summary::after { content: '▼'; font-size: 0.8rem; }
+.dropdown-reviews[open] summary::after { content: '▲'; }
+.all-reviews-list { padding: 20px; text-align: left; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; max-height: 400px; overflow-y: auto; }
+.review-item { background: rgba(255,255,255,0.03); padding: 15px; border-radius: 10px; border-left: 3px solid var(--primary); }
+.review-item p { font-style: italic; font-size: 0.9rem; margin-bottom: 5px; }
+.review-item span { font-size: 0.8rem; font-weight: 700; color: #9ca3af; }
 
-/* FAQ */
-.faq-section { max-width: 800px; margin: 60px auto; padding: 20px; }
-details { background: var(--card-bg); margin-bottom: 10px; border-radius: 10px; padding: 15px; cursor: pointer; }
-summary { font-weight: 700; list-style: none; display: flex; justify-content: space-between; align-items: center; }
-summary::after { content: '+'; color: var(--primary); font-size: 1.5rem; }
-
-/* ASSISTENZA MODAL (RIPRISTINATA) */
+/* ASSISTENZA MODAL */
 #assistenza{position:fixed;bottom:20px;right:20px;width:60px;height:60px;background:#25D366;border-radius:50%;display:flex;justify-content:center;align-items:center;box-shadow:0 8px 20px rgba(0,0,0,0.3);cursor:pointer;animation: float 2s infinite ease-in-out;z-index:9999}
 #assistenza i{color:white;font-size:28px;}
 #modal-assistenza {position:fixed;bottom:90px;right:20px;background:#0f172a;color:#e5e7eb;width:320px;border-radius:16px;box-shadow:0 10px 40px rgba(0,0,0,0.5);display:none;flex-direction:column;overflow:hidden;z-index:10000;border:1px solid rgba(34, 211, 238, 0.2);animation: slideUp 0.3s ease-out}
@@ -88,7 +87,7 @@ footer{text-align:center;padding:60px;color:#64748b}
 <section class="hero">
     <div class="hero-text">
         <h1>Strano<span>Store</span></h1>
-        <p>Oggetti rari, tecnologia e abbigliamento selezionato. Ogni pezzo è verificato e pronto per una nuova vita.</p>
+        <p>Selezione Premium di oggetti unici, tecnologia e abbigliamento. Qualità verificata e affidabilità garantita.</p>
         <div class="categories">
             <button class="cat-btn active" onclick="filterCat('Tutti')">Tutti</button>
             <button class="cat-btn" onclick="filterCat('Tecnologia')">Tecnologia</button>
@@ -98,45 +97,52 @@ footer{text-align:center;padding:60px;color:#64748b}
 </section>
 
 <div class="search-container">
-    <input type="text" id="searchInput" class="search-bar" placeholder="Cerca un prodotto (es: iPhone, Moncler...)" onkeyup="search()">
+    <input type="text" id="searchInput" class="search-bar" placeholder="Cerca tra gli articoli..." onkeyup="search()">
 </div>
-
-<section class="shipping-info">
-    <div class="ship-item"><i class="fas fa-shipping-fast"></i><h4>Rapidi</h4><p>Spedizione in 24h</p></div>
-    <div class="ship-item"><i class="fas fa-shield-alt"></i><h4>Sicuri</h4><p>Pagamento protetto</p></div>
-    <div class="ship-item"><i class="fas fa-box-open"></i><h4>Eco-Box</h4><p>Imballaggi curati</p></div>
-</section>
 
 <section class="store" id="storeGrid"></section>
 
 <section class="reviews-section">
-    <h2 style="text-align:center; margin-bottom:40px">Dicono di noi</h2>
-    <div style="display:flex; justify-content:center; flex-wrap:wrap; gap:30px; margin-bottom:40px">
-        <div style="text-align:center"><strong style="font-size:2rem; color:var(--vinted)">4.7/5</strong><p>151 Feedback Vinted</p></div>
-        <div style="text-align:center"><strong style="font-size:2rem; color:var(--subito)">4.9/5</strong><p>10 Feedback Subito</p></div>
+    <div class="stars-top">★★★★★</div>
+    <h2 style="font-size: 2.2rem; margin-bottom: 20px;">Dicono di noi</h2>
+    
+    <div class="reviews-grid-main">
+        <div style="text-align:center">
+            <strong style="font-size:2rem; color:#fff">4.7/5</strong>
+            <p style="color:var(--vinted); font-weight:700">151 Feedback Vinted</p>
+        </div>
+        <div style="text-align:center">
+            <strong style="font-size:2rem; color:#fff">4.9/5</strong>
+            <p style="color:var(--subito); font-weight:700">10 Feedback Subito</p>
+        </div>
     </div>
-    <div class="reviews-grid">
-        <div class="review-card"><p>"Articolo come nuovo e spedizione veloce."</p><strong>- andreaboscoli1 (Vinted)</strong></div>
-        <div class="review-card"><p>"Gentilissimo e veloce a spedire, consiglio vivamente"</p><strong>- Eduard (Subito.it)</strong></div>
-    </div>
-</section>
 
-<section class="faq-section">
-    <h2 style="text-align:center; margin-bottom:30px">Domande Frequenti</h2>
-    <details><summary>Come posso acquistare?</summary><p>Scegli il prodotto e clicca sul tasto Vinted o Subito. Verrai reindirizzato sulla piattaforma sicura per completare l'acquisto.</p></details>
-    <details><summary>Posso avere altre foto?</summary><p>Certamente! Inviaci un messaggio tramite il tasto assistenza in basso.</p></details>
+    <details class="dropdown-reviews">
+        <summary>Leggi tutte le recensioni</summary>
+        <div class="all-reviews-list">
+            <div class="review-item"><p>"Ottimo articolo e persona disponibile!"</p><span>- Ivano Rapetti (Subito)</span></div>
+            <div class="review-item"><p>"Ragazzo super simpatico, è stato un piacere fare affari!"</p><span>- Antonio Marra (Subito)</span></div>
+            <div class="review-item"><p>"Gentilissimo e veloce a spedire, consiglio vivamente"</p><span>- Eduard (Subito)</span></div>
+            <div class="review-item"><p>"Persona super disponibile e paziente, consigliatissimo."</p><span>- Mattia (Subito)</span></div>
+            
+            <div class="review-item"><p>"Tutto perfetto! Spedizione veloce e prodotto conforme!"</p><span>- silviaviti2 (Vinted)</span></div>
+            <div class="review-item"><p>"Articolo come nuovo e spedizione veloce."</p><span>- andreaboscoli1 (Vinted)</span></div>
+            <div class="review-item"><p>"Articolo corrispondente alla foto... Merci pour tout 👍"</p><span>- susana301103 (Vinted)</span></div>
+            <div class="review-item"><p>"Ottimo venditore, consigliato!"</p><span>- utente_vinted (Vinted)</span></div>
+        </div>
+    </details>
 </section>
 
 <footer><p>© 2025 Strano Store — Premium Resale</p></footer>
 
 <div id="assistenza"><i class="fab fa-whatsapp"></i></div>
 <div id="modal-assistenza">
-    <header><span>Assistenza</span><span class="close">&times;</span></header>
+    <header><span>Contattaci</span><span class="close">&times;</span></header>
     <form id="form-assistenza">
-        <input type="text" name="name" placeholder="Nome" required>
-        <input type="email" name="email" placeholder="Email" required>
+        <input type="text" name="name" placeholder="Il tuo Nome" required>
+        <input type="email" name="email" placeholder="La tua Email" required>
         <textarea name="message" rows="4" placeholder="Come possiamo aiutarti?" required></textarea>
-        <button type="submit">Invia</button>
+        <button type="submit">Invia Messaggio</button>
     </form>
 </div>
 
@@ -160,7 +166,7 @@ function renderStore(filter = 'Tutti', query = '') {
                 <div class="card">
                     <img src="${item.img}" alt="${item.n}" onerror="this.src='https://via.placeholder.com/300x400?text=Strano+Store'">
                     <div class="card-content">
-                        <span style="font-size:0.7rem; color:var(--primary)">${item.c.toUpperCase()}</span>
+                        <span style="font-size:0.7rem; color:var(--primary); font-weight:700;">${item.c.toUpperCase()}</span>
                         <h3>${item.n}</h3>
                         <div class="price">€${item.p}</div>
                         <div class="btn-group">
@@ -185,7 +191,7 @@ function search() {
     renderStore(activeCat, q);
 }
 
-// Gestione Modal
+// Gestione Assistenza
 const assistBtn=document.getElementById('assistenza');
 const modal=document.getElementById('modal-assistenza');
 const closeBtn=document.querySelector('.close');
