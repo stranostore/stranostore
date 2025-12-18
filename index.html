@@ -1,199 +1,198 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Strano Store | Abbigliamento, oggetti unici e tecnologia</title>
-<meta name="description" content="Strano Store: abbigliamento selezionato, prodotti unici e tecnologia. Acquista in sicurezza su Vinted e Subito. Spedizione tracciata e articoli verificati.">
-
-<link rel="icon" href="logo.png">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Strano Store | Assistenza EmailJS</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
-body{background:linear-gradient(180deg,#020617,#0f172a);color:#e5e7eb}
+  /* Reset base */
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(180deg, #020617, #0f172a);
+    color: #e5e7eb;
+    min-height: 100vh;
+    padding-bottom: 80px; /* spazio per assistenza */
+  }
+  header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 30px;
+  }
+  header img {
+    width: 120px;
+  }
+  /* ... qui puoi aggiungere il resto del tuo CSS esistente ... */
 
-/* HEADER */
-header{display:flex;justify-content:space-between;align-items:center;padding:20px 30px}
-header img{width:120px}
-header .social a{margin-left:18px;font-size:26px;color:#22d3ee;transition:.2s}
-header .social a:hover{transform:scale(1.2);color:#38bdf8}
+  /* Assistenza Icona */
+  #assist-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25d366;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: vibrazione 2s infinite ease-in-out;
+    z-index: 1000;
+  }
+  #assist-icon:hover {
+    animation-play-state: paused;
+  }
+  /* Vibrazione animazione */
+  @keyframes vibrazione {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(1px, 1px) rotate(5deg); }
+    50% { transform: translate(-1px, -1px) rotate(-5deg); }
+    75% { transform: translate(1px, -1px) rotate(5deg); }
+  }
+  #assist-icon svg {
+    width: 30px;
+    height: 30px;
+    fill: white;
+  }
 
-/* HERO */
-.hero{max-width:1200px;margin:auto;padding:70px 20px 40px;display:grid;grid-template-columns:1.2fr 1fr;gap:40px}
-.hero-text h1{font-size:48px;font-weight:800;line-height:1.1;margin-bottom:20px}
-.hero-text h1 span{color:#22d3ee}
-.hero-text p{font-size:20px;color:#cbd5f5;margin-bottom:30px}
-.hero-buttons{display:flex;gap:15px;flex-wrap:wrap}
-.hero-btn{padding:14px 22px;border-radius:14px;font-weight:700;font-size:16px;display:flex;align-items:center;gap:10px;transition:.2s}
-.hero-btn.vinted{background:linear-gradient(135deg,#22c55e,#4ade80);color:#020617}
-.hero-btn.subito{background:linear-gradient(135deg,#f97316,#fb923c);color:#020617}
-.hero-btn:hover{transform:translateY(-3px) scale(1.05)}
-.hero-card{background:#020617;border-radius:24px;padding:30px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
-.hero-card h3{font-size:20px;margin-bottom:10px}
-.hero-card p{color:#9ca3af;font-size:15px;margin-bottom:20px}
-.hero-card ul{list-style:none}
-.hero-card li{margin-bottom:10px;font-size:15px}
-.hero-card li i{color:#22d3ee;margin-right:8px}
-
-/* STORE */
-.store{max-width:1200px;margin:auto;padding:40px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:25px}
-.card{background:#020617;border-radius:20px;overflow:hidden;transition:.25s}
-.card:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(0,0,0,.5)}
-.card img{width:100%;height:240px;object-fit:cover}
-.card-content{padding:16px}
-.badge{display:inline-block;background:#22d3ee22;color:#22d3ee;padding:4px 10px;font-size:12px;border-radius:999px;margin-bottom:8px}
-.card-content h3{font-size:16px;margin-bottom:6px}
-.price{font-size:20px;font-weight:800;margin-bottom:12px}
-.buttons{display:flex;gap:10px}
-.btn{flex:1;padding:10px;border-radius:12px;font-weight:700;font-size:14px;display:flex;justify-content:center;gap:6px;transition:.2s}
-.btn.vinted{background:#22c55e;color:#020617}
-.btn.subito{background:#f97316;color:#020617}
-.btn:hover{transform:scale(1.05)}
-
-/* FOOTER */
-footer{text-align:center;padding:40px 20px;color:#9ca3af}
-
-/* MOBILE */
-@media(max-width:900px){
-.hero{grid-template-columns:1fr;text-align:center}
-.hero-buttons{justify-content:center}
-.hero-text h1{font-size:36px}
-}
-
-/* CHAT FLOTTANTE */
-#chat-icon{
-  position: fixed;bottom:20px;right:20px;width:60px;height:60px;background:#22d3ee;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 5px 15px rgba(0,0,0,.3);z-index:9999;transition: transform .2s
-}
-#chat-icon:hover{transform:scale(1.1)}
-#assistant-box{
-  position: fixed;bottom:90px;right:20px;width:300px;max-height:400px;background:#111;color:#fff;padding:15px;border-radius:12px;
-  box-shadow:0 0 20px rgba(0,0,0,.5);display:none;flex-direction:column;z-index:9999
-}
-#assistant-box h3{margin-bottom:10px;font-size:18px;color:#22d3ee}
-#assistant-box input,#assistant-box textarea{width:100%;margin-bottom:8px;padding:6px;border-radius:6px;border:none}
-#assistant-box button{width:100%;background:#22d3ee;color:#020617;border:none;padding:8px;border-radius:6px;font-weight:700;cursor:pointer;transition:.2s}
-#assistant-box button:hover{background:#38bdf8}
-#status{font-size:14px;margin-top:6px;text-align:center}
-#close-chat{position:absolute;top:5px;right:8px;cursor:pointer;color:#22d3ee;font-size:18px}
+  /* Popup assistenza */
+  #assist-popup {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 320px;
+    background: #111827;
+    border-radius: 14px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+    display: none;
+    flex-direction: column;
+    padding: 20px;
+    z-index: 1001;
+  }
+  #assist-popup.active {
+    display: flex;
+  }
+  #assist-popup h2 {
+    color: #22d3ee;
+    font-weight: 700;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+  }
+  #assist-popup label {
+    color: #a0aec0;
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+    display: block;
+  }
+  #assist-popup input, #assist-popup textarea {
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: none;
+    margin-bottom: 12px;
+    font-size: 1rem;
+    background: #374151;
+    color: #e5e7eb;
+    resize: vertical;
+  }
+  #assist-popup textarea {
+    min-height: 80px;
+  }
+  #assist-popup button {
+    background: #22d3ee;
+    border: none;
+    padding: 10px;
+    border-radius: 12px;
+    font-weight: 700;
+    color: #020617;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  #assist-popup button:hover {
+    background: #38bdf8;
+  }
+  #status-message {
+    margin-top: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
 </style>
-</head>
 
+</head>
 <body>
 
 <header>
-  <img src="logo.png" alt="Logo Strano Store">
-  <div class="social">
-    <a href="https://www.tiktok.com/@stranostore" target="_blank"><i class="fab fa-tiktok"></i></a>
-    <a href="https://www.vinted.it/member/156457000-stranostore" target="_blank"><i class="fas fa-tshirt"></i></a>
-    <a href="https://www.subito.it/utente/16474204" target="_blank"><i class="fas fa-shopping-bag"></i></a>
-  </div>
+  <img src="logo.png" alt="Logo Strano Store" />
+  <!-- Puoi aggiungere il resto del tuo header -->
 </header>
 
-<section class="hero">
-  <div class="hero-text">
-    <h1>Strano <span>Store</span></h1>
-    <p>Abbigliamento selezionato, oggetti unici e tecnologia.  
-    Acquista in sicurezza su Vinted e Subito. Spedizione tracciata e articoli verificati.</p>
-    <div class="hero-buttons">
-      <a class="hero-btn vinted" href="https://www.vinted.it/member/156457000-stranostore" target="_blank">
-        <i class="fas fa-tshirt"></i> Vai a Vinted
-      </a>
-      <a class="hero-btn subito" href="https://www.subito.it/utente/16474204" target="_blank">
-        <i class="fas fa-shopping-bag"></i> Vai a Subito
-      </a>
-    </div>
-  </div>
+<!-- Qui puoi mettere il resto del tuo contenuto -->
 
-  <div class="hero-card">
-    <h3>Perché Strano Store</h3>
-    <p>Una vetrina curata con articoli verificati.</p>
-    <ul>
-      <li><i class="fas fa-check"></i> Prodotti selezionati</li>
-      <li><i class="fas fa-check"></i> Acquisto protetto</li>
-      <li><i class="fas fa-check"></i> Spedizione tracciata</li>
-      <li><i class="fas fa-check"></i> Niente e-commerce, zero rischi</li>
-    </ul>
-  </div>
-</section>
+<!-- Icona assistenza -->
+<div id="assist-icon" title="Assistenza">
+  <!-- Icona WhatsApp SVG -->
+  <svg viewBox="0 0 24 24">
+    <path d="M20.52 3.48A11.87 11.87 0 0 0 12 0C5.373 0 0 5.373 0 12a11.91 11.91 0 0 0 2.034 6.365L0 24l5.825-2.018A11.887 11.887 0 0 0 12 24c6.627 0 12-5.373 12-12 0-3.208-1.258-6.215-3.48-8.52zM12 21.5a9.431 9.431 0 0 1-4.785-1.367l-.344-.213-3.459 1.2 1.161-3.366-.223-.35A9.475 9.475 0 0 1 2.5 12c0-5.246 4.254-9.5 9.5-9.5s9.5 4.254 9.5 9.5-4.254 9.5-9.5 9.5zm5.354-6.432c-.3-.15-1.77-.874-2.045-.974-.275-.1-.475-.15-.675.15-.2.3-.77.974-.945 1.174-.175.2-.35.225-.65.075-.3-.15-1.26-.464-2.4-1.475-.888-.792-1.488-1.77-1.663-2.07-.175-.3-.02-.462.13-.612.13-.13.3-.35.45-.525.15-.175.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.675-1.625-.925-2.225-.25-.6-.5-.525-.675-.525-.175 0-.375 0-.575 0s-.525.075-.8.375c-.275.3-1.05 1.025-1.05 2.5 0 1.475 1.075 2.9 1.225 3.1.15.2 2.1 3.2 5.1 4.487.713.3 1.27.475 1.705.6.715.2 1.37.175 1.885.106.575-.075 1.77-.72 2.02-1.412.25-.69.25-1.28.175-1.413-.075-.132-.275-.2-.575-.35z"/>
+  </svg>
+</div>
 
-<section class="store" id="store"></section>
-
-<footer>
-  © 2025 Strano Store — Premium Resale
-</footer>
-
-<!-- ICONA CHAT -->
-<div id="chat-icon"><i class="fas fa-comment-alt"></i></div>
-
-<!-- ASSISTENTE CHAT -->
-<div id="assistant-box">
-  <div id="close-chat"><i class="fas fa-times"></i></div>
-  <h3>Assistenza Strano Store</h3>
+<!-- Popup assistenza -->
+<div id="assist-popup" role="dialog" aria-modal="true" aria-labelledby="assist-title">
+  <h2 id="assist-title">Assistenza Strano Store</h2>
   <form id="assist-form">
-    <input type="text" name="name" placeholder="Il tuo nome" required>
-    <input type="email" name="email" placeholder="La tua email" required>
-    <textarea name="message" placeholder="Scrivi il tuo messaggio..." required></textarea>
+    <label for="assist-name">Nome</label>
+    <input type="text" id="assist-name" name="name" required autocomplete="name" />
+    <label for="assist-email">Email</label>
+    <input type="email" id="assist-email" name="email" required autocomplete="email" />
+    <label for="assist-message">Messaggio</label>
+    <textarea id="assist-message" name="message" required></textarea>
     <button type="submit">Invia</button>
-    <p id="status"></p>
+    <div id="status-message" aria-live="polite"></div>
   </form>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 <script>
-emailjs.init("YOUR_PUBLIC_KEY"); // <-- sostituisci con la tua Public Key
+  // Inizializza EmailJS: metti la tua Public Key qui sotto
+  emailjs.init("LA_TUA_PUBLIC_KEY");
 
-document.getElementById("assist-form").addEventListener("submit", function(e) {
-  e.preventDefault();
-  emailjs.sendForm(
-    "stranostore",       // Service ID
-    "contact_template",  // Template ID
-    this
-  ).then(function() {
-    document.getElementById("status").innerText = "Messaggio inviato! Ti risponderemo presto 😊";
-    document.getElementById("assist-form").reset();
-  }, function(error) {
-    document.getElementById("status").innerText = "Errore nell'invio. Riprova.";
+  const assistIcon = document.getElementById('assist-icon');
+  const assistPopup = document.getElementById('assist-popup');
+  const assistForm = document.getElementById('assist-form');
+  const statusMessage = document.getElementById('status-message');
+
+  // Mostra/nascondi popup assistenza
+  assistIcon.addEventListener('click', () => {
+    assistPopup.classList.toggle('active');
+    statusMessage.textContent = '';
   });
-});
 
-const chatIcon = document.getElementById("chat-icon");
-const chatBox = document.getElementById("assistant-box");
-const closeBtn = document.getElementById("close-chat");
+  // Invio form assistenza
+  assistForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    statusMessage.style.color = '#22d3ee';
+    statusMessage.textContent = 'Invio in corso...';
 
-chatIcon.addEventListener("click", ()=>{chatBox.style.display="flex"});
-closeBtn.addEventListener("click", ()=>{chatBox.style.display="none"});
-</script>
-
-<script>
-const prodotti=[
- {img:'iphone.png',nome:'iPhone 15 Pro',prezzo:'599'},
- {img:'camicia1.png',nome:'Camicia Uomo Elegante',prezzo:'19.99'},
- {img:'camicia2.png',nome:'Camicia Donna Casual',prezzo:'19.99'},
- {img:'giubotto.png',nome:'Giubotto Invernale',prezzo:'19.99'},
- {img:'moncler.webp',nome:'Giacca Moncler',prezzo:'29.99'},
- {img:'pantaloni.png',nome:'Pantaloni Jeans Uomo',prezzo:'19.99'},
- {img:'stivali.png',nome:'Stivali Donna',prezzo:'39.99'}
-];
-const store=document.getElementById('store');
-prodotti.forEach(p=>{
- store.innerHTML+=`
-  <div class="card">
-    <img src="${p.img}" alt="${p.nome}">
-    <div class="card-content">
-      <span class="badge">Disponibile</span>
-      <h3>${p.nome}</h3>
-      <div class="price">€${p.prezzo}</div>
-      <div class="buttons">
-        <a class="btn vinted" href="https://www.vinted.it/member/156457000-stranostore" target="_blank">Vinted</a>
-        <a class="btn subito" href="https://www.subito.it/utente/16474204" target="_blank">Subito</a>
-      </div>
-    </div>
-  </div>`; 
-});
+    emailjs.sendForm('stranostore', 'contact_template', assistForm)
+      .then(() => {
+        statusMessage.style.color = '#22d3ee';
+        statusMessage.textContent = 'Messaggio inviato con successo!';
+        assistForm.reset();
+        setTimeout(() => {
+          assistPopup.classList.remove('active');
+          statusMessage.textContent = '';
+        }, 3500);
+      })
+      .catch((error) => {
+        statusMessage.style.color = 'red';
+        statusMessage.textContent = 'Errore nell\'invio. Riprova.';
+        console.error('EmailJS error:', error);
+      });
+  });
 </script>
 
 </body>
