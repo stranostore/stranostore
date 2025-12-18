@@ -18,7 +18,7 @@ header img{width:110px}
 header .social a{margin-left:15px;font-size:24px;color:var(--primary);transition:.2s}
 header .social a:hover{transform:translateY(-3px); color:#fff}
 
-/* HERO SECTION */
+/* HERO */
 .hero{max-width:1200px;margin:auto;padding:60px 20px;display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
 .hero-text h1{font-size:54px;font-weight:800;line-height:1;margin-bottom:20px}
 .hero-text h1 span{color:var(--primary)}
@@ -37,15 +37,28 @@ header .social a:hover{transform:translateY(-3px); color:#fff}
 .card img{width:100%;height:260px;object-fit:cover}
 .card-content{padding:20px}
 .price{font-size:22px;font-weight:800;color:var(--primary);margin:10px 0}
-.btn-group {display:flex;gap:10px}
+.btn-group {display:flex;gap:10px;margin-bottom:10px}
 .btn-s {flex:1;padding:10px;border-radius:10px;text-align:center;text-decoration:none;font-weight:700;font-size:0.9rem;transition:0.2s}
 .btn-v {background:var(--vinted); color:#000}
 .btn-sub {background:var(--subito); color:#000}
-.show-desc{background:rgba(34,211,238,0.2);border:none;color:var(--primary);padding:8px 12px;border-radius:8px;cursor:pointer;transition:0.2s;margin-top:10px}
-.show-desc:hover{background:var(--primary);color:#020617}
-.description{display:none;margin-top:10px;font-size:0.9rem;color:#cbd5f5;background:rgba(255,255,255,0.05);padding:10px;border-radius:8px}
 
-/* FOOTER */
+/* DESCRIZIONE */
+.desc{display:none;margin-top:8px;font-size:0.9rem;color:#cbd5f5}
+.show-desc{display:block}
+
+/* REVIEWS */
+.reviews-section {max-width:1000px;margin:60px auto;padding:40px 20px; background: rgba(255,255,255,0.02); border-radius: 30px; text-align: center;}
+.stars-top { color: var(--gold); font-size: 2.5rem; margin-bottom: 10px; filter: drop-shadow(0 0 10px rgba(250, 204, 21, 0.3)); }
+.reviews-grid-main {display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-bottom: 30px;}
+
+/* MENU A TENDINA RECENSIONI */
+.dropdown-reviews { margin-top: 20px; border-radius: 15px; overflow: hidden; background: var(--card-bg); border: 1px solid rgba(34, 211, 238, 0.2); }
+.dropdown-reviews summary { padding: 15px; cursor: pointer; font-weight: 700; color: var(--primary); list-style: none; display: flex; justify-content: center; align-items: center; gap: 10px; }
+.all-reviews-list { padding: 20px; text-align: left; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; max-height: 450px; overflow-y: auto; }
+.review-item { background: rgba(255,255,255,0.03); padding: 15px; border-radius: 10px; border-left: 3px solid var(--primary); }
+.review-item p { font-style: italic; font-size: 0.9rem; margin-bottom: 5px; }
+.review-item span { font-size: 0.8rem; font-weight: 700; color: var(--primary); }
+
 footer{text-align:center;padding:60px;color:#64748b}
 </style>
 </head>
@@ -79,110 +92,102 @@ footer{text-align:center;padding:60px;color:#64748b}
 
 <section class="store" id="storeGrid"></section>
 
+<section class="reviews-section">
+    <div class="stars-top">★★★★★</div>
+    <h2 style="font-size: 2.2rem; margin-bottom: 20px;">Dicono di noi</h2>
+    
+    <div class="reviews-grid-main">
+        <div style="text-align:center">
+            <strong style="font-size:2rem; color:#fff">4.7/5</strong>
+            <p style="color:var(--vinted); font-weight:700">151 Feedback Vinted</p>
+        </div>
+        <div style="text-align:center">
+            <strong style="font-size:2rem; color:#fff">4.9/5</strong>
+            <p style="color:var(--subito); font-weight:700">10 Feedback Subito</p>
+        </div>
+    </div>
+
+    <details class="dropdown-reviews">
+        <summary>Leggi tutte le recensioni</summary>
+        <div class="all-reviews-list">
+            <div class="review-item"><p>"Ottimo articolo e persona disponibile!"</p><span>- Ivano Rapetti (Subito)</span></div>
+            <div class="review-item"><p>"Ragazzo super simpatico, è stato un piacere fare affari con lui! Consigliatissimo"</p><span>- Antonio Marra (Subito)</span></div>
+            <div class="review-item"><p>"Gentilissimo e veloce a spedire, consiglio vivamente"</p><span>- Eduard (Subito)</span></div>
+            <div class="review-item"><p>"Persona super disponibile e paziente, consigliatissimo."</p><span>- Mattia (Subito)</span></div>
+            <div class="review-item"><p>"Venditore serio e affidabile. Prodotto perfetto."</p><span>- Utente Subito</span></div>
+            
+            <div class="review-item"><p>"Tutto perfetto! Spedizione veloce e prodotto conforme alla descrizione!"</p><span>- silviaviti2 (Vinted)</span></div>
+            <div class="review-item"><p>"Articolo come nuovo e spedizione veloce."</p><span>- andreaboscoli1 (Vinted)</span></div>
+            <div class="review-item"><p>"Articolo corrispondente alla foto... Merci pour tout 👍"</p><span>- susana301103 (Vinted)</span></div>
+            <div class="review-item"><p>"Spedizione rapida, venditore molto cordiale!"</p><span>- michele_r (Vinted)</span></div>
+            <div class="review-item"><p>"Oggetto bellissimo, esattamente come in foto."</p><span>- giulia_vnt (Vinted)</span></div>
+            <div class="review-item"><p>"Ottimo imballaggio e comunicazione eccellente."</p><span>- luca.88 (Vinted)</span></div>
+            <div class="review-item"><p>"Molto professionale, consigliato A++"</p><span>- marco_tech (Vinted)</span></div>
+            <div class="review-item"><p>"Tutto liscio, ricomprerò sicuramente."</p><span>- sofia_s (Vinted)</span></div>
+            <div class="review-item"><p>"Preciso e veloce nella spedizione."</p><span>- francesco_92 (Vinted)</span></div>
+            <div class="review-item"><p>"Persona squisita, prodotto top."</p><span>- elena_p (Vinted)</span></div>
+        </div>
+    </details>
+</section>
+
 <footer><p>© 2025 Strano Store — Premium Resale</p></footer>
 
 <script>
 const prodotti = [
-    {
-        n:'iPhone 15 Pro + Caricatore + Cover', 
-        p:'599', 
-        c:'Tecnologia', 
-        img:'iphone.png',
-        vinted:'https://www.vinted.it/items/7764182241-iphone-15-pro-caricatore-cover',
-        subito:'https://www.subito.it/telefonia/iphone-15-pro-caricatore-cover-catania-628165680.htm',
-        desc:'iPhone 15 Pro – Come Nuovo! Zero graffi, zero difetti. Completo di scatola, caricatore e cover.'
-    },
-    {
-        n:'Scultura Murano Delfini', 
-        p:'149,99', 
-        c:'Altro', 
-        img:'delfino.png',
-        vinted:'https://www.vinted.it/items/7725614209-scultura-in-vetro-di-murano-con-delfini-lavorazione-artistica-con-foglia-oro',
-        subito:'https://www.subito.it/arredamento-casalinghi/scultura-in-vetro-di-murano-con-delfini-catania-627414368.htm',
-        desc:'Scultura in vetro di Murano con delfini, lavorazione artistica con foglia oro.'
-    },
-    {
-        n:'Jeans Roy Roger’s', 
-        p:'19,99', 
-        c:'Abbigliamento', 
-        img:'pantaloni.png',
-        vinted:'https://www.vinted.it/items/7682389652-jeans-roy-rogers',
-        subito:'',
-        desc:'Jeans uomo Roy Roger’s taglia M, usato pochissimo, ottime condizioni.'
-    },
-    {
-        n:'Stivali Donna Unisa 38', 
-        p:'39,99', 
-        c:'Abbigliamento', 
-        img:'stivali.png',
-        vinted:'https://www.vinted.it/items/7591507417-stivali-donna-unisa-38',
-        subito:'',
-        desc:'Stivali neri in pelle con suola carrarmato, come nuovi, perfetti per autunno/inverno.'
-    },
-    {
-        n:'Polo Moncler Taglia M', 
-        p:'29,99', 
-        c:'Abbigliamento', 
-        img:'moncler.webp',
-        vinted:'https://www.vinted.it/items/ID-DA-INSERIRE',
-        subito:'',
-        desc:'Polo Moncler bianca taglia M, elegante, patch ricamata sul petto, cotone piqué.'
-    },
-    {
-        n:'Camicia Elegante', 
-        p:'19,99', 
-        c:'Abbigliamento', 
-        img:'camicia1.png',
-        vinted:'https://www.vinted.it/items/ID-DA-INSERIRE',
-        subito:'',
-        desc:'Camicia elegante da uomo, ottime condizioni, ideale per outfit casual o smart.'
-    }
+    {n:'iPhone 15 Pro + Caricatore + Cover',p:'599',c:'Tecnologia',img:'iphone.png',vinted:'https://www.vinted.it/items/7764182241-iphone-15-pro-caricatore-cover',subito:'https://www.subito.it/telefonia/iphone-15-pro-caricatore-cover-catania-628165680.htm',desc:'iPhone 15 Pro – Come Nuovo! Zero graffi, zero difetti. Completo di scatola, caricatore e cover.'},
+    {n:'Scultura Murano Delfini',p:'149,99',c:'Altro',img:'delfino.png',vinted:'https://www.vinted.it/items/7725614209-scultura-in-vetro-di-murano-con-delfini-lavorazione-artistica-con-foglia-oro',subito:'https://www.subito.it/arredamento-casalinghi/scultura-in-vetro-di-murano-con-delfini-catania-627414368.htm',desc:'Scultura in vetro di Murano con delfini, lavorazione artistica con foglia oro.'},
+    {n:'Jeans Roy Roger’s',p:'19,99',c:'Abbigliamento',img:'pantaloni.png',vinted:'https://www.vinted.it/items/7682389652-jeans-roy-rogers',subito:'',desc:'Jeans uomo Roy Roger’s taglia M, usato pochissimo, ottime condizioni.'},
+    {n:'Stivali Donna Unisa 38',p:'39,99',c:'Abbigliamento',img:'stivali.png',vinted:'https://www.vinted.it/items/7591507417-stivali-donna-unisa-38',subito:'',desc:'Stivali neri in pelle con suola carrarmato, come nuovi, perfetti per autunno/inverno.'},
+    {n:'Polo Moncler Taglia M',p:'29,99',c:'Abbigliamento',img:'moncler.webp',vinted:'https://www.vinted.it/items/7019057147-moncler-polo-taglia-m',subito:'',desc:'Polo Moncler bianca taglia M, elegante, patch ricamata sul petto, cotone piqué.'},
+    {n:'Camicia Elegante',p:'19,99',c:'Abbigliamento',img:'camicia1.png',vinted:'',subito:'',desc:'Camicia elegante da uomo, ottime condizioni, ideale per outfit casual o smart.'},
+    {n:'Camicia Fred Perry',p:'19,99',c:'Abbigliamento',img:'camicia2.png',vinted:'',subito:'',desc:'Camicia Fred Perry taglia S, colore azzurro, prodotto originale, come nuova.'},
+    {n:'Camicia Polo Ralph Lauren',p:'19,99',c:'Abbigliamento',img:'camicia2.png',vinted:'https://www.vinted.it/items/6274339172-camicia-polo-ralph-lauren',subito:'',desc:'Camicia Polo Ralph Lauren taglia XS, colore azzurro, nuovo senza cartellino.'},
+    {n:'Giubbotto di pelle S',p:'19,99',c:'Abbigliamento',img:'giubbotto.png',vinted:'https://www.vinted.it/items/4461806005-giubbotto-di-pelle-s',subito:'',desc:'Giubbotto di pelle taglia S, colore marrone, in ottime condizioni, usato pochissimo.'}
 ];
 
-function renderStore(filter = 'Tutti', query = '') {
-    const grid = document.getElementById('storeGrid');
-    grid.innerHTML = '';
-    prodotti.forEach(item => {
-        if ((filter === 'Tutti' || item.c === filter) && item.n.toLowerCase().includes(query.toLowerCase())) {
-            grid.innerHTML += `
-                <div class="card">
-                    <img src="${item.img}" alt="${item.n}" onerror="this.src='https://via.placeholder.com/300x400?text=Strano+Store'">
-                    <div class="card-content">
-                        <span style="font-size:0.7rem; color:var(--primary); font-weight:700;">${item.c.toUpperCase()}</span>
-                        <h3>${item.n}</h3>
-                        <div class="price">€${item.p}</div>
-                        <div class="btn-group">
-                            <a href="${item.vinted}" target="_blank" class="btn-s btn-v">Vinted</a>
-                            ${item.subito?`<a href="${item.subito}" target="_blank" class="btn-s btn-sub">Subito</a>`:''}
-                        </div>
-                        <button class="show-desc" onclick="toggleDesc(this)">Mostra descrizione</button>
-                        <div class="description">${item.desc}</div>
+function renderStore(filter='Tutti', query=''){
+    const grid=document.getElementById('storeGrid');
+    grid.innerHTML='';
+    prodotti.forEach(item=>{
+        if((filter==='Tutti'||item.c===filter)&&item.n.toLowerCase().includes(query.toLowerCase())){
+            grid.innerHTML+=`
+            <div class="card">
+                <img src="${item.img}" alt="${item.n}" onerror="this.src='https://via.placeholder.com/300x400?text=Strano+Store'">
+                <div class="card-content">
+                    <span style="font-size:0.7rem;color:var(--primary);font-weight:700;">${item.c.toUpperCase()}</span>
+                    <h3>${item.n}</h3>
+                    <div class="price">€${item.p}</div>
+                    <div class="btn-group">
+                        ${item.vinted?`<a href="${item.vinted}" target="_blank" class="btn-s btn-v">Vinted</a>`:''}
+                        ${item.subito?`<a href="${item.subito}" target="_blank" class="btn-s btn-sub">Subito</a>`:''}
                     </div>
-                </div>`;
+                    <button onclick="toggleDesc(this)">Mostra Descrizione</button>
+                    <div class="desc">${item.desc}</div>
+                </div>
+            </div>`;
         }
     });
 }
 
-function toggleDesc(btn){
-    const desc = btn.nextElementSibling;
-    if(desc.style.display === 'block'){desc.style.display='none'; btn.innerText='Mostra descrizione';}
-    else{desc.style.display='block'; btn.innerText='Nascondi descrizione';}
-}
-
-function filterCat(cat) {
-    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+function filterCat(cat){
+    document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active'));
     event.target.classList.add('active');
-    renderStore(cat, document.getElementById('searchInput').value);
+    renderStore(cat,document.getElementById('searchInput').value);
 }
 
-function search() {
-    const q = document.getElementById('searchInput').value;
-    const activeCat = document.querySelector('.cat-btn.active').innerText;
-    renderStore(activeCat, q);
+function search(){
+    const q=document.getElementById('searchInput').value;
+    const activeCat=document.querySelector('.cat-btn.active').innerText;
+    renderStore(activeCat,q);
+}
+
+function toggleDesc(btn){
+    const desc=btn.nextElementSibling;
+    desc.classList.toggle('show-desc');
+    btn.innerText=desc.classList.contains('show-desc')?'Nascondi Descrizione':'Mostra Descrizione';
 }
 
 renderStore();
 </script>
-
 </body>
 </html>
