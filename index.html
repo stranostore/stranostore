@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Inter',sans-serif;background:linear-gradient(180deg,#020617,#0f172a);color:#e5e7eb;position:relative;}
+body{font-family:'Inter',sans-serif;background:linear-gradient(180deg,#020617,#0f172a);color:#e5e7eb;position:relative;min-height:100vh}
 
 /* HEADER */
 header{display:flex;justify-content:space-between;align-items:center;padding:20px 30px}
@@ -24,7 +24,7 @@ header .social a:hover{transform:scale(1.2);color:#38bdf8}
 .hero-text h1 span{color:#22d3ee}
 .hero-text p{font-size:20px;color:#cbd5f5;margin-bottom:30px}
 .hero-buttons{display:flex;gap:15px;flex-wrap:wrap}
-.hero-btn{padding:14px 22px;border-radius:14px;font-weight:700;font-size:16px;display:flex;align-items:center;gap:10px;transition:.2s}
+.hero-btn{padding:14px 22px;border-radius:14px;font-weight:700;font-size:16px;display:flex;align-items:center;gap:10px;transition:.2s;text-decoration:none}
 .hero-btn.vinted{background:linear-gradient(135deg,#22c55e,#4ade80);color:#020617}
 .hero-btn.subito{background:linear-gradient(135deg,#f97316,#fb923c);color:#020617}
 .hero-btn:hover{transform:translateY(-3px) scale(1.05)}
@@ -47,7 +47,7 @@ header .social a:hover{transform:scale(1.2);color:#38bdf8}
 .card-content h3{font-size:16px;margin-bottom:6px}
 .price{font-size:20px;font-weight:800;margin-bottom:12px}
 .buttons{display:flex;gap:10px}
-.btn{flex:1;padding:10px;border-radius:12px;font-weight:700;font-size:14px;display:flex;justify-content:center;gap:6px;transition:.2s}
+.btn{flex:1;padding:10px;border-radius:12px;font-weight:700;font-size:14px;display:flex;justify-content:center;gap:6px;transition:.2s;text-decoration:none}
 .btn.vinted{background:#22c55e;color:#020617}
 .btn.subito{background:#f97316;color:#020617}
 .btn:hover{transform:scale(1.05)}
@@ -55,68 +55,44 @@ header .social a:hover{transform:scale(1.2);color:#38bdf8}
 /* FOOTER */
 footer{text-align:center;padding:40px 20px;color:#9ca3af}
 
-/* MOBILE */
+/* ASSISTENZA WHATSAPP */
+#assistenza{
+position:fixed;bottom:20px;right:20px;width:60px;height:60px;
+background:#25D366;border-radius:50%;display:flex;justify-content:center;
+align-items:center;box-shadow:0 8px 20px rgba(0,0,0,0.3);
+cursor:pointer;animation: float 2s infinite ease-in-out;z-index:9999;
+}
+#assistenza i{color:white;font-size:28px;}
+
+/* MODAL ASSISTENZA */
+#modal-assistenza {
+position:fixed;bottom:90px;right:20px;background:#0f172a;color:#e5e7eb;
+width:320px;border-radius:16px;box-shadow:0 10px 40px rgba(0,0,0,0.5);
+display:none;flex-direction:column;overflow:hidden;z-index:10000;
+border:1px solid rgba(34, 211, 238, 0.2);animation: slideUp 0.3s ease-out;
+}
+@keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes float{ 0%,100%{transform:translateY(0px)} 50%{transform:translateY(-8px)} }
+
+#modal-assistenza header{
+background:#020617;padding:15px 16px;font-weight:700;
+display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #22d3ee;
+}
+#modal-assistenza .close{cursor:pointer;color:#22d3ee;font-size:22px}
+#modal-assistenza form{display:flex;flex-direction:column;padding:20px;gap:12px}
+#modal-assistenza input,#modal-assistenza textarea{
+padding:12px;border-radius:8px;border:1px solid #1e293b;background:#1e293b;color:#e5e7eb;font-size:14px;transition:0.2s}
+#modal-assistenza input:focus, #modal-assistenza textarea:focus {outline:none;border-color:#22d3ee;background:#0f172a}
+#modal-assistenza button{
+background:#22d3ee;color:#020617;padding:12px;font-weight:800;border:none;border-radius:8px;cursor:pointer;transition:.2s}
+#modal-assistenza button:hover{background:#38bdf8;transform:translateY(-2px)}
+#modal-assistenza button:disabled{background:#475569;cursor:not-allowed;opacity:0.7}
+
 @media(max-width:900px){
 .hero{grid-template-columns:1fr;text-align:center}
 .hero-buttons{justify-content:center}
 .hero-text h1{font-size:36px}
 }
-
-/* ASSISTENZA WHATSAPP */
-#assistenza{
-position:fixed;
-bottom:20px;
-right:20px;
-width:60px;
-height:60px;
-background:#25D366;
-border-radius:50%;
-display:flex;
-justify-content:center;
-align-items:center;
-box-shadow:0 8px 20px rgba(0,0,0,0.3);
-cursor:pointer;
-animation: float 2s infinite ease-in-out;
-z-index:9999;
-}
-#assistenza i{color:white;font-size:28px;animation: bounce 2s infinite;}
-@keyframes float{
-0%,100%{transform:translateY(0px)}
-50%{transform:translateY(-8px)}
-}
-@keyframes bounce{
-0%,100%{transform:translateY(0px)}
-50%{transform:translateY(-4px)}
-}
-
-/* MODAL */
-#modal-assistenza{
-position:fixed;
-bottom:90px;
-right:20px;
-background:#0f172a;
-color:#e5e7eb;
-width:300px;
-border-radius:14px;
-box-shadow:0 8px 30px rgba(0,0,0,0.3);
-display:none;
-flex-direction:column;
-overflow:hidden;
-z-index:10000;
-}
-#modal-assistenza header{
-background:#020617;padding:12px 16px;font-weight:700;
-display:flex;justify-content:space-between;align-items:center;
-border-bottom:1px solid #22d3ee;
-}
-#modal-assistenza header span{font-size:16px}
-#modal-assistenza .close{cursor:pointer;color:#22d3ee;font-size:18px}
-#modal-assistenza form{display:flex;flex-direction:column;padding:16px;gap:10px}
-#modal-assistenza input,#modal-assistenza textarea{
-padding:10px;border-radius:8px;border:none;background:#1e293b;color:#e5e7eb;font-size:14px}
-#modal-assistenza button{
-background:#22d3ee;color:#020617;padding:10px;font-weight:700;border:none;border-radius:8px;cursor:pointer;transition:.2s}
-#modal-assistenza button:hover{transform:scale(1.05)}
 </style>
 </head>
 <body>
@@ -156,25 +132,26 @@ Acquista in sicurezza su Vinted e Subito. Spedizione tracciata e articoli verifi
 
 <footer>© 2025 Strano Store — Premium Resale</footer>
 
-<!-- ASSISTENZA WHATSAPP -->
 <div id="assistenza"><i class="fab fa-whatsapp"></i></div>
 <div id="modal-assistenza">
 <header>
-<span>Assistenza</span>
+<span>Assistenza Diretta</span>
 <span class="close">&times;</span>
 </header>
 <form id="form-assistenza">
 <input type="text" name="name" placeholder="Nome" required>
-<input type="email" name="email" placeholder="Email" required>
-<textarea name="message" rows="4" placeholder="Messaggio" required></textarea>
-<button type="submit">Invia</button>
+<input type="email" name="email" placeholder="Tua Email" required>
+<textarea name="message" rows="4" placeholder="Come possiamo aiutarti?" required></textarea>
+<button type="submit">Invia Messaggio</button>
 </form>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3.2.0/dist/email.min.js"></script>
 <script>
+// Inizializzazione con la tua Public Key corretta
 (function(){emailjs.init("HCRQeVuO9W2k5c9HH");})();
 
+// Generazione Prodotti
 const prodotti=[
  {img:'iphone.png',nome:'iPhone 15 Pro',prezzo:'599'},
  {img:'camicia1.png',nome:'Camicia Uomo Elegante',prezzo:'19.99'},
@@ -184,11 +161,12 @@ const prodotti=[
  {img:'pantaloni.png',nome:'Pantaloni Jeans Uomo',prezzo:'19.99'},
  {img:'stivali.png',nome:'Stivali Donna',prezzo:'39.99'}
 ];
+
 const store=document.getElementById('store');
 prodotti.forEach(p=>{
  store.innerHTML+=`
   <div class="card">
-    <img src="${p.img}" alt="${p.nome}">
+    <img src="${p.img}" alt="${p.nome}" onerror="this.src='https://via.placeholder.com/300x400?text=Strano+Store'">
     <div class="card-content">
       <span class="badge">Disponibile</span>
       <h3>${p.nome}</h3>
@@ -201,31 +179,41 @@ prodotti.forEach(p=>{
   </div>`;
 });
 
-// ASSISTENZA MODAL
+// Gestione Modal Assistenza
 const assistenzaBtn=document.getElementById('assistenza');
 const modal=document.getElementById('modal-assistenza');
 const closeBtn=modal.querySelector('.close');
+
 assistenzaBtn.onclick=()=>modal.style.display='flex';
 closeBtn.onclick=()=>modal.style.display='none';
 window.onclick=e=>{if(e.target==modal) modal.style.display='none'};
 
-// EMAILJS INVIO MESSAGGIO
+// INVIO EMAILJS OTTIMIZZATO
 const form=document.getElementById('form-assistenza');
+const submitBtn = form.querySelector('button');
+
 form.addEventListener('submit', function(e){
  e.preventDefault();
- const name=form.name.value;
- const email=form.email.value;
- const message=form.message.value;
- emailjs.send('stranostore', 'template_6wi3ddm', {
-     name: name,
-     email: email,
-     message: message
+ 
+ const originalBtnText = submitBtn.innerText;
+ submitBtn.innerText = 'Invio in corso...';
+ submitBtn.disabled = true;
+
+ // Utilizzo Service ID e Template ID verificati
+ emailjs.send('stranostore', 'template_kwkzv37', {
+     name: form.name.value,
+     email: form.email.value,
+     message: form.message.value
  }).then(function(response){
-     alert('Messaggio inviato con successo!');
+     alert('Messaggio inviato con successo! Ti risponderemo presto.');
      form.reset();
+     modal.style.display='none';
  }, function(error){
-     alert('Errore nell\'invio. Riprova più tardi.');
+     alert('Errore nell\'invio: ' + error.text);
      console.error('EmailJS error:', error);
+ }).finally(() => {
+     submitBtn.innerText = originalBtnText;
+     submitBtn.disabled = false;
  });
 });
 </script>
