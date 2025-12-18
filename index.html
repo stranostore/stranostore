@@ -6,7 +6,6 @@
 
 <title>Strano Store | Premium Resale</title>
 
-<!-- SEO -->
 <meta name="description" content="Strano Store: tecnologia e abbigliamento premium selezionato. Venditore affidabile con oltre 160 recensioni positive.">
 <meta property="og:title" content="Strano Store | Premium Resale">
 <meta property="og:image" content="logo.png">
@@ -30,6 +29,7 @@ body{
   font-family:'Inter',sans-serif;
   background:linear-gradient(180deg,var(--bg),#0f172a);
   color:#e5e7eb;
+  line-height:1.6
 }
 
 /* HEADER */
@@ -37,33 +37,32 @@ header{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:20px 30px;
-  border-bottom:1px solid rgba(255,255,255,.05)
+  padding:16px 20px;
 }
-header img{width:110px}
+header img{width:95px}
 .social a{
-  margin-left:15px;
-  font-size:24px;
-  color:var(--primary);
-  transition:.2s
+  margin-left:12px;
+  font-size:22px;
+  color:var(--primary)
 }
-.social a:hover{transform:translateY(-3px);color:#fff}
 
 /* HERO */
 .hero{
   max-width:1200px;
   margin:auto;
-  padding:60px 20px
+  padding:50px 20px 30px;
 }
 .hero h1{
-  font-size:54px;
-  font-weight:800
+  font-size:52px;
+  font-weight:800;
+  line-height:1.05;
 }
 .hero h1 span{color:var(--primary)}
 .hero p{
-  margin:20px 0 30px;
-  max-width:500px;
-  color:#cbd5f5
+  margin:18px 0 25px;
+  max-width:520px;
+  color:#cbd5f5;
+  font-size:1.05rem
 }
 
 /* CATEGORIES */
@@ -73,15 +72,15 @@ header img{width:110px}
   flex-wrap:wrap
 }
 .cat-btn{
-  padding:8px 20px;
-  border-radius:20px;
+  padding:10px 22px;
+  border-radius:999px;
   border:1px solid var(--primary);
   background:transparent;
   color:var(--primary);
-  font-weight:700;
+  font-weight:800;
   cursor:pointer
 }
-.cat-btn.active,.cat-btn:hover{
+.cat-btn.active{
   background:var(--primary);
   color:#020617
 }
@@ -90,41 +89,39 @@ header img{width:110px}
 .search-container{
   max-width:1200px;
   margin:auto;
-  padding:20px
+  padding:15px 20px
 }
 .search-bar{
   width:100%;
-  padding:15px 25px;
+  padding:16px 24px;
   border-radius:50px;
   background:var(--card);
   border:1px solid rgba(34,211,238,.3);
   color:#fff;
-  outline:none
+  font-size:1rem
 }
 
 /* STORE */
 .store{
   max-width:1200px;
   margin:auto;
-  padding:40px 20px;
+  padding:30px 20px;
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:25px
+  gap:22px
 }
 .card{
   background:var(--card);
   border-radius:20px;
   overflow:hidden;
-  border:1px solid rgba(255,255,255,.05);
-  transition:.3s
+  border:1px solid rgba(255,255,255,.05)
 }
-.card:hover{transform:translateY(-6px)}
 .card img{
   width:100%;
-  height:260px;
+  height:230px;
   object-fit:cover
 }
-.card-content{padding:20px}
+.card-content{padding:18px}
 .badge{
   font-size:.65rem;
   background:rgba(34,211,238,.15);
@@ -132,13 +129,13 @@ header img{width:110px}
   padding:4px 10px;
   border-radius:20px;
   display:inline-block;
-  margin-bottom:5px
+  margin-bottom:6px
 }
 .price{
   font-size:22px;
   font-weight:800;
   color:var(--primary);
-  margin:10px 0
+  margin:8px 0
 }
 .btn-group{
   display:flex;
@@ -146,12 +143,12 @@ header img{width:110px}
 }
 .btn-s{
   flex:1;
-  padding:10px;
-  border-radius:10px;
+  padding:12px;
+  border-radius:12px;
   font-weight:800;
   text-align:center;
-  text-decoration:none;
-  color:#000
+  color:#000;
+  text-decoration:none
 }
 .btn-v{background:var(--vinted)}
 .btn-sub{background:var(--subito)}
@@ -159,15 +156,15 @@ header img{width:110px}
 /* REVIEWS */
 .reviews-section{
   max-width:1000px;
-  margin:60px auto;
-  padding:40px 20px;
+  margin:50px auto;
+  padding:35px 20px;
   background:rgba(255,255,255,.02);
   border-radius:30px;
   text-align:center
 }
 .stars-top{
   color:var(--gold);
-  font-size:2.5rem
+  font-size:2.2rem;
 }
 .dropdown-reviews{
   margin-top:20px;
@@ -176,89 +173,77 @@ header img{width:110px}
   border:1px solid rgba(34,211,238,.2)
 }
 .dropdown-reviews summary{
-  padding:15px;
-  cursor:pointer;
+  padding:16px;
   font-weight:800;
   color:var(--primary);
-  list-style:none
+  cursor:pointer
 }
 .all-reviews-list{
-  padding:20px;
+  padding:18px;
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:15px;
-  max-height:400px;
+  max-height:420px;
   overflow:auto
 }
 .review-item{
   background:rgba(255,255,255,.03);
-  padding:15px;
+  padding:14px;
   border-radius:10px;
   border-left:3px solid var(--primary)
 }
-.review-item span{
-  font-size:.8rem;
-  color:var(--primary);
-  font-weight:700
-}
 
-/* ASSISTENZA EMAIL */
+/* ASSISTENZA */
 #assistenza{
   position:fixed;
-  bottom:20px;
-  right:20px;
-  width:60px;
-  height:60px;
+  bottom:18px;
+  right:18px;
+  width:58px;
+  height:58px;
   background:var(--primary);
   border-radius:50%;
   display:flex;
   justify-content:center;
   align-items:center;
-  cursor:pointer;
   box-shadow:0 8px 20px rgba(0,0,0,.4);
-  z-index:9999;
-  animation:float 2s infinite
+  cursor:pointer;
+  z-index:9999
 }
-#assistenza i{font-size:26px;color:#020617}
-@keyframes float{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-8px)}
-}
+#assistenza i{font-size:24px;color:#020617}
 
+/* MODAL */
 #modal{
   position:fixed;
-  bottom:100px;
-  right:20px;
-  width:320px;
-  background:var(--card);
-  border-radius:16px;
+  inset:0;
+  background:rgba(2,6,23,.75);
   display:none;
-  flex-direction:column;
-  border:1px solid rgba(34,211,238,.2);
+  justify-content:center;
+  align-items:center;
   z-index:10000
 }
+#modal .box{
+  background:var(--card);
+  width:92%;
+  max-width:380px;
+  border-radius:20px;
+  overflow:hidden
+}
 #modal header{
-  padding:15px;
+  padding:16px;
   background:#020617;
-  font-weight:800;
   display:flex;
   justify-content:space-between;
-  align-items:center
-}
-#modal .close{
-  cursor:pointer;
-  color:var(--primary);
-  font-size:22px
+  font-weight:800
 }
 #modal form{
-  padding:20px;
+  padding:18px;
   display:flex;
   flex-direction:column;
   gap:12px
 }
 #modal input,#modal textarea{
-  padding:12px;
-  border-radius:8px;
+  padding:14px;
+  border-radius:10px;
   border:1px solid #1e293b;
   background:#1e293b;
   color:#fff
@@ -266,17 +251,22 @@ header img{width:110px}
 #modal button{
   background:var(--primary);
   color:#020617;
+  padding:14px;
   border:none;
-  padding:12px;
-  border-radius:8px;
-  font-weight:800;
-  cursor:pointer
+  border-radius:10px;
+  font-weight:800
 }
 
 footer{
-  padding:50px;
+  padding:40px 20px;
   text-align:center;
   color:#64748b
+}
+
+/* MOBILE EXTRA */
+@media(max-width:600px){
+  .hero h1{font-size:42px}
+  .card img{height:200px}
 }
 </style>
 </head>
@@ -294,7 +284,7 @@ footer{
 
 <section class="hero">
   <h1>Strano<span>Store</span></h1>
-  <p>Selezione premium di tecnologia e abbigliamento. Affidabilità e recensioni verificate.</p>
+  <p>Selezione premium di tecnologia e abbigliamento. Venditore affidabile e verificato.</p>
   <div class="categories">
     <button class="cat-btn active" onclick="filterCat('Tutti',this)">Tutti</button>
     <button class="cat-btn" onclick="filterCat('Tecnologia',this)">Tecnologia</button>
@@ -316,20 +306,21 @@ footer{
 
 <footer>© 2025 Strano Store — Premium Resale</footer>
 
-<!-- ASSISTENZA EMAIL -->
 <div id="assistenza"><i class="fas fa-envelope"></i></div>
 
 <div id="modal">
-  <header>
-    <span>Contattaci</span>
-    <span class="close">&times;</span>
-  </header>
-  <form id="contactForm">
-    <input type="text" name="name" placeholder="Il tuo nome" required>
-    <input type="email" name="email" placeholder="La tua email" required>
-    <textarea name="message" rows="4" placeholder="Come possiamo aiutarti?" required></textarea>
-    <button type="submit">Invia messaggio</button>
-  </form>
+  <div class="box">
+    <header>
+      <span>Contattaci</span>
+      <span style="cursor:pointer" onclick="closeModal()">&times;</span>
+    </header>
+    <form id="contactForm">
+      <input name="name" placeholder="Il tuo nome" required>
+      <input name="email" type="email" placeholder="La tua email" required>
+      <textarea name="message" rows="4" placeholder="Come possiamo aiutarti?" required></textarea>
+      <button type="submit">Invia messaggio</button>
+    </form>
+  </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
@@ -356,52 +347,26 @@ function renderStore(cat='Tutti',q=''){
           <h3>${i.n}</h3>
           <div class="price">€${i.p}</div>
           <div class="btn-group">
-            <a class="btn-s btn-v" target="_blank" href="https://www.vinted.it/member/156457000-stranostore">Vinted</a>
-            <a class="btn-s btn-sub" target="_blank" href="https://www.subito.it/utente/16474204">Subito</a>
+            <a class="btn-s btn-v" target="_blank" href="#">Vinted</a>
+            <a class="btn-s btn-sub" target="_blank" href="#">Subito</a>
           </div>
         </div>
       </div>`;
     }
   });
 }
-
 function filterCat(cat,el){
   document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active'));
   el.classList.add('active');
-  renderStore(cat,document.getElementById('searchInput').value);
+  renderStore(cat,searchInput.value);
 }
-
 function searchProd(){
-  const q=document.getElementById('searchInput').value;
-  const cat=document.querySelector('.cat-btn.active').innerText;
-  renderStore(cat,q);
+  renderStore(document.querySelector('.cat-btn.active').innerText,searchInput.value);
 }
 
-const assist=document.getElementById('assistenza');
 const modal=document.getElementById('modal');
-const close=document.querySelector('.close');
-
-assist.onclick=()=>modal.style.display='flex';
-close.onclick=()=>modal.style.display='none';
-
-document.getElementById('contactForm').onsubmit=function(e){
-  e.preventDefault();
-  const btn=this.querySelector('button');
-  btn.innerText='Invio...';
-  emailjs.send('stranostore','template_kwkzv37',{
-    name:this.name.value,
-    email:this.email.value,
-    message:this.message.value
-  }).then(()=>{
-    alert('Messaggio inviato!');
-    this.reset();
-    modal.style.display='none';
-    btn.innerText='Invia messaggio';
-  }).catch(()=>{
-    alert('Errore durante l’invio');
-    btn.innerText='Invia messaggio';
-  });
-};
+document.getElementById('assistenza').onclick=()=>modal.style.display='flex';
+function closeModal(){modal.style.display='none'}
 
 renderStore();
 </script>
