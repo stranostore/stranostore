@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- SEO Ottimizzato -->
 <title>Strano Store | Abbigliamento, oggetti unici e tecnologia</title>
 <meta name="description" content="Strano Store: abbigliamento selezionato, prodotti unici e tecnologia. Acquista in sicurezza su Vinted e Subito. Spedizione tracciata e articoli verificati.">
 
@@ -13,191 +12,48 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{
-  font-family:'Inter',sans-serif;
-  background:linear-gradient(180deg,#020617,#0f172a);
-  color:#e5e7eb;
-}
+/* ...STILE DEL SITO COME PRIMA... */
 
-/* HEADER */
-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:20px 30px;
+/* ASSISTENTE CHAT */
+#assistant-box {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 300px;
+  background: #111;
+  color: #fff;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,.5);
+  font-family: 'Inter', sans-serif;
+  z-index: 9999;
 }
-header img{width:120px}
-header .social a{
-  margin-left:18px;
-  font-size:26px;
-  color:#22d3ee;
-  transition:.2s;
+#assistant-box h3 { margin-bottom:10px; font-size:18px; color:#22d3ee;}
+#assistant-box input,
+#assistant-box textarea {
+  width: 100%;
+  margin-bottom: 8px;
+  padding: 6px;
+  border-radius: 6px;
+  border: none;
 }
-header .social a:hover{
-  transform:scale(1.2);
-  color:#38bdf8;
+#assistant-box button {
+  width: 100%;
+  background: #22d3ee;
+  color: #020617;
+  border: none;
+  padding: 8px;
+  border-radius: 6px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: .2s;
 }
-
-/* HERO */
-.hero{
-  max-width:1200px;
-  margin:auto;
-  padding:70px 20px 40px;
-  display:grid;
-  grid-template-columns:1.2fr 1fr;
-  gap:40px;
-}
-.hero-text h1{
-  font-size:48px;
-  font-weight:800;
-  line-height:1.1;
-  margin-bottom:20px;
-}
-.hero-text h1 span{color:#22d3ee}
-.hero-text p{
-  font-size:20px;
-  color:#cbd5f5;
-  margin-bottom:30px;
-}
-.hero-buttons{
-  display:flex;
-  gap:15px;
-  flex-wrap:wrap;
-}
-.hero-btn{
-  padding:14px 22px;
-  border-radius:14px;
-  font-weight:700;
-  font-size:16px;
-  display:flex;
-  align-items:center;
-  gap:10px;
-  transition:.2s;
-}
-.hero-btn.vinted{
-  background:linear-gradient(135deg,#22c55e,#4ade80);
-  color:#020617;
-}
-.hero-btn.subito{
-  background:linear-gradient(135deg,#f97316,#fb923c);
-  color:#020617;
-}
-.hero-btn:hover{
-  transform:translateY(-3px) scale(1.05);
-}
-
-/* HERO CARD */
-.hero-card{
-  background:#020617;
-  border-radius:24px;
-  padding:30px;
-  box-shadow:0 30px 80px rgba(0,0,0,.6);
-}
-.hero-card h3{
-  font-size:20px;
-  margin-bottom:10px;
-}
-.hero-card p{
-  color:#9ca3af;
-  font-size:15px;
-  margin-bottom:20px;
-}
-.hero-card ul{
-  list-style:none;
-}
-.hero-card li{
-  margin-bottom:10px;
-  font-size:15px;
-}
-.hero-card li i{
-  color:#22d3ee;
-  margin-right:8px;
-}
-
-/* STORE */
-.store{
-  max-width:1200px;
-  margin:auto;
-  padding:40px 20px;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:25px;
-}
-.card{
-  background:#020617;
-  border-radius:20px;
-  overflow:hidden;
-  transition:.25s;
-}
-.card:hover{
-  transform:translateY(-6px);
-  box-shadow:0 20px 40px rgba(0,0,0,.5);
-}
-.card img{
-  width:100%;
-  height:240px;
-  object-fit:cover;
-}
-.card-content{padding:16px}
-.badge{
-  display:inline-block;
-  background:#22d3ee22;
-  color:#22d3ee;
-  padding:4px 10px;
-  font-size:12px;
-  border-radius:999px;
-  margin-bottom:8px;
-}
-.card-content h3{
-  font-size:16px;
-  margin-bottom:6px;
-}
-.price{
-  font-size:20px;
-  font-weight:800;
-  margin-bottom:12px;
-}
-.buttons{
-  display:flex;
-  gap:10px;
-}
-.btn{
-  flex:1;
-  padding:10px;
-  border-radius:12px;
-  font-weight:700;
-  font-size:14px;
-  display:flex;
-  justify-content:center;
-  gap:6px;
-  transition:.2s;
-}
-.btn.vinted{background:#22c55e;color:#020617}
-.btn.subito{background:#f97316;color:#020617}
-.btn:hover{transform:scale(1.05)}
-
-/* FOOTER */
-footer{
-  text-align:center;
-  padding:40px 20px;
-  color:#9ca3af;
-}
-
-/* MOBILE */
-@media(max-width:900px){
-  .hero{
-    grid-template-columns:1fr;
-    text-align:center;
-  }
-  .hero-buttons{justify-content:center}
-  .hero-text h1{font-size:36px}
-}
+#assistant-box button:hover { background: #38bdf8; }
+#status { font-size: 14px; margin-top:6px; }
 </style>
 </head>
 
 <body>
-
 <header>
   <img src="logo.png" alt="Logo Strano Store">
   <div class="social">
@@ -212,7 +68,6 @@ footer{
     <h1>Strano <span>Store</span></h1>
     <p>Abbigliamento selezionato, oggetti unici e tecnologia.  
     Acquista in sicurezza su Vinted e Subito. Spedizione tracciata e articoli verificati.</p>
-
     <div class="hero-buttons">
       <a class="hero-btn vinted" href="https://www.vinted.it/member/156457000-stranostore" target="_blank">
         <i class="fas fa-tshirt"></i> Vai a Vinted
@@ -240,6 +95,39 @@ footer{
 <footer>
   © 2025 Strano Store — Premium Resale
 </footer>
+
+<!-- Chat Assistente -->
+<div id="assistant-box">
+  <h3>Assistenza Strano Store</h3>
+  <form id="assist-form">
+    <input type="text" name="name" placeholder="Il tuo nome" required>
+    <input type="email" name="email" placeholder="La tua email" required>
+    <textarea name="message" placeholder="Scrivi il tuo messaggio..." required></textarea>
+    <button type="submit">Invia</button>
+    <p id="status"></p>
+  </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+emailjs.init("YOUR_PUBLIC_KEY"); // <-- sostituisci con la tua Public Key
+
+document.getElementById("assist-form").addEventListener("submit", function(e) {
+  e.preventDefault();
+  emailjs.sendForm(
+    "stranostore",       // Service ID
+    "contact_template",  // Template ID
+    this
+  ).then(function() {
+    document.getElementById("status").innerText =
+      "Messaggio inviato! Ti risponderemo presto 😊";
+    document.getElementById("assist-form").reset();
+  }, function(error) {
+    document.getElementById("status").innerText =
+      "Errore nell'invio. Riprova.";
+  });
+});
+</script>
 
 <script>
 const prodotti=[
