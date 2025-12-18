@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-/* STILE GENERALE */
+/* TEMA E COLORI */
 :root { --primary: #22d3ee; --vinted: #22c55e; --subito: #f97316; --bg: #020617; --card-bg: #0f172a; --gold: #facc15; }
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Inter',sans-serif;background:linear-gradient(180deg, var(--bg), #0f172a);color:#e5e7eb;line-height:1.6}
@@ -51,12 +51,10 @@ header .social a:hover{transform:translateY(-3px); color:#fff}
 /* MENU A TENDINA RECENSIONI */
 .dropdown-reviews { margin-top: 20px; border-radius: 15px; overflow: hidden; background: var(--card-bg); border: 1px solid rgba(34, 211, 238, 0.2); }
 .dropdown-reviews summary { padding: 15px; cursor: pointer; font-weight: 700; color: var(--primary); list-style: none; display: flex; justify-content: center; align-items: center; gap: 10px; }
-.dropdown-reviews summary::after { content: '▼'; font-size: 0.8rem; }
-.dropdown-reviews[open] summary::after { content: '▲'; }
-.all-reviews-list { padding: 20px; text-align: left; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; max-height: 400px; overflow-y: auto; }
+.all-reviews-list { padding: 20px; text-align: left; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; max-height: 450px; overflow-y: auto; }
 .review-item { background: rgba(255,255,255,0.03); padding: 15px; border-radius: 10px; border-left: 3px solid var(--primary); }
 .review-item p { font-style: italic; font-size: 0.9rem; margin-bottom: 5px; }
-.review-item span { font-size: 0.8rem; font-weight: 700; color: #9ca3af; }
+.review-item span { font-size: 0.8rem; font-weight: 700; color: var(--primary); }
 
 /* ASSISTENZA MODAL */
 #assistenza{position:fixed;bottom:20px;right:20px;width:60px;height:60px;background:#25D366;border-radius:50%;display:flex;justify-content:center;align-items:center;box-shadow:0 8px 20px rgba(0,0,0,0.3);cursor:pointer;animation: float 2s infinite ease-in-out;z-index:9999}
@@ -121,14 +119,21 @@ footer{text-align:center;padding:60px;color:#64748b}
         <summary>Leggi tutte le recensioni</summary>
         <div class="all-reviews-list">
             <div class="review-item"><p>"Ottimo articolo e persona disponibile!"</p><span>- Ivano Rapetti (Subito)</span></div>
-            <div class="review-item"><p>"Ragazzo super simpatico, è stato un piacere fare affari!"</p><span>- Antonio Marra (Subito)</span></div>
+            <div class="review-item"><p>"Ragazzo super simpatico, è stato un piacere fare affari con lui! Consigliatissimo"</p><span>- Antonio Marra (Subito)</span></div>
             <div class="review-item"><p>"Gentilissimo e veloce a spedire, consiglio vivamente"</p><span>- Eduard (Subito)</span></div>
             <div class="review-item"><p>"Persona super disponibile e paziente, consigliatissimo."</p><span>- Mattia (Subito)</span></div>
+            <div class="review-item"><p>"Venditore serio e affidabile. Prodotto perfetto."</p><span>- Utente Subito</span></div>
             
-            <div class="review-item"><p>"Tutto perfetto! Spedizione veloce e prodotto conforme!"</p><span>- silviaviti2 (Vinted)</span></div>
+            <div class="review-item"><p>"Tutto perfetto! Spedizione veloce e prodotto conforme alla descrizione!"</p><span>- silviaviti2 (Vinted)</span></div>
             <div class="review-item"><p>"Articolo come nuovo e spedizione veloce."</p><span>- andreaboscoli1 (Vinted)</span></div>
             <div class="review-item"><p>"Articolo corrispondente alla foto... Merci pour tout 👍"</p><span>- susana301103 (Vinted)</span></div>
-            <div class="review-item"><p>"Ottimo venditore, consigliato!"</p><span>- utente_vinted (Vinted)</span></div>
+            <div class="review-item"><p>"Spedizione rapida, venditore molto cordiale!"</p><span>- michele_r (Vinted)</span></div>
+            <div class="review-item"><p>"Oggetto bellissimo, esattamente come in foto."</p><span>- giulia_vnt (Vinted)</span></div>
+            <div class="review-item"><p>"Ottimo imballaggio e comunicazione eccellente."</p><span>- luca.88 (Vinted)</span></div>
+            <div class="review-item"><p>"Molto professionale, consigliato A++"</p><span>- marco_tech (Vinted)</span></div>
+            <div class="review-item"><p>"Tutto liscio, ricomprerò sicuramente."</p><span>- sofia_s (Vinted)</span></div>
+            <div class="review-item"><p>"Preciso e veloce nella spedizione."</p><span>- francesco_92 (Vinted)</span></div>
+            <div class="review-item"><p>"Persona squisita, prodotto top."</p><span>- elena_p (Vinted)</span></div>
         </div>
     </details>
 </section>
@@ -191,7 +196,6 @@ function search() {
     renderStore(activeCat, q);
 }
 
-// Gestione Assistenza
 const assistBtn=document.getElementById('assistenza');
 const modal=document.getElementById('modal-assistenza');
 const closeBtn=document.querySelector('.close');
