@@ -3,463 +3,460 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+
 <title>Strano Store | Abbigliamento, oggetti unici e tecnologia</title>
 <meta name="description" content="Strano Store: abbigliamento selezionato, prodotti unici e tecnologia. Acquista in sicurezza su Vinted e Subito. Spedizione tracciata e articoli verificati." />
+<link rel="icon" href="logo.png" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
 <style>
-  /* Reset e base */
-  *{margin:0;padding:0;box-sizing:border-box;}
-  body {
-    font-family: 'Inter', sans-serif;
-    background: linear-gradient(180deg,#020617,#0f172a);
-    color:#e5e7eb;
-    min-height:100vh;
-    padding:20px 40px;
-  }
-  img.logo {
-    width:120px;
-    margin-bottom: 20px;
-    display:block;
-  }
-  h1 {
-    font-weight: 800;
-    font-size: 48px;
-    margin-bottom: 10px;
-  }
-  h1 span {
-    color:#22d3ee;
-  }
-  p.description {
-    color:#cbd5f5;
-    font-size: 20px;
-    margin-bottom: 30px;
-    max-width: 600px;
-  }
-  a.button {
-    text-decoration:none;
-    font-weight: 700;
-    padding: 14px 22px;
-    border-radius: 14px;
-    display:inline-flex;
-    align-items:center;
-    gap: 8px;
-    font-size: 16px;
-    margin-right: 10px;
-    margin-bottom: 20px;
-    cursor:pointer;
-  }
-  a.vinted {
-    background: linear-gradient(135deg,#22c55e,#4ade80);
-    color: #020617;
-  }
-  a.subito {
-    background: linear-gradient(135deg,#f97316,#fb923c);
-    color: #020617;
-  }
-  a.button:hover {
-    transform: translateY(-3px) scale(1.05);
-    transition: 0.2s ease;
-  }
-  ul.features {
-    list-style:none;
-    max-width: 400px;
-    margin-bottom: 40px;
-  }
-  ul.features li {
-    margin-bottom: 10px;
-    font-size: 16px;
-  }
-  ul.features li i {
-    color: #22d3ee;
-    margin-right: 8px;
-  }
-  /* Prodotti grid */
-  #store {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
-    gap: 25px;
-    max-width: 1200px;
-  }
-  .card {
-    background: #020617;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    transition: transform 0.25s ease;
-  }
-  .card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.7);
-  }
-  .card img {
-    width: 100%;
-    height: 240px;
-    object-fit: cover;
-  }
-  .card-content {
-    padding: 16px;
-  }
-  .badge {
-    display: inline-block;
-    background: #22d3eecc;
-    color: #22d3ee;
-    padding: 4px 10px;
-    font-size: 12px;
-    border-radius: 999px;
-    margin-bottom: 8px;
-  }
-  .card-content h3 {
-    font-size: 18px;
-    margin-bottom: 8px;
-    color: #e5e7eb;
-  }
-  .price {
-    font-size: 20px;
-    font-weight: 800;
-    margin-bottom: 12px;
-    color: #22d3ee;
-  }
-  .buttons {
-    display: flex;
-    gap: 10px;
-  }
-  .btn {
-    flex: 1;
-    padding: 10px;
-    border-radius: 12px;
-    font-weight: 700;
-    font-size: 14px;
-    display: flex;
-    justify-content: center;
-    gap: 6px;
-    cursor: pointer;
-    user-select: none;
-    text-decoration: none;
-  }
-  .btn.vinted {
-    background: #22c55e;
-    color: #020617;
-  }
-  .btn.subito {
-    background: #f97316;
-    color: #020617;
-  }
-  .btn:hover {
-    transform: scale(1.05);
-    transition: 0.2s ease;
-  }
-  footer {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(180deg, #020617, #0f172a);
+  color: #e5e7eb;
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 100px; /* spazio per assistenza */
+}
+/* HEADER */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+}
+header img {
+  width: 120px;
+}
+header .social a {
+  margin-left: 18px;
+  font-size: 26px;
+  color: #22d3ee;
+  transition: 0.2s;
+}
+header .social a:hover {
+  transform: scale(1.2);
+  color: #38bdf8;
+}
+/* HERO */
+.hero {
+  max-width: 1200px;
+  margin: auto;
+  padding: 70px 20px 40px;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 40px;
+}
+.hero-text h1 {
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+.hero-text h1 span {
+  color: #22d3ee;
+}
+.hero-text p {
+  font-size: 20px;
+  color: #cbd5f5;
+  margin-bottom: 30px;
+}
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+.hero-btn {
+  padding: 14px 22px;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: 0.2s;
+  color: #020617;
+  text-decoration: none;
+}
+.hero-btn.vinted {
+  background: linear-gradient(135deg, #22c55e, #4ade80);
+}
+.hero-btn.subito {
+  background: linear-gradient(135deg, #f97316, #fb923c);
+}
+.hero-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+}
+/* HERO CARD */
+.hero-card {
+  background: #020617;
+  border-radius: 24px;
+  padding: 30px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+}
+.hero-card h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.hero-card p {
+  color: #9ca3af;
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+.hero-card ul {
+  list-style: none;
+}
+.hero-card li {
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+.hero-card li i {
+  color: #22d3ee;
+  margin-right: 8px;
+}
+/* STORE */
+.store {
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+}
+.card {
+  background: #020617;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: 0.25s;
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+.card img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+}
+.card-content {
+  padding: 16px;
+}
+.badge {
+  display: inline-block;
+  background: #22d3ee22;
+  color: #22d3ee;
+  padding: 4px 10px;
+  font-size: 12px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+}
+.card-content h3 {
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+.price {
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+.buttons {
+  display: flex;
+  gap: 10px;
+}
+.btn {
+  flex: 1;
+  padding: 10px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  transition: 0.2s;
+  color: #020617;
+  text-decoration: none;
+}
+.btn.vinted {
+  background: #22c55e;
+}
+.btn.subito {
+  background: #f97316;
+}
+.btn:hover {
+  transform: scale(1.05);
+}
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 40px 20px;
+  color: #9ca3af;
+}
+/* MOBILE */
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
     text-align: center;
-    padding: 40px 20px;
-    color: #9ca3af;
-    font-size: 14px;
-    margin-top: 40px;
   }
-  /* Social links */
-  .social {
-    margin-bottom: 30px;
-  }
-  .social a {
-    color: #22d3ee;
-    font-size: 26px;
-    margin-right: 18px;
-    transition: 0.2s ease;
-  }
-  .social a:hover {
-    color: #38bdf8;
-    transform: scale(1.2);
-  }
-  /* Assistenza chat style */
-  #chat-assist-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #25d366;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    cursor: pointer;
-    box-shadow: 0 5px 15px rgba(37, 211, 102, 0.5);
-    display: flex;
+  .hero-buttons {
     justify-content: center;
-    align-items: center;
-    transition: transform 0.3s ease;
-    z-index: 9999;
-    animation: pulse 2s infinite alternate;
   }
-  #chat-assist-btn:hover {
-    transform: scale(1.1);
+  .hero-text h1 {
+    font-size: 36px;
   }
-  #chat-assist-btn svg {
-    width: 30px;
-    height: 30px;
-    fill: white;
-  }
-  @keyframes pulse {
-    0% { transform: scale(1) rotate(0deg);}
-    50% { transform: scale(1.1) rotate(10deg);}
-    100% { transform: scale(1) rotate(0deg);}
-  }
-  #chat-popup {
-    position: fixed;
-    bottom: 90px;
-    right: 20px;
-    width: 320px;
-    max-width: 90vw;
-    background: #0f172a;
-    border-radius: 12px;
-    box-shadow: 0 5px 30px rgba(0,0,0,0.7);
-    color: white;
-    display: none;
-    flex-direction: column;
-    z-index: 9999;
-  }
-  #chat-popup header {
-    padding: 12px 20px;
-    background: #22d3ee;
-    border-radius: 12px 12px 0 0;
-    font-weight: 700;
-    font-size: 18px;
-    color: #020617;
-  }
-  #chat-popup form {
-    display: flex;
-    flex-direction: column;
-    padding: 15px 20px;
-  }
-  #chat-popup label {
-    font-size: 14px;
-    margin-bottom: 6px;
-    color: #cbd5f5;
-  }
-  #chat-popup input[type="text"],
-  #chat-popup input[type="email"],
-  #chat-popup textarea {
-    border-radius: 8px;
-    border: none;
-    padding: 10px;
-    margin-bottom: 15px;
-    font-size: 14px;
-  }
-  #chat-popup textarea {
-    resize: vertical;
-    min-height: 80px;
-  }
-  #chat-popup button {
-    background: #22d3ee;
-    border: none;
-    padding: 12px;
-    border-radius: 8px;
-    font-weight: 700;
-    font-size: 16px;
-    color: #020617;
-    cursor: pointer;
-    transition: background 0.2s ease;
-  }
-  #chat-popup button:hover {
-    background: #38bdf8;
-  }
-  #chat-popup .close-btn {
-    background: transparent;
-    color: #020617;
-    font-weight: 700;
-    border: none;
-    font-size: 18px;
-    cursor: pointer;
-    position: absolute;
-    right: 12px;
-    top: 10px;
-  }
-  /* Responsive */
-  @media (max-width: 600px) {
-    h1 {
-      font-size: 32px;
-    }
-    #chat-popup {
-      width: 90vw;
-      right: 5vw;
-      bottom: 80px;
-    }
-  }
-</style>
+}
 
+/* ASSISTENZA (chat-like button e form) */
+#chat-button {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 56px;
+  height: 56px;
+  background: #25d366;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  cursor: pointer;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: bounce 2s infinite;
+  border: none;
+}
+#chat-button i {
+  color: white;
+  font-size: 28px;
+  transform: rotate(15deg);
+  transition: transform 0.3s;
+}
+#chat-button:hover i {
+  transform: rotate(0deg) scale(1.1);
+}
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+#chat-form-container {
+  position: fixed;
+  bottom: 100px;
+  right: 30px;
+  width: 320px;
+  background: #020617;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+  padding: 20px;
+  display: none;
+  flex-direction: column;
+  z-index: 1000;
+}
+
+#chat-form-container h4 {
+  margin-bottom: 10px;
+  color: #22d3ee;
+  font-weight: 700;
+  font-size: 18px;
+  text-align: center;
+}
+
+#chat-form-container label {
+  font-size: 14px;
+  margin-bottom: 4px;
+  color: #9ca3af;
+}
+
+#chat-form-container input,
+#chat-form-container textarea {
+  width: 100%;
+  padding: 8px 10px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  border: none;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+}
+
+#chat-form-container textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+
+#chat-form-container button {
+  background: #22d3ee;
+  border: none;
+  color: #020617;
+  padding: 10px;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s;
+}
+
+#chat-form-container button:hover {
+  background-color: #38bdf8;
+}
+
+#form-message {
+  text-align: center;
+  margin-top: 8px;
+  font-size: 14px;
+  color: #22d3ee;
+  font-weight: 600;
+}
+</style>
 </head>
+
 <body>
 
-  <img class="logo" src="logo.png" alt="Strano Store Logo" />
-
+<header>
+  <img src="logo.png" alt="Logo Strano Store" />
   <div class="social">
-    <a href="https://www.tiktok.com/@stranostore" target="_blank" title="TikTok" aria-label="TikTok">
-      <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="tiktok" class="svg-inline--fa fa-tiktok fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" style="width: 26px; color:#22d3ee;">
-        <path fill="currentColor" d="M448,209.2a210.11,210.11,0,0,1-101.9-28.3v113.6A137.68,137.68,0,1,1,186.3,135v42.7a94.74,94.74,0,1,0,161.4,69.2V0h49.7Z"></path>
-      </svg>
-    </a>
-    <a href="https://www.vinted.it/member/156457000-stranostore" target="_blank" title="Vinted" aria-label="Vinted">
-      <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="tshirt" class="svg-inline--fa fa-tshirt fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="width: 26px; color:#22d3ee;">
-        <path fill="currentColor" d="M467.8 61.7L399.1 18.4c-3.5-1.8-7.6-1.8-11 0l-85 43.5-85-43.5c-3.5-1.8-7.6-1.8-11 0L44.2 61.7c-9.2 4.7-13.4 15.8-8.7 25l43.5 85-43.5 85c-4.7 9.2-.5 20.3 8.7 25l68.7 35.3v55.5c0 8.3 6.7 15 15 15h255c8.3 0 15-6.7 15-15v-55.5l68.7-35.3c9.2-4.7 13.4-15.8 8.7-25l-43.5-85 43.5-85c4.7-9.2.5-20.3-8.7-25z"></path>
-      </svg>
-    </a>
-    <a href="https://www.subito.it/utente/16474204" target="_blank" title="Subito" aria-label="Subito">
-      <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="shopping-bag" class="svg-inline--fa fa-shopping-bag fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" style="width: 26px; color:#22d3ee;">
-        <path fill="currentColor" d="M160 96v32h-48v-32c0-26.51 21.49-48 48-48s48 21.49 48 48zm192 32v-32c0-26.51-21.49-48-48-48s-48 21.49-48 48v32h-48v-32c0-26.51-21.49-48-48-48s-48 21.49-48 48v32H64v320c0 26.51 21.49 48 48 48h224c26.51 0 48-21.49 48-48V128h-48z"></path>
-      </svg>
-    </a>
+    <a href="https://www.tiktok.com/@stranostore" target="_blank"><i class="fab fa-tiktok"></i></a>
+    <a href="https://www.vinted.it/member/156457000-stranostore" target="_blank"><i class="fas fa-tshirt"></i></a>
+    <a href="https://www.subito.it/utente/16474204" target="_blank"><i class="fas fa-shopping-bag"></i></a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-text">
+    <h1>Strano <span>Store</span></h1>
+    <p>
+      Abbigliamento selezionato, oggetti unici e tecnologia. Acquista in sicurezza su Vinted e Subito.
+      Spedizione tracciata e articoli verificati.
+    </p>
+
+    <div class="hero-buttons">
+      <a class="hero-btn vinted" href="https://www.vinted.it/member/156457000-stranostore" target="_blank">
+        <i class="fas fa-tshirt"></i> Vai a Vinted
+      </a>
+      <a class="hero-btn subito" href="https://www.subito.it/utente/16474204" target="_blank">
+        <i class="fas fa-shopping-bag"></i> Vai a Subito
+      </a>
+    </div>
   </div>
 
-  <h1>Strano <span>Store</span></h1>
-  <p class="description">Abbigliamento selezionato, oggetti unici e tecnologia. Acquista in sicurezza su Vinted e Subito. Spedizione tracciata e articoli verificati.</p>
-
-  <div>
-    <a class="button vinted" href="https://www.vinted.it/member/156457000-stranostore" target="_blank" rel="noopener noreferrer">
-      <svg xmlns="http://www.w3.org/2000/svg" style="width:18px;fill:#020617;" viewBox="0 0 640 512"><path d="M528 448a32 32 0 1 0 32 32 32 32 0 0 0-32-32zm0-192a32 32 0 1 0 32 32 32 32 0 0 0-32-32zm-96-96a32 32 0 1 0 32 32 32 32 0 0 0-32-32zm-64 0a32 32 0 1 0 32 32 32 32 0 0 0-32-32zm-96 0a32 32 0 1 0 32 32 32 32 0 0 0-32-32z"/></svg> Vai a Vinted
-    </a>
-    <a class="button subito" href="https://www.subito.it/utente/16474204" target="_blank" rel="noopener noreferrer">
-      <svg xmlns="http://www.w3.org/2000/svg" style="width:18px;fill:#020617;" viewBox="0 0 448 512"><path d="M160 96v32h-48v-32c0-26.51 21.49-48 48-48s48 21.49 48 48zm192 32v-32c0-26.51-21.49-48-48-48s-48 21.49-48 48v32h-48v-32c0-26.51-21.49-48-48-48s-48 21.49-48 48v32H64v320c0 26.51 21.49 48 48 48h224c26.51 0 48-21.49 48-48V128h-48z"/></svg> Vai a Subito
-    </a>
+  <div class="hero-card">
+    <h3>Perché Strano Store</h3>
+    <p>Una vetrina curata con articoli verificati.</p>
+    <ul>
+      <li><i class="fas fa-check"></i> Prodotti selezionati</li>
+      <li><i class="fas fa-check"></i> Acquisto protetto</li>
+      <li><i class="fas fa-check"></i> Spedizione tracciata</li>
+      <li><i class="fas fa-check"></i> Niente e-commerce, zero rischi</li>
+    </ul>
   </div>
+</section>
 
-  <h3>Perché Strano Store</h3>
-  <ul class="features">
-    <li><i>✓</i> Prodotti selezionati</li>
-    <li><i>✓</i> Acquisto protetto</li>
-    <li><i>✓</i> Spedizione tracciata</li>
-    <li><i>✓</i> Niente e-commerce, zero rischi</li>
-  </ul>
+<section class="store" id="store"></section>
 
-  <div id="store"></div>
+<footer>© 2025 Strano Store — Premium Resale</footer>
 
-  <footer>
-    © 2025 Strano Store — Premium Resale
-  </footer>
+<!-- BOTTONE ASSISTENZA -->
+<button id="chat-button" aria-label="Apri assistenza">
+  <i class="fab fa-whatsapp"></i>
+</button>
 
-  <!-- Assistenza chat button -->
-  <div id="chat-assist-btn" aria-label="Apri assistenza" role="button" tabindex="0" title="Assistenza Strano Store">
-    <!-- WhatsApp-like SVG icon -->
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path fill="white" d="M380.9 97.1C339-4.7 245.4-31.1 174.8 7.6c-70.6 38.8-98.5 129.3-69.3 210.7L64 448l236.9-41.1c81.5 29.2 171.8 1.4 210.7-69.3 38.7-70.6 12.3-164.1-89.7-206.5zm-30.5 151.9c-4.2 11.2-24.9 21.4-34.2 22.8-8.9 1.3-15.5.7-21.7-6.3-10.6-11.5-18.1-23.6-25.5-36.9-5.4-9.5-10.1-9.9-18.8-7-5.4 1.7-11 4.4-16.1 6.4-5.8 2.3-11.2 3.1-17.2-.7-12.3-7.2-20.3-17-25.1-29.9-2-5.9-3.4-12.3-3-18.5.1-3.5 2-5.3 5-6.5a252 252 0 0 1 31-11.3c7.6-2.6 15.4-4.5 23.2-6.6 4.5-1.2 7.1-.7 9.7 3.7 8.3 15.7 19 27.5 33.7 36.5 7.6 5 15.9 8.1 25.4 7.5 4-.3 9.6-1.2 12.6-4.1a9.7 9.7 0 0 0 2.6-8.5c-1.7-11-7.8-19.9-15.4-27.7-8.3-8.5-18.1-15.4-29.3-20.1-7.5-3.3-15.1-5.6-23.1-7.3-6.3-1.3-12.7-2.6-19-3.7-7.2-1.4-13.4-1.6-20.4 2.4a28.6 28.6 0 0 0-14.8 19.8c-1.1 5.2-1 10.6-1 15.9.1 22.7 6.5 42.1 23.5 58.5 15.8 15.1 35.6 23.3 58.2 24.8 3.9.3 7.7.1 11.4-.7a25.6 25.6 0 0 0 10.6-5.5c1.1-1 2.5-2.2 3.1-3.7 1.5-3.9 3-7.9 4.4-11.8a4.3 4.3 0 0 0-.6-4.1z"/></svg>
-  </div>
+<!-- FORM ASSISTENZA -->
+<div id="chat-form-container" aria-hidden="true">
+  <h4>Assistenza Strano Store</h4>
+  <form id="chat-form">
+    <label for="name">Nome</label>
+    <input type="text" id="name" name="user_name" required />
+    <label for="email">Email</label>
+    <input type="email" id="email" name="user_email" required />
+    <label for="message">Messaggio</label>
+    <textarea id="message" name="message" required></textarea>
+    <button type="submit">Invia messaggio</button>
+  </form>
+  <div id="form-message" role="alert" aria-live="polite"></div>
+</div>
 
-  <!-- Popup chat -->
-  <div id="chat-popup" role="dialog" aria-modal="true" aria-labelledby="chat-popup-title">
-    <header>
-      Assistenza Strano Store
-      <button class="close-btn" aria-label="Chiudi assistenza">&times;</button>
-    </header>
-    <form id="chat-form">
-      <label for="name">Nome</label>
-      <input type="text" id="name" name="name" required placeholder="Il tuo nome" />
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+  (function () {
+    emailjs.init('HCRQeVuO9W2k5c9HH'); // Inserisci qui la tua Public Key
+  })();
 
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" required placeholder="La tua email" />
+  const chatButton = document.getElementById('chat-button');
+  const chatFormContainer = document.getElementById('chat-form-container');
+  const chatForm = document.getElementById('chat-form');
+  const formMessage = document.getElementById('form-message');
 
-      <label for="message">Messaggio</label>
-      <textarea id="message" name="message" required placeholder="Scrivi qui il tuo messaggio..."></textarea>
+  chatButton.addEventListener('click', () => {
+    const isHidden = chatFormContainer.style.display === 'flex';
+    chatFormContainer.style.display = isHidden ? 'none' : 'flex';
+    chatFormContainer.setAttribute('aria-hidden', isHidden);
+  });
 
-      <button type="submit">Invia</button>
-    </form>
-  </div>
+  chatForm.addEventListener('submit', function (e) {
+    e.preventDefault();
 
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-  <script>
-    (function(){
-      emailjs.init("HCRQeVuO9W2k5c9HH"); // tua public key EmailJS
-    })();
+    formMessage.textContent = '';
+    const submitBtn = chatForm.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Invio in corso...';
 
-    // Toggle chat popup
-    const chatBtn = document.getElementById('chat-assist-btn');
-    const chatPopup = document.getElementById('chat-popup');
-    const closeBtn = chatPopup.querySelector('.close-btn');
-    chatBtn.addEventListener('click', () => {
-      chatPopup.style.display = (chatPopup.style.display === 'flex') ? 'none' : 'flex';
-      if(chatPopup.style.display === 'flex') {
-        document.getElementById('name').focus();
-      }
-    });
-    closeBtn.addEventListener('click', () => {
-      chatPopup.style.display = 'none';
-    });
-    // Submit form
-    const form = document.getElementById('chat-form');
-    form.addEventListener('submit', function(e){
-      e.preventDefault();
-      const name = form.name.value.trim();
-      const email = form.email.value.trim();
-      const message = form.message.value.trim();
-      if(!name || !email || !message){
-        alert('Compila tutti i campi per favore.');
-        return;
-      }
-      // Disabilita bottone
-      form.querySelector('button').disabled = true;
-      form.querySelector('button').textContent = 'Invio...';
+    // Invia mail con EmailJS
+    emailjs
+      .send('stranostore', 'template_abc123', {
+        user_name: chatForm.user_name.value,
+        user_email: chatForm.user_email.value,
+        message: chatForm.message.value,
+      })
+      .then(
+        () => {
+          formMessage.style.color = '#22d3ee';
+          formMessage.textContent = 'Messaggio inviato con successo. Ti risponderemo al più presto!';
+          chatForm.reset();
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Invia messaggio';
+        },
+        (error) => {
+          formMessage.style.color = '#f97316';
+          formMessage.textContent = 'Errore nell\'invio. Riprova più tardi.';
+          console.error('EmailJS error:', error);
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Invia messaggio';
+        }
+      );
+  });
 
-      // Parametri emailjs
-      const templateParams = {
-        from_name: name,
-        reply_to: email,
-        message: message
-      };
-      emailjs.send('stranostore', 'template_03uhkzf', templateParams)
-        .then(() => {
-          alert('Messaggio inviato con successo! Ti risponderemo presto.');
-          form.reset();
-          chatPopup.style.display = 'none';
-          form.querySelector('button').disabled = false;
-          form.querySelector('button').textContent = 'Invia';
-        }, (err) => {
-          alert('Errore durante l\'invio. Riprova più tardi.');
-          form.querySelector('button').disabled = false;
-          form.querySelector('button').textContent = 'Invia';
-          console.error('EmailJS error:', err);
-        });
-    });
+  // Popola i prodotti
+  const prodotti = [
+    { img: 'iphone.png', nome: 'iPhone 15 Pro', prezzo: '599' },
+    { img: 'camicia1.png', nome: 'Camicia Uomo Elegante', prezzo: '19.99' },
+    { img: 'camicia2.png', nome: 'Camicia Donna Casual', prezzo: '19.99' },
+    { img: 'giubotto.png', nome: 'Giubotto Invernale', prezzo: '19.99' },
+    { img: 'moncler.webp', nome: 'Giacca Moncler', prezzo: '29.99' },
+    { img: 'pantaloni.png', nome: 'Pantaloni Jeans Uomo', prezzo: '19.99' },
+    { img: 'stivali.png', nome: 'Stivali Donna', prezzo: '39.99' },
+  ];
 
-    // Popola prodotti dinamicamente
-    const prodotti = [
-      {
-        badge: 'Nuovo',
-        img: 'iphone.png',
-        title: 'iPhone 15 Pro',
-        price: '1199€',
-        vinted: 'https://www.vinted.it/iphone-15-pro',
-        subito: 'https://www.subito.it/iphone-15-pro'
-      },
-      {
-        badge: 'Nuovo',
-        img: 'maglia.png',
-        title: 'Maglia esclusiva Strano Store',
-        price: '35€',
-        vinted: 'https://www.vinted.it/maglia-stranostore',
-        subito: 'https://www.subito.it/maglia-stranostore'
-      },
-      {
-        badge: 'Nuovo',
-        img: 'tshirt.png',
-        title: 'T-Shirt originale Strano Store',
-        price: '25€',
-        vinted: 'https://www.vinted.it/tshirt-stranostore',
-        subito: 'https://www.subito.it/tshirt-stranostore'
-      }
-    ];
-
-    const storeDiv = document.getElementById('store');
-    prodotti.forEach(p => {
-      const card = document.createElement('div');
-      card.classList.add('card');
-      card.innerHTML = `
-        <div class="badge">${p.badge}</div>
-        <img src="${p.img}" alt="${p.title}" />
+  const store = document.getElementById('store');
+  prodotti.forEach((p) => {
+    store.innerHTML += `
+      <div class="card">
+        <img src="${p.img}" alt="${p.nome}" />
         <div class="card-content">
-          <h3>${p.title}</h3>
-          <div class="price">${p.price}</div>
+          <span class="badge">Disponibile</span>
+          <h3>${p.nome}</h3>
+          <div class="price">€${p.prezzo}</div>
           <div class="buttons">
-            <a class="btn vinted" href="${p.vinted}" target="_blank" rel="noopener noreferrer">Vinted</a>
-            <a class="btn subito" href="${p.subito}" target="_blank" rel="noopener noreferrer">Subito</a>
+            <a class="btn vinted" href="https://www.vinted.it/member/156457000-stranostore" target="_blank">Vinted</a>
+            <a class="btn subito" href="https://www.subito.it/utente/16474204" target="_blank">Subito</a>
           </div>
         </div>
-      `;
-      storeDiv.appendChild(card);
-    });
-  </script>
+      </div>
+    `;
+  });
+</script>
 
 </body>
 </html>
