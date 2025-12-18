@@ -18,35 +18,62 @@ header img{width:110px}
 header .social a{margin-left:15px;font-size:24px;color:var(--primary);transition:.2s}
 header .social a:hover{transform:translateY(-3px); color:#fff}
 
-/* HERO SECTION */
+/* HERO */
 .hero{max-width:1200px;margin:auto;padding:60px 20px;display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
 .hero-text h1{font-size:54px;font-weight:800;line-height:1;margin-bottom:20px}
 .hero-text h1 span{color:var(--primary)}
 .hero-text p{font-size:1.1rem;color:#cbd5f5;margin-bottom:30px;max-width:500px}
-
-/* SEARCH & CATEGORIES */
-.search-container { max-width: 1200px; margin: 20px auto; padding: 0 20px; }
-.search-bar { width: 100%; padding: 15px 25px; border-radius: 50px; border: 1px solid rgba(34, 211, 238, 0.3); background: var(--card-bg); color: #fff; font-size: 1rem; outline: none; margin-bottom: 20px; }
 .categories { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
 .cat-btn { padding: 8px 20px; border-radius: 20px; border: 1px solid var(--primary); background: transparent; color: var(--primary); cursor: pointer; font-weight: 600; transition: 0.3s; }
-.cat-btn.active, .cat-btn:hover { background: var(--primary); color: var(--bg); }
+.cat-btn.active, .cat-btn:hover { background: var(--primary); color: var(--bg); box-shadow: 0 0 20px var(--primary); }
+
+/* SEARCH */
+.search-container { max-width: 1200px; margin: 20px auto; padding: 0 20px; }
+.search-bar { width: 100%; padding: 15px 25px; border-radius: 50px; border: 1px solid rgba(34, 211, 238, 0.3); background: var(--card-bg); color: #fff; font-size: 1rem; outline:none; margin-bottom: 20px; }
 
 /* STORE GRID */
 .store{max-width:1200px;margin:auto;padding:40px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px}
-.card{background:var(--card-bg);border-radius:20px;overflow:hidden;transition:.3s;border:1px solid rgba(255,255,255,0.05)}
-.card img{width:100%;height:260px;object-fit:cover}
+.card{background:var(--card-bg);border-radius:20px;overflow:hidden;transition:.4s; border:1px solid rgba(255,255,255,0.05);}
+.card img{width:100%;height:260px;object-fit:cover;transition:0.3s;}
 .card-content{padding:20px}
 .price{font-size:22px;font-weight:800;color:var(--primary);margin:10px 0}
 .btn-group {display:flex;gap:10px}
-.btn-s {flex:1;padding:10px;border-radius:10px;text-align:center;text-decoration:none;font-weight:700;font-size:0.9rem;transition:0.2s}
-.btn-v {background:var(--vinted); color:#000}
-.btn-sub {background:var(--subito); color:#000}
+.btn-s {flex:1;padding:10px;border-radius:10px;text-align:center;text-decoration:none;font-weight:700;font-size:0.9rem;transition:0.3s}
+.btn-v {background:var(--vinted); color:#000; box-shadow: 0 0 5px var(--vinted); }
+.btn-sub {background:var(--subito); color:#000; box-shadow: 0 0 5px var(--subito); }
+.btn-v:hover { box-shadow: 0 0 15px var(--vinted); transform: translateY(-2px);}
+.btn-sub:hover { box-shadow: 0 0 15px var(--subito); transform: translateY(-2px);}
 
-/* DESCRIPTION TOGGLE */
-.details-desc summary{cursor:pointer; font-weight:600; color:var(--primary); margin-bottom:10px; list-style:none; outline:none;}
-.details-desc p{font-size:0.9rem; margin:0; padding:5px 0;}
+.details-toggle {position:relative;overflow:hidden;display:inline-block;background:none;border:none;color:var(--primary);cursor:pointer;font-weight:700;margin-top:10px;font-size:0.9rem;text-align:left;padding:5px 10px;border-radius:5px;transition:0.3s; box-shadow:0 0 5px var(--primary);}
+.details-toggle:hover { box-shadow:0 0 15px var(--primary); transform: translateY(-2px); }
 
-/* REVIEWS SECTION */
+/* RIPPLE EFFECT */
+.details-toggle span.ripple {position:absolute;border-radius:50%;transform:scale(0);animation:ripple 0.6s linear;background: rgba(34,211,238,0.4);}
+@keyframes ripple {to {transform: scale(4); opacity:0;}}
+
+/* ANIMAZIONE DESCRIZIONE */
+.card p { 
+    max-height: 0; 
+    overflow: hidden; 
+    transition: max-height 0.5s ease, opacity 0.5s ease; 
+    opacity: 0;
+    margin-top: 10px;
+}
+.card p.show { 
+    max-height: 500px; 
+    opacity: 1;
+}
+
+/* HOVER EFFECT */
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(34, 211, 238, 0.4);
+}
+.card:hover img {
+    transform: scale(1.05);
+}
+
+/* REVIEWS */
 .reviews-section {max-width:1000px;margin:60px auto;padding:40px 20px; background: rgba(255,255,255,0.02); border-radius: 30px; text-align: center;}
 .stars-top { color: var(--gold); font-size: 2.5rem; margin-bottom: 10px; filter: drop-shadow(0 0 10px rgba(250, 204, 21, 0.3)); }
 .reviews-grid-main {display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-bottom: 30px;}
@@ -57,18 +84,14 @@ header .social a:hover{transform:translateY(-3px); color:#fff}
 .review-item p { font-style: italic; font-size: 0.9rem; margin-bottom: 5px; }
 .review-item span { font-size: 0.8rem; font-weight: 700; color: var(--primary); }
 
-/* ASSISTENZA MODAL */
-#modal-assistenza {position:fixed;bottom:20px;right:20px;background:#0f172a;color:#e5e7eb;width:320px;border-radius:16px;box-shadow:0 10px 40px rgba(0,0,0,0.5);display:none;flex-direction:column;overflow:hidden;z-index:10000;border:1px solid rgba(34, 211, 238, 0.2);}
+/* MODAL ASSISTENZA */
+#modal-assistenza {position:fixed;bottom:90px;right:20px;background:#0f172a;color:#e5e7eb;width:320px;border-radius:16px;box-shadow:0 10px 40px rgba(0,0,0,0.5);display:none;flex-direction:column;overflow:hidden;z-index:10000;border:1px solid rgba(34, 211, 238, 0.2)}
 #modal-assistenza header{background:#020617;padding:15px 16px;font-weight:700;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--primary)}
 #modal-assistenza .close{cursor:pointer;color:var(--primary);font-size:22px}
 #modal-assistenza form{display:flex;flex-direction:column;padding:20px;gap:12px}
 #modal-assistenza input,#modal-assistenza textarea{padding:12px;border-radius:8px;border:1px solid #1e293b;background:#1e293b;color:#e5e7eb;font-size:14px;outline:none}
-#modal-assistenza button{background:var(--primary);color:#020617;padding:12px;font-weight:800;border:none;border-radius:8px;cursor:pointer}
-
-/* ASSISTENZA BUTTON */
-#assistenza{position:fixed;bottom:20px;right:20px;width:60px;height:60px;background:#22d3ee;border-radius:50%;display:flex;justify-content:center;align-items:center;box-shadow:0 8px 20px rgba(0,0,0,0.3);cursor:pointer;animation: float 2s infinite ease-in-out;z-index:9999}
-#assistenza i{color:white;font-size:28px;}
-@keyframes float{0%,100%{transform:translateY(0px)}50%{transform:translateY(-8px)}}
+#modal-assistenza button{background:var(--primary);color:#020617;padding:12px;font-weight:800;border:none;border-radius:8px;cursor:pointer;box-shadow:0 0 10px var(--primary);transition:0.3s}
+#modal-assistenza button:hover{box-shadow:0 0 25px var(--primary); transform: translateY(-2px);}
 
 footer{text-align:center;padding:60px;color:#64748b}
 </style>
@@ -87,7 +110,7 @@ footer{text-align:center;padding:60px;color:#64748b}
 <section class="hero">
     <div class="hero-text">
         <h1>Strano<span>Store</span></h1>
-        <p>Selezione Premium di oggetti unici, tecnologia e abbigliamento. Qualità verificata e affidabilità garantita.</p>
+        <p>Selezione Premium di oggetti unici, tecnologia e abbigliamento.</p>
         <div class="categories">
             <button class="cat-btn active" onclick="filterCat('Tutti')">Tutti</button>
             <button class="cat-btn" onclick="filterCat('Tecnologia')">Tecnologia</button>
@@ -105,7 +128,6 @@ footer{text-align:center;padding:60px;color:#64748b}
 <section class="reviews-section">
     <div class="stars-top">★★★★★</div>
     <h2 style="font-size: 2.2rem; margin-bottom: 20px;">Dicono di noi</h2>
-    
     <div class="reviews-grid-main">
         <div style="text-align:center">
             <strong style="font-size:2rem; color:#fff">4.7/5</strong>
@@ -116,7 +138,6 @@ footer{text-align:center;padding:60px;color:#64748b}
             <p style="color:var(--subito); font-weight:700">10 Feedback Subito</p>
         </div>
     </div>
-
     <details class="dropdown-reviews">
         <summary>Leggi tutte le recensioni</summary>
         <div class="all-reviews-list">
@@ -125,24 +146,13 @@ footer{text-align:center;padding:60px;color:#64748b}
             <div class="review-item"><p>"Gentilissimo e veloce a spedire, consiglio vivamente"</p><span>- Eduard (Subito)</span></div>
             <div class="review-item"><p>"Persona super disponibile e paziente, consigliatissimo."</p><span>- Mattia (Subito)</span></div>
             <div class="review-item"><p>"Venditore serio e affidabile. Prodotto perfetto."</p><span>- Utente Subito</span></div>
-            
             <div class="review-item"><p>"Tutto perfetto! Spedizione veloce e prodotto conforme alla descrizione!"</p><span>- silviaviti2 (Vinted)</span></div>
-            <div class="review-item"><p>"Articolo come nuovo e spedizione veloce."</p><span>- andreaboscoli1 (Vinted)</span></div>
-            <div class="review-item"><p>"Articolo corrispondente alla foto... Merci pour tout 👍"</p><span>- susana301103 (Vinted)</span></div>
-            <div class="review-item"><p>"Spedizione rapida, venditore molto cordiale!"</p><span>- michele_r (Vinted)</span></div>
-            <div class="review-item"><p>"Oggetto bellissimo, esattamente come in foto."</p><span>- giulia_vnt (Vinted)</span></div>
-            <div class="review-item"><p>"Ottimo imballaggio e comunicazione eccellente."</p><span>- luca.88 (Vinted)</span></div>
-            <div class="review-item"><p>"Molto professionale, consigliato A++"</p><span>- marco_tech (Vinted)</span></div>
-            <div class="review-item"><p>"Tutto liscio, ricomprerò sicuramente."</p><span>- sofia_s (Vinted)</span></div>
-            <div class="review-item"><p>"Preciso e veloce nella spedizione."</p><span>- francesco_92 (Vinted)</span></div>
-            <div class="review-item"><p>"Persona squisita, prodotto top."</p><span>- elena_p (Vinted)</span></div>
         </div>
     </details>
 </section>
 
 <footer><p>© 2025 Strano Store — Premium Resale</p></footer>
 
-<div id="assistenza"><i class="fas fa-envelope"></i></div>
 <div id="modal-assistenza">
     <header><span>Contattaci</span><span class="close">&times;</span></header>
     <form id="form-assistenza">
@@ -163,13 +173,10 @@ const prodotti = [
     {n:'Jeans Roy Roger’s', p:'19.99', c:'Abbigliamento', img:'pantaloni.png', v:'Jeans uomo Roy Roger’s, taglia M, colore blu marino, ottime condizioni.', linkV:'https://www.vinted.it/items/7682389652-jeans-roy-rogers', linkS:''},
     {n:'Polo Moncler', p:'29.99', c:'Abbigliamento', img:'moncler.webp', v:'Polo Moncler bianca, taglia M, in ottimo stato.', linkV:'https://www.vinted.it/items/7019057147-moncler-polo-taglia-m', linkS:''},
     {n:'Stivali donna Unisa', p:'39.99', c:'Abbigliamento', img:'stivali.png', v:'Stivali neri Unisa, taglia 38, come nuovi.', linkV:'https://www.vinted.it/items/7591507417-stivali-donna-unisa-38', linkS:''},
-    {n:'Camicia Fred Perry', p:'19.99', c:'Abbigliamento', img:'camicia2.png', v:'Camicia Fred Perry, taglia S, colore azzurro, nuova senza cartellino.', linkV:'https://www.vinted.it/items/6274311751-camicia-fred-perry', linkS:''},
-    {n:'Camicia Polo Ralph Lauren', p:'19.99', c:'Abbigliamento', img:'camicia1.png', v:'Camicia Polo Ralph Lauren, taglia XS, colore azzurro, nuova senza cartellino.', linkV:'https://www.vinted.it/items/6274339172-camicia-polo-ralph-lauren', linkS:''},
+    {n:'Camicia Fred Perry', p:'19.99', c:'Abbigliamento', img:'camicia1.png', v:'Camicia Fred Perry, taglia S, colore azzurro, nuova senza cartellino.', linkV:'https://www.vinted.it/items/6274311751-camicia-fred-perry', linkS:''},
+    {n:'Camicia Polo Ralph Lauren', p:'19.99', c:'Abbigliamento', img:'camicia2.png', v:'Camicia Polo Ralph Lauren, taglia XS, colore azzurro, nuova senza cartellino.', linkV:'https://www.vinted.it/items/6274339172-camicia-polo-ralph-lauren', linkS:''},
     {n:'Giubbotto di pelle S', p:'19.99', c:'Abbigliamento', img:'giubotto.png', v:'Giubbotto di pelle S, ottime condizioni, colore marrone.', linkV:'https://www.vinted.it/items/4461806005-giubbotto-di-pelle-s', linkS:''}
 ];
-
-
-
 
 function renderStore(filter = 'Tutti', query = '') {
     const grid = document.getElementById('storeGrid');
@@ -180,47 +187,66 @@ function renderStore(filter = 'Tutti', query = '') {
                 <div class="card">
                     <img src="${item.img}" alt="${item.n}" onerror="this.src='https://via.placeholder.com/300x400?text=Strano+Store'">
                     <div class="card-content">
+                        <span style="font-size:0.7rem; color:var(--primary); font-weight:700;">${item.c.toUpperCase()}</span>
                         <h3>${item.n}</h3>
                         <div class="price">€${item.p}</div>
-                        <details class="details-desc">
-                            <summary>Mostra descrizione</summary>
-                            <p>${item.v}</p>
-                        </details>
-                        <div class="btn-group">
+                        <button class="details-toggle">Mostra descrizione</button>
+                        <p>${item.v}</p>
+                        <div class="btn-group" style="margin-top:10px">
                             ${item.linkV ? `<a href="${item.linkV}" target="_blank" class="btn-s btn-v">Vinted</a>` : ''}
                             ${item.linkS ? `<a href="${item.linkS}" target="_blank" class="btn-s btn-sub">Subito</a>` : ''}
                         </div>
                     </div>
-                </div>`;
+                </div>
+            `;
+        }
+    });
+    addToggleRipple();
+}
+
+function addToggleRipple() {
+    document.querySelectorAll('.details-toggle').forEach(btn=>{
+        btn.onclick=function(e){
+            const p = this.nextElementSibling;
+            p.classList.toggle('show');
+            const circle = document.createElement('span');
+            circle.classList.add('ripple');
+            const rect = this.getBoundingClientRect();
+            circle.style.left = `${e.clientX - rect.left}px`;
+            circle.style.top = `${e.clientY - rect.top}px`;
+            this.appendChild(circle);
+            setTimeout(()=>circle.remove(), 600);
         }
     });
 }
 
-function filterCat(cat){document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active'));event.target.classList.add('active');renderStore(cat, document.getElementById('searchInput').value)}
-function search(){renderStore(document.querySelector('.cat-btn.active').textContent, document.getElementById('searchInput').value)}
-
-document.getElementById('assistenza').onclick=()=>document.getElementById('modal-assistenza').style.display='flex';
-document.querySelector('#modal-assistenza .close').onclick=()=>document.getElementById('modal-assistenza').style.display='none';
-document.getElementById('form-assistenza').onsubmit=function(e){
-    e.preventDefault();
-    const btn=this.querySelector('button');
-    btn.innerText='Invio...';
-    emailjs.send('stranostore','template_kwkzv37',{
-        name:this.name.value,
-        email:this.email.value,
-        message:this.message.value
-    }).then(()=>{
-        btn.innerText='Invia Messaggio';
-        alert('Messaggio inviato!');
-        this.reset();
-    },(err)=>{
-        btn.innerText='Invia Messaggio';
-        alert('Errore invio: '+JSON.stringify(err));
-    });
+function filterCat(cat) {
+    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
+    renderStore(cat, document.getElementById('searchInput').value);
 }
 
-// Render iniziale
+function search() {
+    const query = document.getElementById('searchInput').value;
+    const activeCat = document.querySelector('.cat-btn.active').textContent;
+    renderStore(activeCat, query);
+}
+
 renderStore();
+
+// MODAL ASSISTENZA
+const modal = document.getElementById('modal-assistenza');
+document.body.insertAdjacentHTML('beforeend','<button id="open-assistenza" style="position:fixed;bottom:20px;right:20px;background:var(--primary);color:#020617;padding:15px;border:none;border-radius:50%;font-size:24px;cursor:pointer;z-index:1000;box-shadow:0 0 10px var(--primary);transition:0.3s;">💬</button>');
+document.getElementById('open-assistenza').onmouseover = function(){this.style.boxShadow='0 0 20px var(--primary)';};
+document.getElementById('open-assistenza').onmouseout = function(){this.style.boxShadow='0 0 10px var(--primary)';};
+document.getElementById('open-assistenza').onclick = () => modal.style.display='flex';
+document.querySelector('#modal-assistenza .close').onclick = () => modal.style.display='none';
+document.getElementById('form-assistenza').addEventListener('submit', function(e){
+    e.preventDefault();
+    emailjs.sendForm('service_5mjw7ek','template_7lzvq2g',this)
+        .then(()=>{alert('Messaggio inviato con successo!'); this.reset(); modal.style.display='none'})
+        .catch(()=>alert('Errore durante l\'invio, riprova.'));
+});
 </script>
 </body>
 </html>
