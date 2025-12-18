@@ -13,7 +13,7 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Inter',sans-serif;background:linear-gradient(180deg, var(--bg), #0f172a);color:#e5e7eb;line-height:1.6}
 
-/* HEADER & NAVBAR */
+/* HEADER */
 header{display:flex;justify-content:space-between;align-items:center;padding:20px 30px; border-bottom: 1px solid rgba(255,255,255,0.05)}
 header img{width:110px}
 header .social a{margin-left:15px;font-size:24px;color:var(--primary);transition:.2s}
@@ -49,7 +49,7 @@ header .social a:hover{transform:translateY(-3px); color:#fff}
 .ship-item { text-align: center; background: rgba(255,255,255,0.02); padding: 20px; border-radius: 15px; }
 .ship-item i { font-size: 2rem; color: var(--primary); margin-bottom: 10px; }
 
-/* REVIEWS (Dati Reali) */
+/* REVIEWS */
 .reviews-section {max-width:1200px;margin:60px auto;padding:20px}
 .review-card {background:rgba(255,255,255,0.03);padding:25px;border-radius:15px;border-left:4px solid var(--primary);margin-bottom:20px}
 
@@ -59,12 +59,19 @@ details { background: var(--card-bg); margin-bottom: 10px; border-radius: 10px; 
 summary { font-weight: 700; list-style: none; display: flex; justify-content: space-between; align-items: center; }
 summary::after { content: '+'; color: var(--primary); font-size: 1.5rem; }
 
-/* FOOTER & WHATSAPP */
-footer{text-align:center;padding:60px;background: #01040a; color:#64748b}
-#assistenza{position:fixed;bottom:25px;right:25px;width:65px;height:65px;background:#25D366;border-radius:50%;display:flex;justify-content:center;align-items:center;box-shadow:0 10px 25px rgba(0,0,0,0.3);cursor:pointer;z-index:9999;transition:0.3s}
-#assistenza:hover {transform: scale(1.1);}
+/* ASSISTENZA MODAL (RIPRISTINATA) */
+#assistenza{position:fixed;bottom:20px;right:20px;width:60px;height:60px;background:#25D366;border-radius:50%;display:flex;justify-content:center;align-items:center;box-shadow:0 8px 20px rgba(0,0,0,0.3);cursor:pointer;animation: float 2s infinite ease-in-out;z-index:9999}
+#assistenza i{color:white;font-size:28px;}
+#modal-assistenza {position:fixed;bottom:90px;right:20px;background:#0f172a;color:#e5e7eb;width:320px;border-radius:16px;box-shadow:0 10px 40px rgba(0,0,0,0.5);display:none;flex-direction:column;overflow:hidden;z-index:10000;border:1px solid rgba(34, 211, 238, 0.2);animation: slideUp 0.3s ease-out}
+@keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes float{ 0%,100%{transform:translateY(0px)} 50%{transform:translateY(-8px)} }
+#modal-assistenza header{background:#020617;padding:15px 16px;font-weight:700;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--primary)}
+#modal-assistenza .close{cursor:pointer;color:var(--primary);font-size:22px}
+#modal-assistenza form{display:flex;flex-direction:column;padding:20px;gap:12px}
+#modal-assistenza input,#modal-assistenza textarea{padding:12px;border-radius:8px;border:1px solid #1e293b;background:#1e293b;color:#e5e7eb;font-size:14px;outline:none}
+#modal-assistenza button{background:var(--primary);color:#020617;padding:12px;font-weight:800;border:none;border-radius:8px;cursor:pointer}
 
-@media(max-width:768px){ .hero{grid-template-columns:1fr; text-align:center;} .hero-text h1{font-size:40px} }
+footer{text-align:center;padding:60px;color:#64748b}
 </style>
 </head>
 <body>
@@ -74,6 +81,7 @@ footer{text-align:center;padding:60px;background: #01040a; color:#64748b}
     <div class="social">
         <a href="https://www.tiktok.com/@stranostore" target="_blank"><i class="fab fa-tiktok"></i></a>
         <a href="https://www.vinted.it/member/156457000-stranostore" target="_blank"><i class="fas fa-tshirt"></i></a>
+        <a href="https://www.subito.it/utente/16474204" target="_blank"><i class="fas fa-shopping-bag"></i></a>
     </div>
 </header>
 
@@ -87,10 +95,11 @@ footer{text-align:center;padding:60px;background: #01040a; color:#64748b}
             <button class="cat-btn" onclick="filterCat('Abbigliamento')">Abbigliamento</button>
         </div>
     </div>
-    <div class="search-container">
-        <input type="text" id="searchInput" class="search-bar" placeholder="Cerca un prodotto (es: iPhone, Moncler...)" onkeyup="search()">
-    </div>
 </section>
+
+<div class="search-container">
+    <input type="text" id="searchInput" class="search-bar" placeholder="Cerca un prodotto (es: iPhone, Moncler...)" onkeyup="search()">
+</div>
 
 <section class="shipping-info">
     <div class="ship-item"><i class="fas fa-shipping-fast"></i><h4>Rapidi</h4><p>Spedizione in 24h</p></div>
@@ -101,36 +110,43 @@ footer{text-align:center;padding:60px;background: #01040a; color:#64748b}
 <section class="store" id="storeGrid"></section>
 
 <section class="reviews-section">
-    <h2 style="text-align:center; margin-bottom:40px">Feedback Reali</h2>
-    <div style="display:flex; justify-content:center; gap:30px; margin-bottom:40px">
+    <h2 style="text-align:center; margin-bottom:40px">Dicono di noi</h2>
+    <div style="display:flex; justify-content:center; flex-wrap:wrap; gap:30px; margin-bottom:40px">
         <div style="text-align:center"><strong style="font-size:2rem; color:var(--vinted)">4.7/5</strong><p>151 Feedback Vinted</p></div>
         <div style="text-align:center"><strong style="font-size:2rem; color:var(--subito)">4.9/5</strong><p>10 Feedback Subito</p></div>
     </div>
-    <div class="reviews-grid" id="reviewsGrid">
+    <div class="reviews-grid">
         <div class="review-card"><p>"Articolo come nuovo e spedizione veloce."</p><strong>- andreaboscoli1 (Vinted)</strong></div>
-        <div class="review-card"><p>"Persona super disponibile e paziente, consigliatissimo."</p><strong>- Mattia (Subito.it)</strong></div>
+        <div class="review-card"><p>"Gentilissimo e veloce a spedire, consiglio vivamente"</p><strong>- Eduard (Subito.it)</strong></div>
     </div>
 </section>
 
 <section class="faq-section">
     <h2 style="text-align:center; margin-bottom:30px">Domande Frequenti</h2>
     <details><summary>Come posso acquistare?</summary><p>Scegli il prodotto e clicca sul tasto Vinted o Subito. Verrai reindirizzato sulla piattaforma sicura per completare l'acquisto.</p></details>
-    <details><summary>Posso avere altre foto?</summary><p>Certamente! Clicca sull'icona WhatsApp in basso a destra e chiedici pure dettagli o foto extra.</p></details>
-    <details><summary>I prodotti sono originali?</summary><p>Assolutamente sì. Selezioniamo e verifichiamo personalmente ogni articolo prima di metterlo in vendita.</p></details>
+    <details><summary>Posso avere altre foto?</summary><p>Certamente! Inviaci un messaggio tramite il tasto assistenza in basso.</p></details>
 </section>
 
-<footer>
-    <p>© 2025 Strano Store — Premium Resale</p>
-    <p style="font-size:0.8rem; margin-top:10px">Tutti i loghi appartengono ai rispettivi proprietari.</p>
-</footer>
+<footer><p>© 2025 Strano Store — Premium Resale</p></footer>
 
-<div id="assistenza" onclick="window.open('https://wa.me/tuonumero','_blank')"><i class="fab fa-whatsapp"></i></div>
+<div id="assistenza"><i class="fab fa-whatsapp"></i></div>
+<div id="modal-assistenza">
+    <header><span>Assistenza</span><span class="close">&times;</span></header>
+    <form id="form-assistenza">
+        <input type="text" name="name" placeholder="Nome" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <textarea name="message" rows="4" placeholder="Come possiamo aiutarti?" required></textarea>
+        <button type="submit">Invia</button>
+    </form>
+</div>
 
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3.2.0/dist/email.min.js"></script>
 <script>
+(function(){emailjs.init("HCRQeVuO9W2k5c9HH");})();
+
 const prodotti = [
     {n:'iPhone 15 Pro', p:'599', c:'Tecnologia', img:'iphone.png'},
     {n:'Giacca Moncler', p:'29.99', c:'Abbigliamento', img:'moncler.webp'},
-    {n:'PC Gaming MSI', p:'750', c:'Tecnologia', img:'pc.png'},
     {n:'Camicia Elegante', p:'19.99', c:'Abbigliamento', img:'camicia1.png'},
     {n:'Stivali Donna', p:'39.99', c:'Abbigliamento', img:'stivali.png'}
 ];
@@ -168,6 +184,22 @@ function search() {
     const activeCat = document.querySelector('.cat-btn.active').innerText;
     renderStore(activeCat, q);
 }
+
+// Gestione Modal
+const assistBtn=document.getElementById('assistenza');
+const modal=document.getElementById('modal-assistenza');
+const closeBtn=document.querySelector('.close');
+assistBtn.onclick=()=>modal.style.display='flex';
+closeBtn.onclick=()=>modal.style.display='none';
+
+document.getElementById('form-assistenza').onsubmit=function(e){
+    e.preventDefault();
+    const btn=this.querySelector('button');
+    btn.innerText='Invio...';
+    emailjs.send('stranostore','template_kwkzv37',{name:this.name.value,email:this.email.value,message:this.message.value})
+    .then(()=>{alert('Inviato!');this.reset();modal.style.display='none';btn.innerText='Invia'})
+    .catch(()=>alert('Errore!'));
+};
 
 renderStore();
 </script>
