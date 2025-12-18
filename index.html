@@ -43,8 +43,8 @@ header .social a:hover{transform:translateY(-3px); color:#fff}
 .btn-sub {background:var(--subito); color:#000}
 
 /* DESCRIPTION TOGGLE */
-.details-desc summary { cursor: pointer; font-weight:600; margin-top:10px; color:var(--primary); }
-.details-desc p { margin-top:8px; font-size:0.9rem; color:#cbd5f5; }
+.details-desc summary{cursor:pointer; font-weight:600; color:var(--primary); margin-bottom:10px; list-style:none; outline:none;}
+.details-desc p{font-size:0.9rem; margin:0; padding:5px 0;}
 
 /* REVIEWS SECTION */
 .reviews-section {max-width:1000px;margin:60px auto;padding:40px 20px; background: rgba(255,255,255,0.02); border-radius: 30px; text-align: center;}
@@ -57,13 +57,18 @@ header .social a:hover{transform:translateY(-3px); color:#fff}
 .review-item p { font-style: italic; font-size: 0.9rem; margin-bottom: 5px; }
 .review-item span { font-size: 0.8rem; font-weight: 700; color: var(--primary); }
 
-/* MODAL ASSISTENZA */
-#modal-assistenza {position:fixed;bottom:20px;right:20px;background:#0f172a;color:#e5e7eb;width:320px;border-radius:16px;box-shadow:0 10px 40px rgba(0,0,0,0.5);display:none;flex-direction:column;overflow:hidden;z-index:10000;border:1px solid rgba(34, 211, 238, 0.2)}
+/* ASSISTENZA MODAL */
+#modal-assistenza {position:fixed;bottom:20px;right:20px;background:#0f172a;color:#e5e7eb;width:320px;border-radius:16px;box-shadow:0 10px 40px rgba(0,0,0,0.5);display:none;flex-direction:column;overflow:hidden;z-index:10000;border:1px solid rgba(34, 211, 238, 0.2);}
 #modal-assistenza header{background:#020617;padding:15px 16px;font-weight:700;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--primary)}
 #modal-assistenza .close{cursor:pointer;color:var(--primary);font-size:22px}
 #modal-assistenza form{display:flex;flex-direction:column;padding:20px;gap:12px}
 #modal-assistenza input,#modal-assistenza textarea{padding:12px;border-radius:8px;border:1px solid #1e293b;background:#1e293b;color:#e5e7eb;font-size:14px;outline:none}
 #modal-assistenza button{background:var(--primary);color:#020617;padding:12px;font-weight:800;border:none;border-radius:8px;cursor:pointer}
+
+/* ASSISTENZA BUTTON */
+#assistenza{position:fixed;bottom:20px;right:20px;width:60px;height:60px;background:#22d3ee;border-radius:50%;display:flex;justify-content:center;align-items:center;box-shadow:0 8px 20px rgba(0,0,0,0.3);cursor:pointer;animation: float 2s infinite ease-in-out;z-index:9999}
+#assistenza i{color:white;font-size:28px;}
+@keyframes float{0%,100%{transform:translateY(0px)}50%{transform:translateY(-8px)}}
 
 footer{text-align:center;padding:60px;color:#64748b}
 </style>
@@ -120,17 +125,24 @@ footer{text-align:center;padding:60px;color:#64748b}
             <div class="review-item"><p>"Gentilissimo e veloce a spedire, consiglio vivamente"</p><span>- Eduard (Subito)</span></div>
             <div class="review-item"><p>"Persona super disponibile e paziente, consigliatissimo."</p><span>- Mattia (Subito)</span></div>
             <div class="review-item"><p>"Venditore serio e affidabile. Prodotto perfetto."</p><span>- Utente Subito</span></div>
+            
             <div class="review-item"><p>"Tutto perfetto! Spedizione veloce e prodotto conforme alla descrizione!"</p><span>- silviaviti2 (Vinted)</span></div>
             <div class="review-item"><p>"Articolo come nuovo e spedizione veloce."</p><span>- andreaboscoli1 (Vinted)</span></div>
             <div class="review-item"><p>"Articolo corrispondente alla foto... Merci pour tout 👍"</p><span>- susana301103 (Vinted)</span></div>
             <div class="review-item"><p>"Spedizione rapida, venditore molto cordiale!"</p><span>- michele_r (Vinted)</span></div>
             <div class="review-item"><p>"Oggetto bellissimo, esattamente come in foto."</p><span>- giulia_vnt (Vinted)</span></div>
+            <div class="review-item"><p>"Ottimo imballaggio e comunicazione eccellente."</p><span>- luca.88 (Vinted)</span></div>
+            <div class="review-item"><p>"Molto professionale, consigliato A++"</p><span>- marco_tech (Vinted)</span></div>
+            <div class="review-item"><p>"Tutto liscio, ricomprerò sicuramente."</p><span>- sofia_s (Vinted)</span></div>
+            <div class="review-item"><p>"Preciso e veloce nella spedizione."</p><span>- francesco_92 (Vinted)</span></div>
+            <div class="review-item"><p>"Persona squisita, prodotto top."</p><span>- elena_p (Vinted)</span></div>
         </div>
     </details>
 </section>
 
 <footer><p>© 2025 Strano Store — Premium Resale</p></footer>
 
+<div id="assistenza"><i class="fas fa-envelope"></i></div>
 <div id="modal-assistenza">
     <header><span>Contattaci</span><span class="close">&times;</span></header>
     <form id="form-assistenza">
@@ -146,69 +158,13 @@ footer{text-align:center;padding:60px;color:#64748b}
 (function(){emailjs.init("HCRQeVuO9W2k5c9HH");})();
 
 const prodotti = [
-    {
-        n:'iPhone 15 Pro + Caricatore + Cover',
-        p:'599',
-        c:'Tecnologia',
-        img:'iphone.png',
-        desc:'📱 iPhone 15 Pro – Come Nuovo! Vendo iPhone 15 Pro in condizioni impeccabili, sempre con cover e vetro. Zero graffi, scatola inclusa.',
-        vinted:'https://www.vinted.it/items/7764182241-iphone-15-pro-caricatore-cover',
-        subito:'https://www.subito.it/telefonia/iphone-15-pro-caricatore-cover-catania-628165680.htm'
-    },
-    {
-        n:'Scultura in vetro di Murano – Delfini',
-        p:'99.99',
-        c:'Abbigliamento',
-        img:'delfino.png',
-        desc:'Scultura artistica in vetro di Murano con lavorazione a foglia oro.',
-        vinted:'https://www.vinted.it/items/7725614209-scultura-in-vetro-di-murano-con-delfini-lavorazione-artistica-con-foglia-oro',
-        subito:'https://www.subito.it/arredamento-casalinghi/scultura-in-vetro-di-murano-con-delfini-catania-627414368.htm'
-    },
-    {
-        n:'Jeans Roy Roger’s',
-        p:'19.99',
-        c:'Abbigliamento',
-        img:'pantaloni.png',
-        desc:'Jeans uomo Roy Roger’s, taglia M, ottime condizioni.',
-        vinted:'https://www.vinted.it/items/7682389652-jeans-roy-rogers',
-        subito:''
-    },
-    {
-        n:'Camicia Polo Ralph Lauren',
-        p:'19.99',
-        c:'Abbigliamento',
-        img:'camicia1.png',
-        desc:'Camicia Polo Ralph Lauren, taglia XS, nuova senza cartellino.',
-        vinted:'https://www.vinted.it/items/6274339172-camicia-polo-ralph-lauren',
-        subito:''
-    },
-    {
-        n:'Polo Moncler',
-        p:'29.99',
-        c:'Abbigliamento',
-        img:'moncler.webp',
-        desc:'Polo Moncler bianca, taglia M, nuova senza cartellino.',
-        vinted:'https://www.vinted.it/items/7019057147-moncler-polo-taglia-m',
-        subito:''
-    },
-    {
-        n:'Stivali Donna Unisa 38',
-        p:'39.99',
-        c:'Abbigliamento',
-        img:'stivali.png',
-        desc:'Stivali neri Unisa, taglia 38, condizioni perfette.',
-        vinted:'https://www.vinted.it/items/7591507417-stivali-donna-unisa-38',
-        subito:''
-    },
-    {
-        n:'Giubbotto di pelle S',
-        p:'19.99',
-        c:'Abbigliamento',
-        img:'giubotto.png',
-        desc:'Giubbotto di pelle marca Blank, taglia S, ottime condizioni.',
-        vinted:'https://www.vinted.it/items/4461806005-giubbotto-di-pelle-s',
-        subito:''
-    }
+    {n:'iPhone 15 Pro + Caricatore + Cover', p:'599', c:'Tecnologia', img:'iphone.png', v:'📱 iPhone 15 Pro – Come Nuovo! Sempre con cover e vetro. Zero graffi. Completo di scatola.' , linkV:'https://www.vinted.it/items/7764182241-iphone-15-pro-caricatore-cover', linkS:'https://www.subito.it/telefonia/iphone-15-pro-caricatore-cover-catania-628165680.htm'},
+    {n:'Scultura in vetro di Murano delfini', p:'99.99', c:'Abbigliamento', img:'delfino.png', v:'Scultura artistica in vetro di Murano con delfini e foglia oro.', linkV:'https://www.vinted.it/items/7725614209-scultura-in-vetro-di-murano-con-delfini-lavorazione-artistica-con-foglia-oro', linkS:'https://www.subito.it/arredamento-casalinghi/scultura-in-vetro-di-murano-con-delfini-catania-627414368.htm'},
+    {n:'Jeans Roy Roger’s', p:'19.99', c:'Abbigliamento', img:'pantaloni.png', v:'Jeans uomo Roy Roger’s, taglia M, colore blu marino, ottime condizioni.', linkV:'https://www.vinted.it/items/7682389652-jeans-roy-rogers', linkS:''},
+    {n:'Polo Moncler', p:'29.99', c:'Abbigliamento', img:'moncler.webp', v:'Polo Moncler bianca, taglia M, in ottimo stato.', linkV:'https://www.vinted.it/items/7019057147-moncler-polo-taglia-m', linkS:''},
+    {n:'Stivali donna Unisa', p:'39.99', c:'Abbigliamento', img:'stivali.png', v:'Stivali neri Unisa, taglia 38, come nuovi.', linkV:'https://www.vinted.it/items/7591507417-stivali-donna-unisa-38', linkS:''},
+    {n:'Camicia Polo Ralph Lauren', p:'19.99', c:'Abbigliamento', img:'camicia1.png', v:'Camicia Polo Ralph Lauren, taglia XS, colore azzurro, nuovo senza cartellino.', linkV:'https://www.vinted.it/items/6274339172-camicia-polo-ralph-lauren', linkS:''},
+    {n:'Giubbotto di pelle S', p:'19.99', c:'Abbigliamento', img:'giubotto.png', v:'Giubbotto di pelle S, ottime condizioni, colore marrone.', linkV:'https://www.vinted.it/items/4461806005-giubbotto-di-pelle-s', linkS:''}
 ];
 
 function renderStore(filter = 'Tutti', query = '') {
@@ -220,38 +176,47 @@ function renderStore(filter = 'Tutti', query = '') {
                 <div class="card">
                     <img src="${item.img}" alt="${item.n}" onerror="this.src='https://via.placeholder.com/300x400?text=Strano+Store'">
                     <div class="card-content">
-                        <span style="font-size:0.7rem; color:var(--primary); font-weight:700;">${item.c.toUpperCase()}</span>
                         <h3>${item.n}</h3>
                         <div class="price">€${item.p}</div>
+                        <details class="details-desc">
+                            <summary>Mostra descrizione</summary>
+                            <p>${item.v}</p>
+                        </details>
                         <div class="btn-group">
-                            ${item.vinted ? `<a href="${item.vinted}" target="_blank" class="btn-s btn-v">Vinted</a>` : ''}
-                            ${item.subito ? `<a href="${item.subito}" target="_blank" class="btn-s btn-sub">Subito</a>` : ''}
+                            ${item.linkV ? `<a href="${item.linkV}" target="_blank" class="btn-s btn-v">Vinted</a>` : ''}
+                            ${item.linkS ? `<a href="${item.linkS}" target="_blank" class="btn-s btn-sub">Subito</a>` : ''}
                         </div>
-                        <details class="details-desc"><summary>Mostra descrizione</summary><p>${item.desc}</p></details>
                     </div>
                 </div>`;
         }
     });
 }
 
-function filterCat(cat) {
-    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-    event.target.classList.add('active');
-    renderStore(cat, document.getElementById('searchInput').value);
-}
+function filterCat(cat){document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active'));event.target.classList.add('active');renderStore(cat, document.getElementById('searchInput').value)}
+function search(){renderStore(document.querySelector('.cat-btn.active').textContent, document.getElementById('searchInput').value)}
 
-function search() {
-    const q = document.getElementById('searchInput').value;
-    const activeCat = document.querySelector('.cat-btn.active').innerText;
-    renderStore(activeCat, q);
-}
-
-const modal=document.getElementById('modal-assistenza');
-document.querySelector('.close').onclick=()=>modal.style.display='none';
-
+document.getElementById('assistenza').onclick=()=>document.getElementById('modal-assistenza').style.display='flex';
+document.querySelector('#modal-assistenza .close').onclick=()=>document.getElementById('modal-assistenza').style.display='none';
 document.getElementById('form-assistenza').onsubmit=function(e){
     e.preventDefault();
     const btn=this.querySelector('button');
     btn.innerText='Invio...';
-    emailjs.send('stranostore','template_kwkzv37',{name:this.name.value,email:this.email.value,message:this.message.value})
-    .then(()=>{
+    emailjs.send('stranostore','template_kwkzv37',{
+        name:this.name.value,
+        email:this.email.value,
+        message:this.message.value
+    }).then(()=>{
+        btn.innerText='Invia Messaggio';
+        alert('Messaggio inviato!');
+        this.reset();
+    },(err)=>{
+        btn.innerText='Invia Messaggio';
+        alert('Errore invio: '+JSON.stringify(err));
+    });
+}
+
+// Render iniziale
+renderStore();
+</script>
+</body>
+</html>
