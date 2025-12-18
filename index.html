@@ -3,215 +3,330 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Strano Store | Premium Resale</title>
+
+<!-- SEO -->
+<meta name="description" content="Strano Store: tecnologia e abbigliamento premium selezionato. Venditore affidabile con oltre 160 recensioni positive su Vinted e Subito.">
+<meta property="og:title" content="Strano Store | Premium Resale">
+<meta property="og:description" content="Oggetti selezionati, qualità verificata, affidabilità garantita.">
+<meta property="og:image" content="logo.png">
+<meta property="og:type" content="website">
+
 <link rel="icon" href="logo.png">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <style>
-/* TEMA E COLORI */
-:root { --primary: #22d3ee; --vinted: #22c55e; --subito: #f97316; --bg: #020617; --card-bg: #0f172a; --gold: #facc15; }
+:root {
+  --primary:#22d3ee;
+  --vinted:#22c55e;
+  --subito:#f97316;
+  --bg:#020617;
+  --card:#0f172a;
+  --gold:#facc15;
+}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Inter',sans-serif;background:linear-gradient(180deg, var(--bg), #0f172a);color:#e5e7eb;line-height:1.6}
+body{
+  font-family:'Inter',sans-serif;
+  background:linear-gradient(180deg,var(--bg),#0f172a);
+  color:#e5e7eb;
+}
 
 /* HEADER */
-header{display:flex;justify-content:space-between;align-items:center;padding:20px 30px; border-bottom: 1px solid rgba(255,255,255,0.05)}
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 30px;
+  border-bottom:1px solid rgba(255,255,255,.05)
+}
 header img{width:110px}
-header .social a{margin-left:15px;font-size:24px;color:var(--primary);transition:.2s}
-header .social a:hover{transform:translateY(-3px); color:#fff}
+header .social a{
+  margin-left:15px;
+  font-size:24px;
+  color:var(--primary);
+  transition:.2s
+}
+header .social a:hover{transform:translateY(-3px);color:#fff}
 
-/* HERO SECTION */
-.hero{max-width:1200px;margin:auto;padding:60px 20px;display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
-.hero-text h1{font-size:54px;font-weight:800;line-height:1;margin-bottom:20px}
-.hero-text h1 span{color:var(--primary)}
-.hero-text p{font-size:1.1rem;color:#cbd5f5;margin-bottom:30px;max-width:500px}
+/* HERO */
+.hero{
+  max-width:1200px;
+  margin:auto;
+  padding:60px 20px;
+}
+.hero h1{
+  font-size:54px;
+  font-weight:800;
+}
+.hero h1 span{color:var(--primary)}
+.hero p{
+  margin:20px 0 30px;
+  max-width:500px;
+  color:#cbd5f5
+}
 
-/* SEARCH & CATEGORIES */
-.search-container { max-width: 1200px; margin: 20px auto; padding: 0 20px; }
-.search-bar { width: 100%; padding: 15px 25px; border-radius: 50px; border: 1px solid rgba(34, 211, 238, 0.3); background: var(--card-bg); color: #fff; font-size: 1rem; outline: none; margin-bottom: 20px; }
-.categories { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
-.cat-btn { padding: 8px 20px; border-radius: 20px; border: 1px solid var(--primary); background: transparent; color: var(--primary); cursor: pointer; font-weight: 600; transition: 0.3s; }
-.cat-btn.active, .cat-btn:hover { background: var(--primary); color: var(--bg); }
+/* CATEGORIES */
+.categories{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap
+}
+.cat-btn{
+  padding:8px 20px;
+  border-radius:20px;
+  border:1px solid var(--primary);
+  background:transparent;
+  color:var(--primary);
+  cursor:pointer;
+  font-weight:700;
+}
+.cat-btn.active,.cat-btn:hover{
+  background:var(--primary);
+  color:#020617;
+}
 
-/* STORE GRID */
-.store{max-width:1200px;margin:auto;padding:40px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px}
-.card{background:var(--card-bg);border-radius:20px;overflow:hidden;transition:.3s;border:1px solid rgba(255,255,255,0.05)}
-.card img{width:100%;height:260px;object-fit:cover}
+/* SEARCH */
+.search-container{
+  max-width:1200px;
+  margin:auto;
+  padding:20px
+}
+.search-bar{
+  width:100%;
+  padding:15px 25px;
+  border-radius:50px;
+  background:var(--card);
+  border:1px solid rgba(34,211,238,.3);
+  color:#fff;
+  outline:none
+}
+
+/* STORE */
+.store{
+  max-width:1200px;
+  margin:auto;
+  padding:40px 20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px
+}
+.card{
+  background:var(--card);
+  border-radius:20px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.05);
+  transition:.3s
+}
+.card:hover{transform:translateY(-6px)}
+.card img{
+  width:100%;
+  height:260px;
+  object-fit:cover
+}
 .card-content{padding:20px}
-.price{font-size:22px;font-weight:800;color:var(--primary);margin:10px 0}
-.btn-group {display:flex;gap:10px}
-.btn-s {flex:1;padding:10px;border-radius:10px;text-align:center;text-decoration:none;font-weight:700;font-size:0.9rem;transition:0.2s}
-.btn-v {background:var(--vinted); color:#000}
-.btn-sub {background:var(--subito); color:#000}
+.price{
+  font-size:22px;
+  font-weight:800;
+  color:var(--primary);
+  margin:10px 0
+}
+.badge{
+  font-size:.65rem;
+  background:rgba(34,211,238,.15);
+  color:var(--primary);
+  padding:4px 10px;
+  border-radius:20px;
+  display:inline-block;
+  margin-bottom:5px
+}
+.btn-group{display:flex;gap:10px}
+.btn-s{
+  flex:1;
+  padding:10px;
+  border-radius:10px;
+  font-weight:800;
+  text-align:center;
+  text-decoration:none;
+  color:#000
+}
+.btn-v{background:var(--vinted)}
+.btn-sub{background:var(--subito)}
 
-/* REVIEWS SECTION */
-.reviews-section {max-width:1000px;margin:60px auto;padding:40px 20px; background: rgba(255,255,255,0.02); border-radius: 30px; text-align: center;}
-.stars-top { color: var(--gold); font-size: 2.5rem; margin-bottom: 10px; filter: drop-shadow(0 0 10px rgba(250, 204, 21, 0.3)); }
-.reviews-grid-main {display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-bottom: 30px;}
+/* REVIEWS */
+.reviews-section{
+  max-width:1000px;
+  margin:60px auto;
+  padding:40px 20px;
+  background:rgba(255,255,255,.02);
+  border-radius:30px;
+  text-align:center
+}
+.stars-top{
+  color:var(--gold);
+  font-size:2.5rem;
+}
+.dropdown-reviews{
+  margin-top:20px;
+  background:var(--card);
+  border-radius:15px;
+  border:1px solid rgba(34,211,238,.2)
+}
+.dropdown-reviews summary{
+  padding:15px;
+  cursor:pointer;
+  font-weight:800;
+  color:var(--primary);
+  list-style:none;
+}
+.all-reviews-list{
+  padding:20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:15px;
+  max-height:400px;
+  overflow:auto
+}
+.review-item{
+  background:rgba(255,255,255,.03);
+  padding:15px;
+  border-radius:10px;
+  border-left:3px solid var(--primary)
+}
+.review-item span{
+  font-size:.8rem;
+  color:var(--primary);
+  font-weight:700
+}
 
-/* MENU A TENDINA RECENSIONI */
-.dropdown-reviews { margin-top: 20px; border-radius: 15px; overflow: hidden; background: var(--card-bg); border: 1px solid rgba(34, 211, 238, 0.2); }
-.dropdown-reviews summary { padding: 15px; cursor: pointer; font-weight: 700; color: var(--primary); list-style: none; display: flex; justify-content: center; align-items: center; gap: 10px; }
-.all-reviews-list { padding: 20px; text-align: left; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; max-height: 450px; overflow-y: auto; }
-.review-item { background: rgba(255,255,255,0.03); padding: 15px; border-radius: 10px; border-left: 3px solid var(--primary); }
-.review-item p { font-style: italic; font-size: 0.9rem; margin-bottom: 5px; }
-.review-item span { font-size: 0.8rem; font-weight: 700; color: var(--primary); }
+/* WHATSAPP */
+#assistenza{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  width:60px;
+  height:60px;
+  background:#25D366;
+  border-radius:50%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  cursor:pointer;
+  box-shadow:0 8px 20px rgba(0,0,0,.4);
+  z-index:9999;
+  animation:float 2s infinite
+}
+#assistenza i{font-size:28px;color:#fff}
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-8px)}
+}
 
-/* ASSISTENZA MODAL */
-#assistenza{position:fixed;bottom:20px;right:20px;width:60px;height:60px;background:#25D366;border-radius:50%;display:flex;justify-content:center;align-items:center;box-shadow:0 8px 20px rgba(0,0,0,0.3);cursor:pointer;animation: float 2s infinite ease-in-out;z-index:9999}
-#assistenza i{color:white;font-size:28px;}
-#modal-assistenza {position:fixed;bottom:90px;right:20px;background:#0f172a;color:#e5e7eb;width:320px;border-radius:16px;box-shadow:0 10px 40px rgba(0,0,0,0.5);display:none;flex-direction:column;overflow:hidden;z-index:10000;border:1px solid rgba(34, 211, 238, 0.2);animation: slideUp 0.3s ease-out}
-@keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes float{ 0%,100%{transform:translateY(0px)} 50%{transform:translateY(-8px)} }
-#modal-assistenza header{background:#020617;padding:15px 16px;font-weight:700;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--primary)}
-#modal-assistenza .close{cursor:pointer;color:var(--primary);font-size:22px}
-#modal-assistenza form{display:flex;flex-direction:column;padding:20px;gap:12px}
-#modal-assistenza input,#modal-assistenza textarea{padding:12px;border-radius:8px;border:1px solid #1e293b;background:#1e293b;color:#e5e7eb;font-size:14px;outline:none}
-#modal-assistenza button{background:var(--primary);color:#020617;padding:12px;font-weight:800;border:none;border-radius:8px;cursor:pointer}
-
-footer{text-align:center;padding:60px;color:#64748b}
+footer{
+  padding:50px;
+  text-align:center;
+  color:#64748b
+}
 </style>
 </head>
+
 <body>
 
 <header>
-    <img src="logo.png" alt="Strano Store">
-    <div class="social">
-        <a href="https://www.tiktok.com/@stranostore" target="_blank"><i class="fab fa-tiktok"></i></a>
-        <a href="https://www.vinted.it/member/156457000-stranostore" target="_blank"><i class="fas fa-tshirt"></i></a>
-        <a href="https://www.subito.it/utente/16474204" target="_blank"><i class="fas fa-shopping-bag"></i></a>
-    </div>
+  <img src="logo.png" alt="Strano Store">
+  <div class="social">
+    <a href="https://www.tiktok.com/@stranostore" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+    <a href="https://www.vinted.it/member/156457000-stranostore" target="_blank" aria-label="Vinted"><i class="fas fa-tshirt"></i></a>
+    <a href="https://www.subito.it/utente/16474204" target="_blank" aria-label="Subito"><i class="fas fa-shopping-bag"></i></a>
+  </div>
 </header>
 
 <section class="hero">
-    <div class="hero-text">
-        <h1>Strano<span>Store</span></h1>
-        <p>Selezione Premium di oggetti unici, tecnologia e abbigliamento. Qualità verificata e affidabilità garantita.</p>
-        <div class="categories">
-            <button class="cat-btn active" onclick="filterCat('Tutti')">Tutti</button>
-            <button class="cat-btn" onclick="filterCat('Tecnologia')">Tecnologia</button>
-            <button class="cat-btn" onclick="filterCat('Abbigliamento')">Abbigliamento</button>
-        </div>
-    </div>
+  <h1>Strano<span>Store</span></h1>
+  <p>Selezione premium di tecnologia e abbigliamento. Venditore affidabile con recensioni verificate.</p>
+  <div class="categories">
+    <button class="cat-btn active" onclick="filterCat('Tutti',this)">Tutti</button>
+    <button class="cat-btn" onclick="filterCat('Tecnologia',this)">Tecnologia</button>
+    <button class="cat-btn" onclick="filterCat('Abbigliamento',this)">Abbigliamento</button>
+  </div>
 </section>
 
 <div class="search-container">
-    <input type="text" id="searchInput" class="search-bar" placeholder="Cerca tra gli articoli..." onkeyup="search()">
+  <input id="searchInput" class="search-bar" placeholder="Cerca articoli..." onkeyup="searchProd()">
 </div>
 
 <section class="store" id="storeGrid"></section>
 
 <section class="reviews-section">
-    <div class="stars-top">★★★★★</div>
-    <h2 style="font-size: 2.2rem; margin-bottom: 20px;">Dicono di noi</h2>
-    
-    <div class="reviews-grid-main">
-        <div style="text-align:center">
-            <strong style="font-size:2rem; color:#fff">4.7/5</strong>
-            <p style="color:var(--vinted); font-weight:700">151 Feedback Vinted</p>
-        </div>
-        <div style="text-align:center">
-            <strong style="font-size:2rem; color:#fff">4.9/5</strong>
-            <p style="color:var(--subito); font-weight:700">10 Feedback Subito</p>
-        </div>
-    </div>
+  <div class="stars-top">★★★★★</div>
+  <h2>Dicono di noi</h2>
+  <p>⭐ 4.7/5 Vinted — ⭐ 4.9/5 Subito</p>
 
-    <details class="dropdown-reviews">
-        <summary>Leggi tutte le recensioni</summary>
-        <div class="all-reviews-list">
-            <div class="review-item"><p>"Ottimo articolo e persona disponibile!"</p><span>- Ivano Rapetti (Subito)</span></div>
-            <div class="review-item"><p>"Ragazzo super simpatico, è stato un piacere fare affari con lui! Consigliatissimo"</p><span>- Antonio Marra (Subito)</span></div>
-            <div class="review-item"><p>"Gentilissimo e veloce a spedire, consiglio vivamente"</p><span>- Eduard (Subito)</span></div>
-            <div class="review-item"><p>"Persona super disponibile e paziente, consigliatissimo."</p><span>- Mattia (Subito)</span></div>
-            <div class="review-item"><p>"Venditore serio e affidabile. Prodotto perfetto."</p><span>- Utente Subito</span></div>
-            
-            <div class="review-item"><p>"Tutto perfetto! Spedizione veloce e prodotto conforme alla descrizione!"</p><span>- silviaviti2 (Vinted)</span></div>
-            <div class="review-item"><p>"Articolo come nuovo e spedizione veloce."</p><span>- andreaboscoli1 (Vinted)</span></div>
-            <div class="review-item"><p>"Articolo corrispondente alla foto... Merci pour tout 👍"</p><span>- susana301103 (Vinted)</span></div>
-            <div class="review-item"><p>"Spedizione rapida, venditore molto cordiale!"</p><span>- michele_r (Vinted)</span></div>
-            <div class="review-item"><p>"Oggetto bellissimo, esattamente come in foto."</p><span>- giulia_vnt (Vinted)</span></div>
-            <div class="review-item"><p>"Ottimo imballaggio e comunicazione eccellente."</p><span>- luca.88 (Vinted)</span></div>
-            <div class="review-item"><p>"Molto professionale, consigliato A++"</p><span>- marco_tech (Vinted)</span></div>
-            <div class="review-item"><p>"Tutto liscio, ricomprerò sicuramente."</p><span>- sofia_s (Vinted)</span></div>
-            <div class="review-item"><p>"Preciso e veloce nella spedizione."</p><span>- francesco_92 (Vinted)</span></div>
-            <div class="review-item"><p>"Persona squisita, prodotto top."</p><span>- elena_p (Vinted)</span></div>
-        </div>
-    </details>
+  <details class="dropdown-reviews">
+    <summary>Leggi tutte le recensioni</summary>
+    <div class="all-reviews-list">
+      <div class="review-item"><p>"Venditore serio e affidabile."</p><span>- Vinted</span></div>
+      <div class="review-item"><p>"Spedizione veloce e comunicazione ottima."</p><span>- Subito</span></div>
+      <div class="review-item"><p>"Consigliatissimo!"</p><span>- Vinted</span></div>
+    </div>
+  </details>
 </section>
 
-<footer><p>© 2025 Strano Store — Premium Resale</p></footer>
+<footer>© 2025 Strano Store — Premium Resale</footer>
 
-<div id="assistenza"><i class="fab fa-whatsapp"></i></div>
-<div id="modal-assistenza">
-    <header><span>Contattaci</span><span class="close">&times;</span></header>
-    <form id="form-assistenza">
-        <input type="text" name="name" placeholder="Il tuo Nome" required>
-        <input type="email" name="email" placeholder="La tua Email" required>
-        <textarea name="message" rows="4" placeholder="Come possiamo aiutarti?" required></textarea>
-        <button type="submit">Invia Messaggio</button>
-    </form>
+<div id="assistenza" onclick="openWhatsApp()">
+  <i class="fab fa-whatsapp"></i>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3.2.0/dist/email.min.js"></script>
 <script>
-(function(){emailjs.init("HCRQeVuO9W2k5c9HH");})();
-
-const prodotti = [
-    {n:'iPhone 15 Pro', p:'599', c:'Tecnologia', img:'iphone.png'},
-    {n:'Giacca Moncler', p:'29.99', c:'Abbigliamento', img:'moncler.webp'},
-    {n:'Camicia Elegante', p:'19.99', c:'Abbigliamento', img:'camicia1.png'},
-    {n:'Stivali Donna', p:'39.99', c:'Abbigliamento', img:'stivali.png'}
+const prodotti=[
+  {n:'iPhone 15 Pro',p:'599',c:'Tecnologia',img:'iphone.png'},
+  {n:'Giacca Moncler (Usato)',p:'29.99',c:'Abbigliamento',img:'moncler.webp'},
+  {n:'Camicia Elegante',p:'19.99',c:'Abbigliamento',img:'camicia1.png'},
+  {n:'Stivali Donna',p:'39.99',c:'Abbigliamento',img:'stivali.png'}
 ];
 
-function renderStore(filter = 'Tutti', query = '') {
-    const grid = document.getElementById('storeGrid');
-    grid.innerHTML = '';
-    prodotti.forEach(item => {
-        if ((filter === 'Tutti' || item.c === filter) && item.n.toLowerCase().includes(query.toLowerCase())) {
-            grid.innerHTML += `
-                <div class="card">
-                    <img src="${item.img}" alt="${item.n}" onerror="this.src='https://via.placeholder.com/300x400?text=Strano+Store'">
-                    <div class="card-content">
-                        <span style="font-size:0.7rem; color:var(--primary); font-weight:700;">${item.c.toUpperCase()}</span>
-                        <h3>${item.n}</h3>
-                        <div class="price">€${item.p}</div>
-                        <div class="btn-group">
-                            <a href="https://www.vinted.it/member/156457000-stranostore" target="_blank" class="btn-s btn-v">Vinted</a>
-                            <a href="https://www.subito.it/utente/16474204" target="_blank" class="btn-s btn-sub">Subito</a>
-                        </div>
-                    </div>
-                </div>`;
-        }
-    });
+function renderStore(cat='Tutti',q=''){
+  const grid=document.getElementById('storeGrid');
+  grid.innerHTML='';
+  prodotti.forEach(i=>{
+    if((cat==='Tutti'||i.c===cat)&&i.n.toLowerCase().includes(q.toLowerCase())){
+      grid.innerHTML+=`
+      <div class="card">
+        <img src="${i.img}" loading="lazy" onerror="this.src='https://via.placeholder.com/300x400?text=Strano+Store'">
+        <div class="card-content">
+          <span class="badge">USATO CERTIFICATO</span>
+          <h3>${i.n}</h3>
+          <div class="price">€${i.p}</div>
+          <div class="btn-group">
+            <a class="btn-s btn-v" target="_blank" href="https://www.vinted.it/member/156457000-stranostore">Vinted</a>
+            <a class="btn-s btn-sub" target="_blank" href="https://www.subito.it/utente/16474204">Subito</a>
+          </div>
+        </div>
+      </div>`;
+    }
+  });
 }
 
-function filterCat(cat) {
-    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-    event.target.classList.add('active');
-    renderStore(cat, document.getElementById('searchInput').value);
+function filterCat(cat,el){
+  document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  renderStore(cat,document.getElementById('searchInput').value);
 }
 
-function search() {
-    const q = document.getElementById('searchInput').value;
-    const activeCat = document.querySelector('.cat-btn.active').innerText;
-    renderStore(activeCat, q);
+function searchProd(){
+  const q=document.getElementById('searchInput').value;
+  const cat=document.querySelector('.cat-btn.active').innerText;
+  renderStore(cat,q);
 }
 
-const assistBtn=document.getElementById('assistenza');
-const modal=document.getElementById('modal-assistenza');
-const closeBtn=document.querySelector('.close');
-assistBtn.onclick=()=>modal.style.display='flex';
-closeBtn.onclick=()=>modal.style.display='none';
-
-document.getElementById('form-assistenza').onsubmit=function(e){
-    e.preventDefault();
-    const btn=this.querySelector('button');
-    btn.innerText='Invio...';
-    emailjs.send('stranostore','template_kwkzv37',{name:this.name.value,email:this.email.value,message:this.message.value})
-    .then(()=>{alert('Inviato!');this.reset();modal.style.display='none';btn.innerText='Invia'})
-    .catch(()=>alert('Errore!'));
-};
+function openWhatsApp(){
+  window.open("https://wa.me/39TUONUMERO", "_blank");
+}
 
 renderStore();
 </script>
+
 </body>
 </html>
