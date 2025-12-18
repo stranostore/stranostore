@@ -3,12 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Strano Store | Premium Resale</title>
-
-<meta name="description" content="Strano Store: tecnologia e abbigliamento premium selezionato. Oltre 160 recensioni positive su Vinted e Subito.">
+<meta name="description" content="Strano Store: resale premium di tecnologia e abbigliamento. Oltre 160 recensioni positive.">
 <link rel="icon" href="logo.png">
-
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -19,7 +16,7 @@
   "@type": "Store",
   "name": "Strano Store",
   "url": "https://www.stranostore.it",
-  "description": "Resale premium di tecnologia e abbigliamento. Venditore affidabile.",
+  "description": "Resale premium di tecnologia e abbigliamento verificato. Venditore affidabile.",
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "4.8",
@@ -41,194 +38,82 @@
  --bg:#020617;
  --card:#0f172a;
  --gold:#facc15;
+ --badge-bg:#1e293b;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-body{
- font-family:'Inter',sans-serif;
- background:linear-gradient(180deg,var(--bg),#0f172a);
- color:#e5e7eb;
-}
+body{font-family:'Inter',sans-serif;background:linear-gradient(180deg,var(--bg),#0f172a);color:#e5e7eb;line-height:1.6}
 
 /* HEADER */
-header{
- display:flex;
- justify-content:space-between;
- align-items:center;
- padding:16px 20px;
-}
+header{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;}
 header img{width:95px}
-.social a{margin-left:12px;font-size:22px;color:var(--primary)}
+.social a{margin-left:12px;font-size:22px;color:var(--primary);transition:.2s}
+.social a:hover{color:#fff;transform:translateY(-2px)}
 
 /* HERO */
-.hero{
- max-width:1200px;
- margin:auto;
- padding:50px 20px 30px;
-}
+.hero{max-width:1200px;margin:auto;padding:50px 20px 30px;text-align:center}
 .hero h1{font-size:48px;font-weight:800}
 .hero span{color:var(--primary)}
 .hero p{margin:15px 0 25px;color:#cbd5f5}
 
 /* CATEGORIES */
-.categories{display:flex;gap:10px;flex-wrap:wrap}
-.cat-btn{
- padding:10px 22px;
- border-radius:999px;
- border:1px solid var(--primary);
- background:transparent;
- color:var(--primary);
- font-weight:800;
- cursor:pointer
-}
-.cat-btn.active{background:var(--primary);color:#020617}
+.categories{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.cat-btn{padding:10px 22px;border-radius:999px;border:1px solid var(--primary);background:transparent;color:var(--primary);font-weight:800;cursor:pointer;transition:.3s}
+.cat-btn.active{background:var(--primary);color:#020617;box-shadow:0 4px 15px rgba(34,211,238,.4)}
 
 /* SEARCH */
 .search-container{max-width:1200px;margin:auto;padding:15px 20px}
-.search-bar{
- width:100%;
- padding:16px 24px;
- border-radius:50px;
- background:var(--card);
- border:1px solid rgba(34,211,238,.3);
- color:#fff
-}
+.search-bar{width:100%;padding:16px 24px;border-radius:50px;background:var(--card);border:1px solid rgba(34,211,238,.3);color:#fff;font-size:1rem;outline:none;transition:.3s}
+.search-bar:focus{border-color:var(--primary);box-shadow:0 0 10px var(--primary)}
 
 /* STORE */
-.store{
- max-width:1200px;
- margin:auto;
- padding:30px 20px;
- display:grid;
- grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
- gap:22px
-}
-.card{
- background:var(--card);
- border-radius:20px;
- overflow:hidden;
- border:1px solid rgba(255,255,255,.05)
-}
+.store{max-width:1200px;margin:auto;padding:30px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px}
+.card{background:var(--card);border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.05);transition:.3s;position:relative}
+.card:hover{transform:translateY(-5px);box-shadow:0 8px 20px rgba(0,0,0,0.4)}
 .card img{width:100%;height:220px;object-fit:cover}
 .card-content{padding:18px}
+.card-content h3{margin:8px 0}
 .price{font-size:22px;font-weight:800;color:var(--primary)}
 .btn-group{display:flex;gap:10px;margin-top:10px}
-.btn-s{
- flex:1;
- padding:12px;
- border-radius:12px;
- font-weight:800;
- text-align:center;
- color:#000;
- text-decoration:none
-}
+.btn-s{flex:1;padding:12px;border-radius:12px;text-align:center;font-weight:800;text-decoration:none;color:#000;transition:.3s}
+.btn-s:hover{opacity:.85}
 .btn-v{background:var(--vinted)}
 .btn-sub{background:var(--subito)}
 
+/* BADGE */
+.badge{position:absolute;top:10px;left:10px;padding:6px 12px;background:var(--badge-bg);color:var(--primary);font-weight:700;border-radius:8px;font-size:0.75rem;box-shadow:0 3px 10px rgba(0,0,0,.3)}
+
 /* REVIEWS */
-.reviews-section{
- max-width:1000px;
- margin:50px auto;
- padding:40px 20px;
- background:rgba(255,255,255,.02);
- border-radius:30px;
- text-align:center
-}
-.stars-top{color:var(--gold);font-size:2.3rem}
-.dropdown-reviews{
- margin-top:20px;
- background:var(--card);
- border-radius:16px;
- border:1px solid rgba(34,211,238,.2)
-}
-.dropdown-reviews summary{
- padding:16px;
- font-weight:800;
- color:var(--primary);
- cursor:pointer;
- list-style:none
-}
-.all-reviews{
- padding:20px;
- display:grid;
- grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
- gap:15px;
- max-height:420px;
- overflow:auto
-}
-.review{
- background:rgba(255,255,255,.03);
- padding:14px;
- border-radius:10px;
- border-left:3px solid var(--primary);
- font-size:.9rem
-}
+.reviews-section{max-width:1000px;margin:50px auto;padding:40px 20px;background:rgba(255,255,255,.02);border-radius:30px;text-align:center}
+.stars-top{color:var(--gold);font-size:2.3rem;margin-bottom:10px;filter:drop-shadow(0 0 10px rgba(250,204,21,.3))}
+.dropdown-reviews{margin-top:20px;background:var(--card);border-radius:16px;border:1px solid rgba(34,211,238,.2)}
+.dropdown-reviews summary{padding:16px;font-weight:800;color:var(--primary);cursor:pointer;list-style:none}
+.all-reviews{padding:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:15px;max-height:420px;overflow:auto}
+.review{background:rgba(255,255,255,.03);padding:14px;border-radius:10px;border-left:3px solid var(--primary);font-size:.9rem;position:relative}
+.review::before{content:"★";color:var(--gold);position:absolute;top:10px;left:10px;font-size:1rem}
 
-/* ASSISTENZA */
-#assist{
- position:fixed;
- bottom:18px;
- right:18px;
- width:58px;
- height:58px;
- background:var(--primary);
- border-radius:50%;
- display:flex;
- justify-content:center;
- align-items:center;
- cursor:pointer;
- z-index:9999
-}
+/* CHI SIAMO */
+.about{max-width:800px;margin:40px auto;padding:20px;text-align:center;background:rgba(255,255,255,.02);border-radius:20px}
+.about h2{color:var(--primary);margin-bottom:10px}
+
+/* MODAL ASSISTENZA */
+#assist{position:fixed;bottom:18px;right:18px;width:58px;height:58px;background:var(--primary);border-radius:50%;display:flex;justify-content:center;align-items:center;cursor:pointer;z-index:9999;transition:.3s}
 #assist i{color:#020617;font-size:22px}
+#assist:hover{transform:translateY(-3px);box-shadow:0 4px 12px rgba(34,211,238,.5)}
+#modal{position:fixed;inset:0;background:rgba(2,6,23,.8);display:none;justify-content:center;align-items:center;z-index:10000}
+.modal-box{background:var(--card);width:92%;max-width:380px;border-radius:20px;overflow:hidden}
+.modal-box header{padding:16px;background:#020617;display:flex;justify-content:space-between;font-weight:800}
+.modal-box form{padding:18px;display:flex;flex-direction:column;gap:12px}
+.modal-box input,.modal-box textarea{padding:14px;border-radius:10px;border:1px solid #1e293b;background:#1e293b;color:#fff;outline:none;transition:.3s}
+.modal-box input:focus,.modal-box textarea:focus{border-color:var(--primary);box-shadow:0 0 10px var(--primary)}
+.modal-box button{background:var(--primary);color:#020617;padding:14px;border:none;border-radius:10px;font-weight:800;cursor:pointer;transition:.3s}
+.modal-box button:hover{opacity:.85}
 
-/* MODAL */
-#modal{
- position:fixed;
- inset:0;
- background:rgba(2,6,23,.8);
- display:none;
- justify-content:center;
- align-items:center;
-}
-.modal-box{
- background:var(--card);
- width:92%;
- max-width:380px;
- border-radius:20px;
- overflow:hidden
-}
-.modal-box header{
- padding:16px;
- background:#020617;
- display:flex;
- justify-content:space-between;
- font-weight:800
-}
-.modal-box form{
- padding:18px;
- display:flex;
- flex-direction:column;
- gap:12px
-}
-.modal-box input,.modal-box textarea{
- padding:14px;
- border-radius:10px;
- border:1px solid #1e293b;
- background:#1e293b;
- color:#fff
-}
-.modal-box button{
- background:var(--primary);
- color:#020617;
- padding:14px;
- border:none;
- border-radius:10px;
- font-weight:800
-}
-
-footer{text-align:center;padding:40px;color:#64748b}
+/* FOOTER */
+footer{text-align:center;padding:40px;color:#64748b;font-size:0.9rem;line-height:1.5}
+footer a{color:var(--primary);text-decoration:none}
+footer a:hover{text-decoration:underline}
 </style>
 </head>
-
 <body>
 
 <header>
@@ -242,7 +127,7 @@ footer{text-align:center;padding:40px;color:#64748b}
 
 <section class="hero">
  <h1>Strano<span>Store</span></h1>
- <p>Resale premium di tecnologia e abbigliamento verificato.</p>
+ <p>Resale premium di tecnologia e abbigliamento verificato. Affidabilità garantita.</p>
  <div class="categories">
   <button class="cat-btn active" onclick="filterCat('Tutti',this)">Tutti</button>
   <button class="cat-btn" onclick="filterCat('Tecnologia',this)">Tecnologia</button>
@@ -260,7 +145,6 @@ footer{text-align:center;padding:40px;color:#64748b}
  <div class="stars-top">★★★★★</div>
  <h2>Dicono di noi</h2>
  <p>4.7/5 Vinted · 4.9/5 Subito</p>
-
  <details class="dropdown-reviews">
   <summary>Leggi tutte le recensioni</summary>
   <div class="all-reviews">
@@ -274,10 +158,17 @@ footer{text-align:center;padding:40px;color:#64748b}
  </details>
 </section>
 
-<footer>© 2025 Strano Store — Premium Resale</footer>
+<section class="about">
+ <h2>Chi Siamo</h2>
+ <p>Strano Store seleziona prodotti di alta qualità usati e garantiti, tra tecnologia e abbigliamento. Affidabilità, professionalità e spedizioni rapide sono la nostra priorità.</p>
+</section>
+
+<footer>
+ <p>© 2025 Strano Store — Premium Resale</p>
+ <p><a href="#">Privacy Policy</a> | <a href="#">Cookie Policy</a> | <a href="#">Disclaimer</a></p>
+</footer>
 
 <div id="assist"><i class="fas fa-envelope"></i></div>
-
 <div id="modal">
  <div class="modal-box">
   <header>
@@ -295,10 +186,10 @@ footer{text-align:center;padding:40px;color:#64748b}
 
 <script>
 const prodotti=[
- {n:'iPhone 15 Pro',p:'599',c:'Tecnologia',img:'iphone.png'},
- {n:'Giacca Moncler',p:'29.99',c:'Abbigliamento',img:'moncler.webp'},
- {n:'Camicia Elegante',p:'19.99',c:'Abbigliamento',img:'camicia1.png'},
- {n:'Stivali Donna',p:'39.99',c:'Abbigliamento',img:'stivali.png'}
+ {n:'iPhone 15 Pro',p:'599',c:'Tecnologia',img:'iphone.png',badge:'Usato Certificato'},
+ {n:'Giacca Moncler',p:'29.99',c:'Abbigliamento',img:'moncler.webp',badge:'Spedizione Veloce'},
+ {n:'Camicia Elegante',p:'19.99',c:'Abbigliamento',img:'camicia1.png',badge:'Usato Certificato'},
+ {n:'Stivali Donna',p:'39.99',c:'Abbigliamento',img:'stivali.png',badge:'Spedizione Veloce'}
 ];
 
 function render(cat='Tutti',q=''){
@@ -307,6 +198,7 @@ function render(cat='Tutti',q=''){
   if((cat==='Tutti'||p.c===cat)&&p.n.toLowerCase().includes(q.toLowerCase())){
    store.innerHTML+=`
    <div class="card">
+    <span class="badge">${p.badge}</span>
     <img src="${p.img}">
     <div class="card-content">
      <h3>${p.n}</h3>
@@ -320,15 +212,17 @@ function render(cat='Tutti',q=''){
   }
  });
 }
+
 function filterCat(c,el){
  document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active'));
  el.classList.add('active');
  render(c,search.value);
 }
+
 function searchProd(){render(document.querySelector('.cat-btn.active').innerText,search.value)}
 
-assist.onclick=()=>modal.style.display='flex';
-function closeModal(){modal.style.display='none'}
+document.getElementById('assist').onclick=()=>document.getElementById('modal').style.display='flex';
+function closeModal(){document.getElementById('modal').style.display='none'}
 
 render();
 </script>
