@@ -9,18 +9,18 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 :root {
-    --primary: #22d3ee;
-    --vinted: #22c55e;
-    --subito: #f97316;
-    --bg: #020617;
-    --card-bg: #0f172a;
-    --gold: #facc15;
+  --primary: #22d3ee;
+  --vinted: #22c55e;
+  --subito: #f97316;
+  --bg: #020617;
+  --card-bg: #0f172a;
+  --gold: #facc15;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Inter',sans-serif;background:linear-gradient(180deg, var(--bg), #0f172a);color:#e5e7eb;line-height:1.6}
 
 /* HEADER */
-header{display:flex;justify-content:space-between;align-items:center;padding:20px 30px; border-bottom: 1px solid rgba(255,255,255,0.05)}
+header{display:flex;justify-content:space-between;align-items:center;padding:20px 30px;border-bottom:1px solid rgba(255,255,255,0.05)}
 header img{width:110px}
 header .social a{margin-left:15px;font-size:24px;color:var(--primary);transition:.2s}
 header .social a:hover{transform:translateY(-3px); color:#fff}
@@ -162,7 +162,7 @@ footer{text-align:center;padding:60px;color:#64748b}
 (function(){emailjs.init("HCRQeVuO9W2k5c9HH");})();
 
 const prodotti = [
-  {n:'iPhone 15 Pro + Caricatore + Cover', p:'599', c:'Tecnologia', img:'iphone.png', v:'📱 iPhone 15 Pro – Come Nuovo! Sempre con cover e vetro. Zero graffi. Completo di scatola.', linkV:'https://www.vinted.it/items/7764182241-iphone-15-pro-caricatore-cover', linkS:'https://www.subito.it/telefonia/iphone-15-pro-caricatore-cover-catania-628165680.htm'},
+  {n:'iPhone 15 Pro + Caricatore + Cover', p:'599', c:'Tecnologia', img:'iphone.png', v:'📱 iPhone 15 Pro – Come Nuovo! Sempre con cover e vetro. Zero graffi. Completo di scatola.', linkV:'https://www.vinted.it/items/7764182241-iphone-15-pro-caricatore-cover', linkS:'https://www.subito.it/telefonia/iphone-15-pro-caricatore-cover-catania-628165680.htm', linkVideo:'https://www.tiktok.com/@stranostore/video/7585347209382726934?lang=en'},
   {n:'Scultura in vetro di Murano delfini', p:'99.99', c:'Abbigliamento', img:'delfino.png', v:'Scultura artistica in vetro di Murano con delfini e foglia oro.', linkV:'https://www.vinted.it/items/7725614209-scultura-in-vetro-di-murano-con-delfini-lavorazione-artistica-con-foglia-oro', linkS:'https://www.subito.it/arredamento-casalinghi/scultura-in-vetro-di-murano-con-delfini-catania-627414368.htm'},
   {n:'Jeans Roy Roger’s', p:'19.99', c:'Abbigliamento', img:'pantaloni.png', v:'Jeans uomo Roy Roger’s, taglia M, colore blu marino, ottime condizioni.', linkV:'https://www.vinted.it/items/7682389652-jeans-roy-rogers', linkS:''},
   {n:'Polo Moncler', p:'29.99', c:'Abbigliamento', img:'moncler.webp', v:'Polo Moncler bianca, taglia M, in ottimo stato.', linkV:'https://www.vinted.it/items/7019057147-moncler-polo-taglia-m', linkS:''},
@@ -178,60 +178,57 @@ function renderStore(filter = 'Tutti', query = '') {
   prodotti.forEach(item => {
     if ((filter === 'Tutti' || item.c === filter) && item.n.toLowerCase().includes(query.toLowerCase())) {
       grid.innerHTML += `
-        <div class="card">
-          <img src="${item.img}" alt="${item.n}" onerror="this.src='https://via.placeholder.com/300x400?text=Strano+Store'">
-          <div class="card-content">
-            <h3>${item.n}</h3>
-            <div class="price">€${item.p}</div>
-            <details class="details-desc">
-              <summary>Mostra descrizione</summary>
-              <
-              <p>${item.v}</p>
-            </details>
-            <div class="btn-group">
-              ${item.linkV ? `<a href="${item.linkV}" target="_blank" class="btn-s btn-v">Vinted</a>` : ''}
-              ${item.linkS ? `<a href="${item.linkS}" target="_blank" class="btn-s btn-sub">Subito</a>` : ''}
-            </div>
+      <div class="card">
+        <img src="${item.img}" alt="${item.n}" onerror="this.src='https://via.placeholder.com/300x400?text=Strano+Store'">
+        <div class="card-content">
+          <h3>${item.n}</h3>
+          <div class="price">€${item.p}</div>
+          <details class="details-desc">
+            <summary>Mostra descrizione</summary>
+            <p>${item.v}</p>
+          </details>
+          <div class="btn-group">
+            ${item.linkV ? `<a href="${item.linkV}" target="_blank" class="btn-s btn-v">Vinted</a>` : ''}
+            ${item.linkS ? `<a href="${item.linkS}" target="_blank" class="btn-s btn-sub">Subito</a>` : ''}
+            ${item.linkVideo ? `<a href="${item.linkVideo}" target="_blank" class="btn-s btn-v" style="background:#ff0050;">Guarda Video</a>` : ''}
           </div>
         </div>
+      </div>
       `;
     }
   });
 }
 
-function filterCat(cat){
+function filterCat(cat) {
   document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
   event.target.classList.add('active');
   renderStore(cat, document.getElementById('searchInput').value);
 }
 
-function search(){
-  renderStore(document.querySelector('.cat-btn.active').textContent, document.getElementById('searchInput').value);
+function search() {
+  const query = document.getElementById('searchInput').value;
+  const activeCat = document.querySelector('.cat-btn.active').innerText;
+  renderStore(activeCat, query);
 }
 
-// Assistenza modal
-document.getElementById('assistenza').onclick = () => document.getElementById('modal-assistenza').style.display = 'flex';
-document.querySelector('#modal-assistenza .close').onclick = () => document.getElementById('modal-assistenza').style.display = 'none';
-document.getElementById('form-assistenza').onsubmit = function(e){
-  e.preventDefault();
-  const btn = this.querySelector('button');
-  btn.innerText = 'Invio...';
-  emailjs.send('stranostore','template_kwkzv37',{
-    name: this.name.value,
-    email: this.email.value,
-    message: this.message.value
-  }).then(()=>{
-    btn.innerText='Invia Messaggio';
-    alert('Messaggio inviato!');
-    this.reset();
-  },(err)=>{
-    btn.innerText='Invia Messaggio';
-    alert('Errore invio: '+JSON.stringify(err));
-  });
-}
-
-// Render iniziale
 renderStore();
+
+// Modal Assistenza
+const btnAssistenza = document.getElementById('assistenza');
+const modalAssistenza = document.getElementById('modal-assistenza');
+const closeModal = modalAssistenza.querySelector('.close');
+
+btnAssistenza.addEventListener('click', ()=>{modalAssistenza.style.display='flex'});
+closeModal.addEventListener('click', ()=>{modalAssistenza.style.display='none'});
+window.addEventListener('click', e=>{if(e.target==modalAssistenza) modalAssistenza.style.display='none'});
+
+// Invio form
+document.getElementById('form-assistenza').addEventListener('submit', function(e){
+  e.preventDefault();
+  emailjs.sendForm('service_xyz', 'template_xyz', this)
+  .then(()=>{alert('Messaggio inviato con successo!');this.reset(); modalAssistenza.style.display='none';}, (err)=>{alert('Errore: '+err.text);});
+});
 </script>
+
 </body>
 </html>
