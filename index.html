@@ -10,16 +10,16 @@
 <style>
 :root{--primary:#22d3ee;--vinted:#22c55e;--subito:#f97316;--bg:#020617;--card-bg:#0f172a;--gold:#facc15}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Inter',sans-serif;background:linear-gradient(180deg,var(--bg),#0f172a);color:#e5e7eb;line-height:1.6}
+body{font-family:'Inter',sans-serif;background:linear-gradient(180deg,var(--bg),#0f172a);color:#e5e7eb;line-height:1.6;overflow-x:hidden}
 
 /* HEADER */
 header{display:flex;justify-content:space-between;align-items:center;padding:20px 30px;border-bottom:1px solid rgba(255,255,255,0.05)}
 header img{width:110px}
 header .social a{margin-left:15px;font-size:24px;color:var(--primary);transition:.2s}
-header .social a:hover{transform:translateY(-3px); color:#fff}
+header .social a:hover{transform:translateY(-3px) scale(1.1);color:#fff}
 
 /* HERO */
-.hero{max-width:1200px;margin:auto;padding:60px 20px;display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
+.hero{max-width:1200px;margin:auto;padding:60px 20px;display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center;position:relative;overflow:hidden}
 .hero-text h1{font-size:54px;font-weight:800;line-height:1;margin-bottom:20px}
 .hero-text h1 span{color:var(--primary)}
 .hero-text p{font-size:1.1rem;color:#cbd5f5;margin-bottom:30px;max-width:500px}
@@ -29,25 +29,22 @@ header .social a:hover{transform:translateY(-3px); color:#fff}
 .search-bar{width:100%;padding:15px 25px;border-radius:50px;border:1px solid rgba(34,211,238,0.3);background:var(--card-bg);color:#fff;font-size:1rem;outline:none;margin-bottom:20px}
 .categories{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
 .cat-btn{padding:8px 20px;border-radius:20px;border:1px solid var(--primary);background:transparent;color:var(--primary);cursor:pointer;font-weight:600;transition:0.3s}
-.cat-btn.active,.cat-btn:hover{background:var(--primary);color:var(--bg)}
+.cat-btn.active,.cat-btn:hover{background:var(--primary);color:var(--bg);transform:scale(1.05)}
 
-/* CAROSELLO */
-.featured-carousel{max-width:1200px;margin:40px auto;position:relative;overflow:hidden;border-radius:20px}
-.carousel-wrapper{display:flex;transition:transform 0.5s ease;gap:20px;padding:10px}
-.carousel-wrapper .card{min-width:250px;flex-shrink:0;background:var(--card-bg);border-radius:20px;overflow:hidden;transition:.3s;border:1px solid rgba(255,255,255,0.05)}
-.carousel-wrapper .card img{width:100%;height:200px;object-fit:cover;display:block}
-.carousel-wrapper .card .card-content{padding:15px}
-.carousel-wrapper .card .price{font-size:18px;font-weight:700;color:var(--primary)}
-.carousel-controls{position:absolute;top:50%;width:100%;display:flex;justify-content:space-between;transform:translateY(-50%)}
-.carousel-controls span{cursor:pointer;font-size:30px;color:var(--primary);padding:5px 10px;background:rgba(0,0,0,0.3);border-radius:50%;transition:.2s}
-.carousel-controls span:hover{background:var(--primary);color:var(--bg)}
-@media(max-width:600px){.carousel-wrapper .card{min-width:200px}}
+/* CAROSELLO INFINITO */
+.featured-carousel{overflow:hidden;position:relative;max-width:1200px;margin:40px auto;border-radius:20px}
+.carousel-wrapper{display:flex;gap:20px;animation:scroll 15s linear infinite;will-change:transform;}
+.carousel-wrapper:hover{animation-play-state:paused}
+@keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.carousel-wrapper .card{min-width:250px;flex-shrink:0;background:var(--card-bg);border-radius:20px;overflow:hidden;transition:transform 0.3s,box-shadow 0.3s;position:relative}
+.carousel-wrapper .card img{width:100%;height:200px;object-fit:cover;display:block;transition:transform 0.3s,box-shadow 0.3s}
+.carousel-wrapper .card:hover img{transform:scale(1.05);box-shadow:0 15px 25px rgba(0,0,0,0.4)}
 
 /* STORE GRID */
 .store{max-width:1200px;margin:auto;padding:40px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px}
-.card{background:var(--card-bg);border-radius:20px;overflow:hidden;transition:.3s;border:1px solid rgba(255,255,255,0.05);position:relative}
+.card{background:var(--card-bg);border-radius:20px;overflow:hidden;transition:.3s;border:1px solid rgba(255,255,255,0.05);position:relative;opacity:0;transform:translateY(20px)}
 .card img{width:100%;height:260px;object-fit:cover;transition:.3s}
-.card:hover{transform:translateY(-5px);box-shadow:0 10px 30px rgba(0,0,0,0.5)}
+.card:hover{transform:translateY(-5px) scale(1.02);box-shadow:0 10px 30px rgba(0,0,0,0.5)}
 .card-content{padding:20px}
 .price{font-size:22px;font-weight:800;color:var(--primary);margin:10px 0}
 .btn-group{display:flex;gap:10px;margin-bottom:10px}
@@ -71,16 +68,23 @@ p[id^="desc-"].show{display:block}
 
 /* MODAL ASSISTENZA */
 #btn-contattaci{position:fixed;bottom:20px;right:20px;width:60px;height:60px;background:#22d3ee;border-radius:50%;display:flex;justify-content:center;align-items:center;box-shadow:0 8px 20px rgba(0,0,0,0.3);cursor:pointer;z-index:9999;font-size:28px;color:#020617;transition:.3s;display:none}
-#btn-contattaci.show{display:flex}
-#modal-assistenza{position:fixed;bottom:90px;right:20px;background:#0f172a;color:#e5e7eb;width:320px;border-radius:16px;box-shadow:0 10px 40px rgba(0,0,0,0.5);display:none;flex-direction:column;overflow:hidden;z-index:10000;border:1px solid rgba(34,211,238,0.2)}
+#btn-contattaci.show{display:flex;animation:bounce 1s infinite alternate}
+@keyframes bounce{0%{transform:translateY(0)}100%{transform:translateY(-5px)}}
+#modal-assistenza{position:fixed;bottom:90px;right:20px;background:#0f172a;color:#e5e7eb;width:320px;border-radius:16px;box-shadow:0 10px 40px rgba(0,0,0,0.5);display:none;flex-direction:column;overflow:hidden;z-index:10000;border:1px solid rgba(34,211,238,0.2);animation:fadeScale 0.3s ease forwards}
+@keyframes fadeScale{0%{opacity:0;transform:scale(0.9)}100%{opacity:1;transform:scale(1)}}
 #modal-assistenza header{background:#020617;padding:15px 16px;font-weight:700;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--primary)}
 #modal-assistenza .close{cursor:pointer;color:var(--primary);font-size:22px}
 #modal-assistenza form{display:flex;flex-direction:column;padding:20px;gap:12px}
-#modal-assistenza input,#modal-assistenza textarea{padding:12px;border-radius:8px;border:1px solid #1e293b;background:#1e293b;color:#e5e7eb;font-size:14px;outline:none}
-#modal-assistenza button{background:var(--primary);color:#020617;padding:12px;font-weight:800;border:none;border-radius:8px;cursor:pointer}
+#modal-assistenza input,#modal-assistenza textarea{padding:12px;border-radius:8px;border:1px solid #1e293b;background:#1e293b;color:#e5e7eb;font-size:14px;outline:none;transition:border 0.3s}
+#modal-assistenza input:focus,#modal-assistenza textarea:focus{border-color:var(--primary)}
+#modal-assistenza button{background:var(--primary);color:#020617;padding:12px;font-weight:800;border:none;border-radius:8px;cursor:pointer;transition:transform 0.2s}
+#modal-assistenza button:active{transform:scale(0.95)}
 
 /* FOOTER */
 footer{text-align:center;padding:60px;color:#64748b}
+
+/* Animazioni scroll card */
+.card.show-card{opacity:1;transform:translateY(0);transition:opacity 0.6s ease, transform 0.6s ease}
 </style>
 </head>
 <body>
@@ -110,13 +114,8 @@ footer{text-align:center;padding:60px;color:#64748b}
 <input type="text" id="searchInput" class="search-bar" placeholder="Cerca tra gli articoli..." onkeyup="search()">
 </div>
 
-<!-- CAROSELLO -->
 <section class="featured-carousel">
   <div class="carousel-wrapper" id="carouselWrapper"></div>
-  <div class="carousel-controls">
-    <span class="prev" onclick="prevSlide()">&#10094;</span>
-    <span class="next" onclick="nextSlide()">&#10095;</span>
-  </div>
 </section>
 
 <section class="store" id="storeGrid"></section>
@@ -136,9 +135,7 @@ footer{text-align:center;padding:60px;color:#64748b}
 </div>
 <details class="dropdown-reviews">
 <summary>Leggi tutte le recensioni</summary>
-<div class="all-reviews-list">
-<!-- Reviews qui -->
-</div>
+<div class="all-reviews-list"></div>
 </details>
 </section>
 
@@ -175,7 +172,7 @@ prodotti.forEach((item,i)=>{
 if((cat==='Tutti'||item.c===cat)&&(item.n.toLowerCase().includes(searchVal.toLowerCase())||searchVal==='')){
 const card=document.createElement('div');
 card.className='card';
-card.innerHTML=`<img src="${item.img}" alt="${item.n}">
+card.innerHTML=`<img data-src="${item.img}" alt="${item.n}" class="lazy">
 <div class="card-content">
 <h3>${item.n}</h3>
 <div class="price">€ ${item.p}</div>
@@ -187,8 +184,8 @@ ${item.linkS?`<a href="${item.linkS}" target="_blank" class="btn-s btn-sub">Subi
 <p id="desc-${i}">${item.desc}</p>
 </div>`;
 grid.appendChild(card);
-}
 });
+observeCards(); // animazione entrata
 }
 
 function toggleDesc(id){document.getElementById(id).classList.toggle('show');}
@@ -196,44 +193,35 @@ function filterCat(cat){document.querySelectorAll('.cat-btn').forEach(btn=>btn.c
 function search(){renderStore(document.querySelector('.cat-btn.active').textContent,document.getElementById('searchInput').value);}
 renderStore();
 
-/* CAROSELLO */
+// CAROSELLO INFINITO
 const featuredProducts = prodotti.slice(0,5);
 const carouselWrapper = document.getElementById('carouselWrapper');
-let currentIndex = 0;
-
-function renderCarousel() {
+function renderCarouselInfinite() {
   carouselWrapper.innerHTML='';
-  featuredProducts.forEach((item)=>{
+  const combinedProducts = [...featuredProducts, ...featuredProducts];
+  combinedProducts.forEach(item=>{
     const card=document.createElement('div');
     card.className='card';
     card.innerHTML=`<img src="${item.img}" alt="${item.n}">
-    <div class="card-content"><h3>${item.n}</h3><div class="price">€ ${item.p}</div></div>`;
+      <div class="card-content"><h3>${item.n}</h3><div class="price">€ ${item.p}</div></div>`;
     carouselWrapper.appendChild(card);
   });
-  updateCarousel();
 }
+renderCarouselInfinite();
 
-function updateCarousel(){
-  const cardWidth = carouselWrapper.querySelector('.card').offsetWidth + 20;
-  carouselWrapper.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
-}
-
-function nextSlide(){currentIndex = (currentIndex < featuredProducts.length - 1) ? currentIndex + 1 : 0; updateCarousel();}
-function prevSlide(){currentIndex = (currentIndex > 0) ? currentIndex - 1 : featuredProducts.length-1; updateCarousel();}
-setInterval(nextSlide,4000);
-let startX = 0;
-carouselWrapper.addEventListener('touchstart', e => { startX = e.touches[0].clientX; });
-carouselWrapper.addEventListener('touchend', e => { let diff = e.changedTouches[0].clientX - startX; if(diff > 50) prevSlide(); else if(diff < -50) nextSlide(); });
-renderCarousel();
-
-/* MODAL */
+// MODAL
 const btn=document.getElementById('btn-contattaci');
 const modal=document.getElementById('modal-assistenza');
 btn.addEventListener('click',()=>{modal.style.display='flex'});
 document.querySelector('#modal-assistenza .close').addEventListener('click',()=>{modal.style.display='none'});
 document.getElementById('form-assistenza').addEventListener('submit',function(e){e.preventDefault();emailjs.sendForm('service_id','template_id',this).then(()=>{alert('Messaggio inviato!');modal.style.display='none';this.reset();},()=>{alert('Errore, riprova!')});});
 window.addEventListener('scroll',()=>{if(window.scrollY>400){btn.classList.add('show')}else{btn.classList.remove('show')}});
-</script>
 
+// Animazione entrata card
+function observeCards(){
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show-card')}})},{threshold:0.2});
+document.querySelectorAll('.card').forEach(c=>observer.observe(c));
+}
+</script>
 </body>
 </html>
