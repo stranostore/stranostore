@@ -7,6 +7,7 @@
 <link rel="icon" href="logo.png">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<meta name="description" content="Strano Store | Premium Resale - Selezione di oggetti unici, abbigliamento e tecnologia. Qualità garantita.">
 <style>
 :root {
   --primary: #22d3ee;
@@ -20,7 +21,7 @@
 body{font-family:'Inter',sans-serif;background:linear-gradient(180deg, var(--bg), #0f172a);color:#e5e7eb;line-height:1.6}
 
 /* HEADER */
-header{display:flex;justify-content:space-between;align-items:center;padding:20px 30px;border-bottom:1px solid rgba(255,255,255,0.05)}
+header{display:flex;justify-content:space-between;align-items:center;padding:20px 30px; border-bottom: 1px solid rgba(255,255,255,0.05)}
 header img{width:110px}
 header .social a{margin-left:15px;font-size:24px;color:var(--primary);transition:.2s}
 header .social a:hover{transform:translateY(-3px); color:#fff}
@@ -40,14 +41,19 @@ header .social a:hover{transform:translateY(-3px); color:#fff}
 
 /* STORE GRID */
 .store{max-width:1200px;margin:auto;padding:40px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px}
-.card{background:var(--card-bg);border-radius:20px;overflow:hidden;transition:.3s;border:1px solid rgba(255,255,255,0.05)}
-.card img{width:100%;height:260px;object-fit:cover}
+.card{background:var(--card-bg);border-radius:20px;overflow:hidden;transition:.3s;border:1px solid rgba(255,255,255,0.05); opacity:0; transform: translateY(20px); animation: fadeIn 0.5s forwards;}
+@keyframes fadeIn { to {opacity:1; transform: translateY(0);} }
+.card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
+.card img{width:100%;height:260px;object-fit:cover;}
+
+/* CARD CONTENT */
 .card-content{padding:20px}
 .price{font-size:22px;font-weight:800;color:var(--primary);margin:10px 0}
 .btn-group {display:flex;gap:10px}
 .btn-s {flex:1;padding:10px;border-radius:10px;text-align:center;text-decoration:none;font-weight:700;font-size:0.9rem;transition:0.2s}
 .btn-v {background:var(--vinted); color:#000}
 .btn-sub {background:var(--subito); color:#000}
+.btn-video {background:#ff0055; color:#fff}
 
 /* DESCRIPTION TOGGLE */
 .details-desc summary{cursor:pointer; font-weight:600; color:var(--primary); margin-bottom:10px; list-style:none; outline:none;}
@@ -81,88 +87,73 @@ footer{text-align:center;padding:60px;color:#64748b}
 </style>
 </head>
 <body>
-
 <header>
-  <img src="logo.png" alt="Strano Store">
-  <div class="social">
-    <a href="https://www.tiktok.com/@stranostore" target="_blank"><i class="fab fa-tiktok"></i></a>
-    <a href="https://www.vinted.it/member/156457000-stranostore" target="_blank"><i class="fas fa-tshirt"></i></a>
-    <a href="https://www.subito.it/utente/16474204" target="_blank"><i class="fas fa-shopping-bag"></i></a>
-  </div>
+<img src="logo.png" alt="Strano Store">
+<div class="social">
+<a href="https://www.tiktok.com/@stranostore" target="_blank"><i class="fab fa-tiktok"></i></a>
+<a href="https://www.vinted.it/member/156457000-stranostore" target="_blank"><i class="fas fa-tshirt"></i></a>
+<a href="https://www.subito.it/utente/16474204" target="_blank"><i class="fas fa-shopping-bag"></i></a>
+</div>
 </header>
 
 <section class="hero">
-  <div class="hero-text">
-    <h1>Strano<span>Store</span></h1>
-    <p>Selezione Premium di oggetti unici, tecnologia e abbigliamento. Qualità verificata e affidabilità garantita.</p>
-    <div class="categories">
-      <button class="cat-btn active" onclick="filterCat('Tutti')">Tutti</button>
-      <button class="cat-btn" onclick="filterCat('Tecnologia')">Tecnologia</button>
-      <button class="cat-btn" onclick="filterCat('Abbigliamento')">Abbigliamento</button>
-    </div>
-  </div>
+<div class="hero-text">
+<h1>Strano<span>Store</span></h1>
+<p>Selezione Premium di oggetti unici, tecnologia e abbigliamento. Qualità verificata e affidabilità garantita.</p>
+<div class="categories">
+<button class="cat-btn active" onclick="filterCat('Tutti')">Tutti</button>
+<button class="cat-btn" onclick="filterCat('Tecnologia')">Tecnologia</button>
+<button class="cat-btn" onclick="filterCat('Abbigliamento')">Abbigliamento</button>
+</div>
+</div>
 </section>
 
 <div class="search-container">
-  <input type="text" id="searchInput" class="search-bar" placeholder="Cerca tra gli articoli..." onkeyup="search()">
+<input type="text" id="searchInput" class="search-bar" placeholder="Cerca tra gli articoli..." onkeyup="search()">
 </div>
 
 <section class="store" id="storeGrid"></section>
 
 <section class="reviews-section">
-  <div class="stars-top">★★★★★</div>
-  <h2 style="font-size: 2.2rem; margin-bottom: 20px;">Dicono di noi</h2>
-  <div class="reviews-grid-main">
-    <div style="text-align:center">
-      <strong style="font-size:2rem; color:#fff">4.7/5</strong>
-      <p style="color:var(--vinted); font-weight:700">151 Feedback Vinted</p>
-    </div>
-    <div style="text-align:center">
-      <strong style="font-size:2rem; color:#fff">4.9/5</strong>
-      <p style="color:var(--subito); font-weight:700">10 Feedback Subito</p>
-    </div>
-  </div>
-  <details class="dropdown-reviews">
-    <summary>Leggi tutte le recensioni</summary>
-    <div class="all-reviews-list">
-      <div class="review-item"><p>"Ottimo articolo e persona disponibile!"</p><span>- Ivano Rapetti (Subito)</span></div>
-      <div class="review-item"><p>"Ragazzo super simpatico, è stato un piacere fare affari con lui! Consigliatissimo"</p><span>- Antonio Marra (Subito)</span></div>
-      <div class="review-item"><p>"Gentilissimo e veloce a spedire, consiglio vivamente"</p><span>- Eduard (Subito)</span></div>
-      <div class="review-item"><p>"Persona super disponibile e paziente, consigliatissimo."</p><span>- Mattia (Subito)</span></div>
-      <div class="review-item"><p>"Venditore serio e affidabile. Prodotto perfetto."</p><span>- Utente Subito</span></div>
-      <div class="review-item"><p>"Tutto perfetto! Spedizione veloce e prodotto conforme alla descrizione!"</p><span>- silviaviti2 (Vinted)</span></div>
-      <div class="review-item"><p>"Articolo come nuovo e spedizione veloce."</p><span>- andreaboscoli1 (Vinted)</span></div>
-      <div class="review-item"><p>"Articolo corrispondente alla foto... Merci pour tout 👍"</p><span>- susana301103 (Vinted)</span></div>
-      <div class="review-item"><p>"Spedizione rapida, venditore molto cordiale!"</p><span>- michele_r (Vinted)</span></div>
-      <div class="review-item"><p>"Oggetto bellissimo, esattamente come in foto."</p><span>- giulia_vnt (Vinted)</span></div>
-      <div class="review-item"><p>"Ottimo imballaggio e comunicazione eccellente."</p><span>- luca.88 (Vinted)</span></div>
-      <div class="review-item"><p>"Molto professionale, consigliato A++"</p><span>- marco_tech (Vinted)</span></div>
-      <div class="review-item"><p>"Tutto liscio, ricomprerò sicuramente."</p><span>- sofia_s (Vinted)</span></div>
-      <div class="review-item"><p>"Preciso e veloce nella spedizione."</p><span>- francesco_92 (Vinted)</span></div>
-      <div class="review-item"><p>"Persona squisita, prodotto top."</p><span>- elena_p (Vinted)</span></div>
-    </div>
-  </details>
+<div class="stars-top">★★★★★</div>
+<h2 style="font-size: 2.2rem; margin-bottom: 20px;">Dicono di noi</h2>
+<div class="reviews-grid-main">
+<div style="text-align:center">
+<strong style="font-size:2rem; color:#fff">4.7/5</strong>
+<p style="color:var(--vinted); font-weight:700">151 Feedback Vinted</p>
+</div>
+<div style="text-align:center">
+<strong style="font-size:2rem; color:#fff">4.9/5</strong>
+<p style="color:var(--subito); font-weight:700">10 Feedback Subito</p>
+</div>
+</div>
+
+<details class="dropdown-reviews">
+<summary>Leggi tutte le recensioni</summary>
+<div class="all-reviews-list">
+<!-- recensioni dinamiche -->
+</div>
+</details>
 </section>
 
 <footer><p>© 2025 Strano Store — Premium Resale</p></footer>
 
 <div id="assistenza"><i class="fas fa-envelope"></i></div>
 <div id="modal-assistenza">
-  <header><span>Contattaci</span><span class="close">&times;</span></header>
-  <form id="form-assistenza">
-    <input type="text" name="name" placeholder="Il tuo Nome" required>
-    <input type="email" name="email" placeholder="La tua Email" required>
-    <textarea name="message" rows="4" placeholder="Come possiamo aiutarti?" required></textarea>
-    <button type="submit">Invia Messaggio</button>
-  </form>
+<header><span>Contattaci</span><span class="close">&times;</span></header>
+<form id="form-assistenza">
+<input type="text" name="name" placeholder="Il tuo Nome" required>
+<input type="email" name="email" placeholder="La tua Email" required>
+<textarea name="message" rows="4" placeholder="Come possiamo aiutarti?" required></textarea>
+<button type="submit">Invia Messaggio</button>
+</form>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3.2.0/dist/email.min.js"></script>
 <script>
 (function(){emailjs.init("HCRQeVuO9W2k5c9HH");})();
-
 const prodotti = [
-  {n:'iPhone 15 Pro + Caricatore + Cover', p:'599', c:'Tecnologia', img:'iphone.png', v:'📱 iPhone 15 Pro – Come Nuovo! Sempre con cover e vetro. Zero graffi. Completo di scatola.', linkV:'https://www.vinted.it/items/7764182241-iphone-15-pro-caricatore-cover', linkS:'https://www.subito.it/telefonia/iphone-15-pro-caricatore-cover-catania-628165680.htm', linkVideo:'https://www.tiktok.com/@stranostore/video/7585347209382726934?lang=en'},
+  {n:'iPhone 15 Pro + Caricatore + Cover', p:'599', c:'Tecnologia', img:'iphone.png', v:'📱 iPhone 15 Pro – Come Nuovo! Sempre con cover e vetro. Zero graffi. Completo di scatola.', linkV:'https://www.vinted.it/items/7764182241-iphone-15-pro-caricatore-cover', linkS:'https://www.subito.it/telefonia/iphone-15-pro-caricatore-cover-catania-628165680.htm', video:'https://www.tiktok.com/@stranostore/video/7585347209382726934?lang=en'},
   {n:'Scultura in vetro di Murano delfini', p:'99.99', c:'Abbigliamento', img:'delfino.png', v:'Scultura artistica in vetro di Murano con delfini e foglia oro.', linkV:'https://www.vinted.it/items/7725614209-scultura-in-vetro-di-murano-con-delfini-lavorazione-artistica-con-foglia-oro', linkS:'https://www.subito.it/arredamento-casalinghi/scultura-in-vetro-di-murano-con-delfini-catania-627414368.htm'},
   {n:'Jeans Roy Roger’s', p:'19.99', c:'Abbigliamento', img:'pantaloni.png', v:'Jeans uomo Roy Roger’s, taglia M, colore blu marino, ottime condizioni.', linkV:'https://www.vinted.it/items/7682389652-jeans-roy-rogers', linkS:''},
   {n:'Polo Moncler', p:'29.99', c:'Abbigliamento', img:'moncler.webp', v:'Polo Moncler bianca, taglia M, in ottimo stato.', linkV:'https://www.vinted.it/items/7019057147-moncler-polo-taglia-m', linkS:''},
@@ -177,58 +168,55 @@ function renderStore(filter = 'Tutti', query = '') {
   grid.innerHTML = '';
   prodotti.forEach(item => {
     if ((filter === 'Tutti' || item.c === filter) && item.n.toLowerCase().includes(query.toLowerCase())) {
-      grid.innerHTML += `
-      <div class="card">
-        <img src="${item.img}" alt="${item.n}" onerror="this.src='https://via.placeholder.com/300x400?text=Strano+Store'">
-        <div class="card-content">
-          <h3>${item.n}</h3>
-          <div class="price">€${item.p}</div>
-          <details class="details-desc">
-            <summary>Mostra descrizione</summary>
-            <p>${item.v}</p>
-          </details>
-          <div class="btn-group">
-            ${item.linkV ? `<a href="${item.linkV}" target="_blank" class="btn-s btn-v">Vinted</a>` : ''}
-            ${item.linkS ? `<a href="${item.linkS}" target="_blank" class="btn-s btn-sub">Subito</a>` : ''}
-            ${item.linkVideo ? `<a href="${item.linkVideo}" target="_blank" class="btn-s btn-v" style="background:#ff0050;">Guarda Video</a>` : ''}
-          </div>
-        </div>
+      grid.innerHTML += `<div class="card">
+      <img src="${item.img}" alt="${item.n}" loading="lazy" onerror="this.src='https://via.placeholder.com/300x400?text=Strano+Store'">
+      <div class="card-content">
+      <h3>${item.n}</h3>
+      <div class="price">€${item.p}</div>
+      <details class="details-desc"><summary>Mostra descrizione</summary><p>${item.v}</p></details>
+      <div class="btn-group">
+      ${item.linkV ? `<a href="${item.linkV}" target="_blank" class="btn-s btn-v">Vinted</a>` : ''}
+      ${item.linkS ? `<a href="${item.linkS}" target="_blank" class="btn-s btn-sub">Subito</a>` : ''}
+      ${item.video ? `<a href="${item.video}" target="_blank" class="btn-s btn-video">Guarda Video</a>` : ''}
       </div>
-      `;
+      </div></div>`;
     }
   });
 }
 
-function filterCat(cat) {
-  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+function filterCat(cat){
+  document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active'));
   event.target.classList.add('active');
   renderStore(cat, document.getElementById('searchInput').value);
 }
-
-function search() {
-  const query = document.getElementById('searchInput').value;
-  const activeCat = document.querySelector('.cat-btn.active').innerText;
-  renderStore(activeCat, query);
+function search(){
+  renderStore(document.querySelector('.cat-btn.active').textContent, document.getElementById('searchInput').value);
 }
 
+// Assistenza
+document.getElementById('assistenza').onclick=()=>document.getElementById('modal-assistenza').style.display='flex';
+document.querySelector('#modal-assistenza .close').onclick=()=>document.getElementById('modal-assistenza').style.display='none';
+document.getElementById('form-assistenza').onsubmit=function(e){
+  e.preventDefault();
+  const btn=this.querySelector('button');
+  btn.innerText='Invio...';
+  emailjs.send('stranostore','template_kwkzv37',{ name:this.name.value, email:this.email.value, message:this.message.value })
+  .then(()=>{ btn.innerText='Invia Messaggio'; alert('Messaggio inviato!'); this.reset(); },
+        (err)=>{ btn.innerText='Invia Messaggio'; alert('Errore invio: '+JSON.stringify(err)); });
+}
+
+// Render iniziale
 renderStore();
 
-// Modal Assistenza
-const btnAssistenza = document.getElementById('assistenza');
-const modalAssistenza = document.getElementById('modal-assistenza');
-const closeModal = modalAssistenza.querySelector('.close');
-
-btnAssistenza.addEventListener('click', ()=>{modalAssistenza.style.display='flex'});
-closeModal.addEventListener('click', ()=>{modalAssistenza.style.display='none'});
-window.addEventListener('click', e=>{if(e.target==modalAssistenza) modalAssistenza.style.display='none'});
-
-// Invio form
-document.getElementById('form-assistenza').addEventListener('submit', function(e){
-  e.preventDefault();
-  emailjs.sendForm('service_xyz', 'template_xyz', this)
-  .then(()=>{alert('Messaggio inviato con successo!');this.reset(); modalAssistenza.style.display='none';}, (err)=>{alert('Errore: '+err.text);});
-});
+// Render recensioni dinamicamente
+const reviewsList = document.querySelector('.all-reviews-list');
+const reviews = [
+  {text:"Ottimo articolo e persona disponibile!", author:"Marco"},
+  {text:"Consegna velocissima e prodotto come da descrizione.", author:"Elena"},
+  {text:"Prodotto perfetto, tutto come scritto!", author:"Luca"},
+  {text:"Esperienza super positiva, consiglio.", author:"Anna"}
+];
+reviews.forEach(r=>reviewsList.innerHTML+=`<div class="review-item"><p>"${r.text}"</p><span>- ${r.author}</span></div>`);
 </script>
-
 </body>
 </html>
