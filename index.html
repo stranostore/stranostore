@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Strano Store | Premium Resale</title>
 
-<meta name="description" content="Strano Store – Premium resale di tecnologia, abbigliamento e oggetti selezionati. Venditore affidabile con recensioni reali su Vinted e Subito.">
+<meta name="description" content="Strano Store – Premium resale di tecnologia, abbigliamento e oggetti selezionati. Venditore affidabile con recensioni reali.">
 
 <link rel="icon" href="logo.png">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -25,7 +25,6 @@ body{
 font-family:'Inter',sans-serif;
 background:linear-gradient(180deg,var(--bg),#0f172a);
 color:#e5e7eb;
-line-height:1.6
 }
 
 /* HEADER */
@@ -33,52 +32,45 @@ header{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:20px 30px;
-border-bottom:1px solid rgba(255,255,255,0.05)
+padding:18px 24px;
+border-bottom:1px solid rgba(255,255,255,.05)
 }
-header img{width:110px}
-header .social a{
-margin-left:15px;
-font-size:24px;
-color:var(--primary);
-transition:.2s
-}
-header .social a:hover{transform:translateY(-3px);color:#fff}
+header img{width:100px}
 
 /* HERO */
-.hero{
+.hero{text-align:center;padding:50px 20px}
+.hero h1{font-size:46px;font-weight:800}
+.hero span{color:var(--primary)}
+.hero p{color:#cbd5f5;margin:15px auto 25px;max-width:600px}
+
+/* CONTROLS */
+.controls{
 max-width:1200px;
 margin:auto;
-padding:60px 20px;
-text-align:center
+padding:0 20px 20px;
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+justify-content:center
 }
-.hero h1{
-font-size:54px;
-font-weight:800;
-margin-bottom:15px
-}
-.hero h1 span{color:var(--primary)}
-.hero p{
-font-size:1.1rem;
-color:#cbd5f5;
-max-width:600px;
-margin:0 auto 30px
-}
-
-/* SEARCH & CATEGORIES */
-.search-container{max-width:1200px;margin:20px auto;padding:0 20px}
 .search-bar{
-width:100%;
-padding:15px 25px;
+flex:1;
+min-width:240px;
+padding:14px 22px;
 border-radius:50px;
 border:1px solid rgba(34,211,238,.3);
 background:var(--card-bg);
-color:#fff;
-font-size:1rem;
-outline:none;
-margin-bottom:20px
+color:#fff
+}
+select{
+padding:14px;
+border-radius:50px;
+border:none;
+background:var(--card-bg);
+color:#fff
 }
 .categories{
+width:100%;
 display:flex;
 gap:10px;
 flex-wrap:wrap;
@@ -91,19 +83,15 @@ border:1px solid var(--primary);
 background:transparent;
 color:var(--primary);
 cursor:pointer;
-font-weight:600;
-transition:.3s
+font-weight:600
 }
-.cat-btn.active,.cat-btn:hover{
-background:var(--primary);
-color:var(--bg)
-}
+.cat-btn.active{background:var(--primary);color:#020617}
 
-/* STORE GRID */
+/* STORE */
 .store{
 max-width:1200px;
 margin:auto;
-padding:40px 20px;
+padding:30px 20px;
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:25px
@@ -121,133 +109,78 @@ box-shadow:0 20px 40px rgba(0,0,0,.4)
 }
 .card img{
 width:100%;
-height:260px;
+height:250px;
 object-fit:cover
 }
-.card-content{padding:20px}
-.card-content h3{
-font-size:1.05rem;
-min-height:48px
-}
-.price{
-font-size:22px;
+.card-content{padding:18px}
+.card h3{font-size:1.05rem;min-height:48px}
+.price{font-size:22px;font-weight:800;color:var(--primary)}
+.badge{
+background:var(--gold);
+color:#000;
+padding:6px 10px;
+font-size:.7rem;
 font-weight:800;
-color:var(--primary);
-margin:10px 0
+border-radius:10px;
+display:inline-block;
+margin-bottom:6px
 }
-.btn-group{
-display:flex;
-gap:10px;
-margin-top:10px
-}
-.btn-s{
+.btn-group{display:flex;gap:10px;margin-top:10px}
+.btn{
 flex:1;
 padding:10px;
 border-radius:10px;
-text-align:center;
-text-decoration:none;
 font-weight:700;
-font-size:.9rem;
-transition:.2s
-}
-.btn-v{background:var(--vinted);color:#000}
-.btn-sub{background:var(--subito);color:#000}
-
-/* DESCRIPTION */
-.details-desc summary{
-cursor:pointer;
-font-weight:600;
-color:var(--primary);
-list-style:none
-}
-.details-desc p{
-font-size:.9rem;
-padding:5px 0
-}
-
-/* REVIEWS */
-.reviews-section{
-max-width:1000px;
-margin:60px auto;
-padding:40px 20px;
-background:rgba(255,255,255,.02);
-border-radius:30px;
-text-align:center
-}
-.stars-top{
-color:var(--gold);
-font-size:2.5rem;
-margin-bottom:10px
-}
-
-/* FOOTER */
-footer{
 text-align:center;
-padding:50px;
-color:#64748b
+text-decoration:none
+}
+.vinted{background:var(--vinted);color:#000}
+.subito{background:var(--subito);color:#000}
+
+/* FEATURED */
+.featured{
+grid-column:1/-1;
+display:grid;
+grid-template-columns:1fr 1fr
+}
+@media(max-width:768px){
+.featured{grid-template-columns:1fr}
 }
 
-/* ASSISTENZA */
+/* ASSISTENZA (INVARIATA) */
 #assistenza{
-position:fixed;
-bottom:20px;
-right:20px;
-width:60px;
-height:60px;
+position:fixed;bottom:20px;right:20px;
+width:60px;height:60px;
 background:var(--primary);
 border-radius:50%;
-display:flex;
-justify-content:center;
-align-items:center;
+display:flex;justify-content:center;align-items:center;
 box-shadow:0 8px 20px rgba(0,0,0,.3);
-cursor:pointer;
-animation:float 2s infinite;
-z-index:9999
+cursor:pointer;z-index:9999
 }
-#assistenza i{color:white;font-size:28px}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-
+#assistenza i{color:#fff;font-size:26px}
 #modal-assistenza{
-position:fixed;
-bottom:20px;
-right:20px;
-background:#0f172a;
-color:#e5e7eb;
-width:320px;
-border-radius:16px;
-box-shadow:0 10px 40px rgba(0,0,0,.5);
-display:none;
-flex-direction:column;
-z-index:10000
+position:fixed;bottom:20px;right:20px;
+width:320px;background:#0f172a;
+display:none;flex-direction:column;
+border-radius:16px;z-index:10000
 }
 #modal-assistenza header{
-background:#020617;
-padding:15px;
-display:flex;
-justify-content:space-between;
+background:#020617;padding:15px;
+display:flex;justify-content:space-between;
 border-bottom:1px solid var(--primary)
 }
 #modal-assistenza form{
-display:flex;
-flex-direction:column;
-gap:12px;
-padding:20px
+display:flex;flex-direction:column;gap:12px;padding:20px
 }
 #modal-assistenza input,
 #modal-assistenza textarea{
-padding:12px;
-border-radius:8px;
-border:none;
-background:#1e293b;
-color:#fff
+padding:12px;border-radius:8px;border:none;
+background:#1e293b;color:#fff
 }
 #modal-assistenza button{
 background:var(--primary);
-border:none;
-padding:12px;
-font-weight:800;
-border-radius:8px;
-cursor:pointer
+border:none;padding:12px;
+font-weight:800;border-radius:8px
 }
 </style>
 </head>
@@ -256,31 +189,30 @@ cursor:pointer
 
 <header>
 <img src="logo.png" alt="Strano Store">
-<div class="social">
-<a href="https://www.tiktok.com/@stranostore" target="_blank"><i class="fab fa-tiktok"></i></a>
-<a href="https://www.vinted.it/member/156457000-stranostore" target="_blank"><i class="fas fa-shirt"></i></a>
-<a href="https://www.subito.it/utente/16474204" target="_blank"><i class="fas fa-bag-shopping"></i></a>
-</div>
 </header>
 
 <section class="hero">
 <h1>Strano<span>Store</span></h1>
-<p>Selezione premium di tecnologia, abbigliamento e oggetti unici. Affidabilità verificata.</p>
-<div class="categories">
-<button class="cat-btn active" onclick="filterCat(event,'Tutti')">Tutti</button>
-<button class="cat-btn" onclick="filterCat(event,'Tecnologia')">Tecnologia</button>
-<button class="cat-btn" onclick="filterCat(event,'Abbigliamento')">Abbigliamento</button>
-<button class="cat-btn" onclick="filterCat(event,'Casa')">Casa / Arte</button>
-</div>
+<p>Premium resale verificato. Tecnologia e abbigliamento selezionati.</p>
 </section>
 
-<div class="search-container">
-<input class="search-bar" id="searchInput" placeholder="Cerca articoli..." onkeyup="searchItems()">
+<div class="controls">
+<input class="search-bar" id="searchInput" placeholder="Cerca articoli…" onkeyup="render()">
+<select id="sort" onchange="render()">
+<option value="new">Novità</option>
+<option value="low">Prezzo ↑</option>
+<option value="high">Prezzo ↓</option>
+</select>
+
+<div class="categories">
+<button class="cat-btn active" onclick="setCat(event,'Tutti')">Tutti</button>
+<button class="cat-btn" onclick="setCat(event,'Tecnologia')">Tecnologia</button>
+<button class="cat-btn" onclick="setCat(event,'Abbigliamento')">Abbigliamento</button>
+<button class="cat-btn" onclick="setCat(event,'Casa')">Casa / Arte</button>
+</div>
 </div>
 
-<section class="store" id="storeGrid"></section>
-
-<footer>© 2025 Strano Store — Premium Resale</footer>
+<section class="store" id="grid"></section>
 
 <div id="assistenza"><i class="fas fa-envelope"></i></div>
 <div id="modal-assistenza">
@@ -298,57 +230,120 @@ cursor:pointer
 (function(){emailjs.init("HCRQeVuO9W2k5c9HH");})();
 
 const prodotti=[
-{n:'iPhone 15 Pro + Accessori',p:599,c:'Tecnologia',img:'iphone.png',v:'iPhone 15 Pro come nuovo, sempre protetto.',linkV:'https://www.vinted.it/items/7764182241-iphone-15-pro-caricatore-cover',linkS:'https://www.subito.it/telefonia/iphone-15-pro-caricatore-cover-catania-628165680.htm'},
-{n:'Scultura Murano Delfini',p:99.99,c:'Casa',img:'delfino.png',v:'Scultura in vetro di Murano con foglia oro.',linkV:'https://www.vinted.it/items/7725614209',linkS:''},
-{n:'Jeans Roy Roger’s',p:19.99,c:'Abbigliamento',img:'pantaloni.png',v:'Jeans uomo ottime condizioni.',linkV:'https://www.vinted.it/items/7682389652',linkS:''}
+{
+n:'iPhone 15 Pro',
+p:599,
+c:'Tecnologia',
+img:'iphone.png',
+v:'Come nuovo, sempre protetto',
+featured:true,
+linkV:'https://www.vinted.it/',
+linkS:'https://www.subito.it/'
+},
+{
+n:'Scultura Murano Delfini',
+p:99.99,
+c:'Casa',
+img:'delfino.png',
+v:'Vetro artistico di Murano',
+featured:false,
+linkV:'https://www.vinted.it/'
+},
+{
+n:'Jeans Roy Roger’s',
+p:19.99,
+c:'Abbigliamento',
+img:'pantaloni.png',
+v:'Ottime condizioni',
+featured:false,
+linkV:'https://www.vinted.it/'
+},
+{
+n:'Polo Moncler',
+p:29.99,
+c:'Abbigliamento',
+img:'moncler.webp',
+v:'Taglia M, ottimo stato',
+featured:false,
+linkV:'https://www.vinted.it/'
+},
+{
+n:'Camicia Polo Ralph Lauren',
+p:19.99,
+c:'Abbigliamento',
+img:'camicia1.png',
+v:'Taglia XS',
+featured:false,
+linkV:'https://www.vinted.it/'
+},
+{
+n:'Camicia Fred Perry',
+p:19.99,
+c:'Abbigliamento',
+img:'camicia2.png',
+v:'Taglia S',
+featured:false,
+linkV:'https://www.vinted.it/'
+},
+{
+n:'Giubbotto in pelle',
+p:19.99,
+c:'Abbigliamento',
+img:'giubotto.png',
+v:'Colore marrone',
+featured:false,
+linkV:'https://www.vinted.it/'
+}
 ];
 
-let currentCat='Tutti';
+let cat='Tutti';
 
-function renderStore(){
-const grid=document.getElementById('storeGrid');
+function setCat(e,c){
+document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active'));
+e.target.classList.add('active');
+cat=c;render();
+}
+
+function render(){
+let arr=[...prodotti];
 const q=searchInput.value.toLowerCase();
+const s=sort.value;
+
+arr=arr.filter(i=>(cat==='Tutti'||i.c===cat)&&
+(i.n+i.v).toLowerCase().includes(q));
+
+if(s==='low')arr.sort((a,b)=>a.p-b.p);
+if(s==='high')arr.sort((a,b)=>b.p-a.p);
+
+const grid=document.getElementById('grid');
 grid.innerHTML='';
 
-prodotti.forEach(i=>{
-if((currentCat==='Tutti'||i.c===currentCat)&&
-(i.n+i.v).toLowerCase().includes(q)){
+arr.forEach(i=>{
 grid.innerHTML+=`
-<div class="card">
-<img src="${i.img}" onerror="this.src='https://via.placeholder.com/300x400'">
+<div class="card ${i.featured?'featured':''}">
+<img src="${i.img}" onerror="this.src='https://via.placeholder.com/600x600?text=Strano+Store'">
 <div class="card-content">
+${i.featured?'<span class="badge">IN EVIDENZA</span>':''}
 <h3>${i.n}</h3>
 <div class="price">€${i.p}</div>
-<details class="details-desc">
-<summary>Descrizione</summary>
 <p>${i.v}</p>
-</details>
 <div class="btn-group">
-${i.linkV?`<a class="btn-s btn-v" href="${i.linkV}" target="_blank"><i class="fas fa-shirt"></i> Vinted</a>`:''}
-${i.linkS?`<a class="btn-s btn-sub" href="${i.linkS}" target="_blank"><i class="fas fa-bag-shopping"></i> Subito</a>`:''}
+<a class="btn vinted" href="${i.linkV}" target="_blank">Vinted</a>
+${i.linkS?`<a class="btn subito" href="${i.linkS}" target="_blank">Subito</a>`:''}
 </div>
 </div>
 </div>`;
-}
 });
 
-if(!grid.innerHTML){
+if(!grid.innerHTML)
 grid.innerHTML='<p style="opacity:.6;text-align:center">Nessun articolo trovato</p>';
 }
-}
-
-function filterCat(e,cat){
-document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active'));
-e.target.classList.add('active');
-currentCat=cat;
-renderStore();
-}
-function searchItems(){renderStore();}
 
 document.getElementById('assistenza').onclick=()=>modal-assistenza.style.display='flex';
 document.querySelector('.close').onclick=()=>modal-assistenza.style.display='none';
 
-renderStore();
+render();
 </script>
+
 </body>
 </html>
