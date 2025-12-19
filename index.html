@@ -34,9 +34,8 @@ header .social a:hover{transform:translateY(-3px); color:#fff}
 /* CAROSELLO */
 .featured-carousel{max-width:1200px;margin:40px auto;position:relative;overflow:hidden;border-radius:20px}
 .carousel-wrapper{display:flex;transition:transform 0.5s ease;gap:20px;padding:10px}
-.carousel-wrapper .card{min-width:250px;flex-shrink:0;background:var(--card-bg);border-radius:20px;overflow:hidden;transition:.3s;border:1px solid rgba(255,255,255,0.05);cursor:pointer}
-.carousel-wrapper .card img{width:100%;height:200px;object-fit:cover;display:block;transition:.3s}
-.carousel-wrapper .card:hover img{transform:scale(1.05)}
+.carousel-wrapper .card{min-width:250px;flex-shrink:0;background:var(--card-bg);border-radius:20px;overflow:hidden;transition:.3s;border:1px solid rgba(255,255,255,0.05)}
+.carousel-wrapper .card img{width:100%;height:200px;object-fit:cover;display:block}
 .carousel-wrapper .card .card-content{padding:15px}
 .carousel-wrapper .card .price{font-size:18px;font-weight:700;color:var(--primary)}
 .carousel-controls{position:absolute;top:50%;width:100%;display:flex;justify-content:space-between;transform:translateY(-50%)}
@@ -47,7 +46,7 @@ header .social a:hover{transform:translateY(-3px); color:#fff}
 /* STORE GRID */
 .store{max-width:1200px;margin:auto;padding:40px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px}
 .card{background:var(--card-bg);border-radius:20px;overflow:hidden;transition:.3s;border:1px solid rgba(255,255,255,0.05);position:relative}
-.card img{width:100%;height:260px;object-fit:cover;transition:.3s;display:block}
+.card img{width:100%;height:260px;object-fit:cover;transition:.3s}
 .card:hover{transform:translateY(-5px);box-shadow:0 10px 30px rgba(0,0,0,0.5)}
 .card-content{padding:20px}
 .price{font-size:22px;font-weight:800;color:var(--primary);margin:10px 0}
@@ -83,9 +82,9 @@ p[id^="desc-"].show{display:block}
 /* FOOTER */
 footer{text-align:center;padding:60px;color:#64748b}
 
-/* Animazioni card on scroll */
-.card{opacity:0;transform:translateY(20px);transition:all 0.5s ease;}
-.card.show-card{opacity:1;transform:translateY(0);}
+/* Animazioni scroll cards */
+.card{opacity:0; transform: translateY(20px); transition:0.6s;}
+.card.show-card{opacity:1; transform: translateY(0);}
 </style>
 </head>
 <body>
@@ -115,7 +114,6 @@ footer{text-align:center;padding:60px;color:#64748b}
 <input type="text" id="searchInput" class="search-bar" placeholder="Cerca tra gli articoli..." onkeyup="search()">
 </div>
 
-<!-- CAROSELLO -->
 <section class="featured-carousel">
   <div class="carousel-wrapper" id="carouselWrapper"></div>
   <div class="carousel-controls">
@@ -142,7 +140,7 @@ footer{text-align:center;padding:60px;color:#64748b}
 <details class="dropdown-reviews">
 <summary>Leggi tutte le recensioni</summary>
 <div class="all-reviews-list">
-<!-- Recensioni qui -->
+<!-- Reviews qui -->
 </div>
 </details>
 </section>
@@ -165,12 +163,12 @@ footer{text-align:center;padding:60px;color:#64748b}
 (function(){emailjs.init("HCRQeVuO9W2k5c9HH");})();
 
 const prodotti=[
-{n:'iPhone 15 Pro + Cover + Caricatore',p:'599',c:'Tecnologia',img:'iphone.png',desc:'iPhone 15 Pro in condizioni impeccabili, sempre con cover e vetro. Zero graffi, completo di scatola.',linkV:'#',linkS:'#'},
-{n:'Jeans Roy Roger\'s',p:'19.99',c:'Abbigliamento',img:'pantaloni.png',desc:'Jeans uomo Roy Roger’s – taglia 32, ottime condizioni.',linkV:'#',linkS:''},
-{n:'Camicia Fred Perry',p:'19.99',c:'Abbigliamento',img:'camicia1.png',desc:'Camicia Fred Perry, taglia S, nuova senza cartellino.',linkV:'#',linkS:''},
-{n:'Camicia Polo Ralph Lauren',p:'19.99',c:'Abbigliamento',img:'camicia2.png',desc:'Camicia Polo Ralph Lauren, taglia XS, nuova senza cartellino.',linkV:'#',linkS:''},
-{n:'Giubbotto di pelle S',p:'19.99',c:'Abbigliamento',img:'giubotto.png',desc:'Giubbotto di pelle taglia S, ottime condizioni.',linkV:'#',linkS:''},
-{n:'Stivali donna Unisa 38',p:'39.99',c:'Abbigliamento',img:'stivali.png',desc:'Stivali neri in pelle con zip laterale e suola carrarmato, come nuovi.',linkV:'#',linkS:''}
+{n:'iPhone 15 Pro + Cover + Caricatore',p:'599',c:'Tecnologia',img:'iphone.png',desc:'iPhone 15 Pro in condizioni impeccabili, sempre con cover e vetro. Zero graffi, completo di scatola.',linkV:'https://www.vinted.it/items/7764182241-iphone-15-pro-caricatore-cover',linkS:'https://www.subito.it/telefonia/iphone-15-pro-caricatore-cover-catania-628165680.htm'},
+{n:'Jeans Roy Roger\'s',p:'19.99',c:'Abbigliamento',img:'pantaloni.png',desc:'Jeans uomo Roy Roger’s – taglia 32, ottime condizioni.',linkV:'https://www.vinted.it/items/7682389652-jeans-roy-rogers',linkS:''},
+{n:'Camicia Fred Perry',p:'19.99',c:'Abbigliamento',img:'camicia1.png',desc:'Camicia Fred Perry, taglia S, nuova senza cartellino.',linkV:'https://www.vinted.it/items/6274311751-camicia-fred-perry',linkS:''},
+{n:'Camicia Polo Ralph Lauren',p:'19.99',c:'Abbigliamento',img:'camicia2.png',desc:'Camicia Polo Ralph Lauren, taglia XS, nuova senza cartellino.',linkV:'https://www.vinted.it/items/6274339172-camicia-polo-ralph-lauren',linkS:''},
+{n:'Giubbotto di pelle S',p:'19.99',c:'Abbigliamento',img:'giubotto.png',desc:'Giubbotto di pelle taglia S, ottime condizioni.',linkV:'https://www.vinted.it/items/4461806005-giubbotto-di-pelle-s',linkS:''},
+{n:'Stivali donna Unisa 38',p:'39.99',c:'Abbigliamento',img:'stivali.png',desc:'Stivali neri in pelle con zip laterale e suola carrarmato, come nuovi.',linkV:'https://www.vinted.it/items/7591507417-stivali-donna-unisa-38',linkS:''}
 ];
 
 function renderStore(cat='Tutti', searchVal=''){
@@ -180,7 +178,7 @@ prodotti.forEach((item,i)=>{
 if((cat==='Tutti'||item.c===cat)&&(item.n.toLowerCase().includes(searchVal.toLowerCase())||searchVal==='')){
 const card=document.createElement('div');
 card.className='card';
-card.innerHTML=`<img src="${item.img}" alt="${item.n}" loading="lazy">
+card.innerHTML=`<img src="${item.img}" alt="${item.n}">
 <div class="card-content">
 <h3>${item.n}</h3>
 <div class="price">€ ${item.p}</div>
@@ -212,7 +210,7 @@ function renderCarousel() {
   featuredProducts.forEach((item)=>{
     const card=document.createElement('div');
     card.className='card';
-    card.innerHTML=`<img src="${item.img}" alt="${item.n}" loading="lazy">
+    card.innerHTML=`<img src="${item.img}" alt="${item.n}">
     <div class="card-content"><h3>${item.n}</h3><div class="price">€ ${item.p}</div></div>`;
     carouselWrapper.appendChild(card);
   });
@@ -229,26 +227,31 @@ function prevSlide(){currentIndex = (currentIndex > 0) ? currentIndex - 1 : feat
 setInterval(nextSlide,4000);
 let startX = 0;
 carouselWrapper.addEventListener('touchstart', e => { startX = e.touches[0].clientX; });
-carouselWrapper.addEventListener('touchend', e => { let diff = e.changedTouches[0].clientX - startX; if(diff > 50) prevSlide(); else if(diff < -50) nextSlide(); });
+carouselWrapper.addEventListener('touchend', e => { let diff = startX - e.changedTouches[0].clientX; if(diff>50){nextSlide();}else if(diff<-50){prevSlide();} });
+
 renderCarousel();
 
-/* MODAL */
-const btn=document.getElementById('btn-contattaci');
+/* ASSISTENZA */
+const btnCont=document.getElementById('btn-contattaci');
 const modal=document.getElementById('modal-assistenza');
-btn.addEventListener('click',()=>{modal.style.display='flex'});
-document.querySelector('#modal-assistenza .close').addEventListener('click',()=>{modal.style.display='none'});
+const closeModal=document.querySelector('#modal-assistenza .close');
+
+window.addEventListener('scroll',()=>{if(window.scrollY>400){btnCont.classList.add('show');}else{btnCont.classList.remove('show');}});
+btnCont.addEventListener('click',()=>{modal.style.display='flex';});
+closeModal.addEventListener('click',()=>{modal.style.display='none';});
 document.getElementById('form-assistenza').addEventListener('submit',function(e){
 e.preventDefault();
-emailjs.sendForm('service_id','template_id',this).then(()=>{alert('Messaggio inviato!');modal.style.display='none';this.reset();},()=>{alert('Errore invio!')});
+emailjs.sendForm('service_XXXX','template_XXXX',this).then(()=>{alert('Messaggio inviato!');this.reset();modal.style.display='none';},()=>{alert('Errore invio messaggio');});
 });
 
-/* Animazione scroll cards */
-const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('show-card');}})}, {threshold:0.2});
-function observeCards(){document.querySelectorAll('.card').forEach(card=>observer.observe(card));}
-
-/* Mostra bottone assistenza dopo 5 secondi */
-setTimeout(()=>{btn.classList.add('show')},5000);
+/* Scroll animation cards */
+function observeCards(){
+const cards=document.querySelectorAll('.card');
+const observer=new IntersectionObserver((entries)=>{
+entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('show-card');}});
+},{threshold:0.2});
+cards.forEach(c=>observer.observe(c));
+}
 </script>
-
 </body>
 </html>
