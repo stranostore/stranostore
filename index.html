@@ -190,23 +190,24 @@
         </div>
     </section>
 
-    <!-- SEZIONE CONTATTI -->
+    <!-- SEZIONE CONTATTI (COLLEGATA A FORMSPREE) -->
     <section id="contatti" class="bg-slate-200/55 py-20 border-t border-slate-200">
         <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-3xl font-bold tracking-tight text-slate-900 mb-2">Hai bisogno di aiuto?</h2>
             <p class="text-slate-500 mb-8">Scrivici un messaggio, ti risponderemo il prima possibile.</p>
-            <form onsubmit="inviaMessaggio(event)" class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm text-left grid gap-4">
+            
+            <form action="https://formspree.io/f/xvkgavqq" method="POST" class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm text-left grid gap-4">
                 <div>
                     <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Il tuo nome</label>
-                    <input type="text" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-600 text-sm" placeholder="Mario Rossi">
+                    <input type="text" name="nome" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-600 text-sm" placeholder="Mario Rossi">
                 </div>
                 <div>
                     <label class="block text-xs font-bold text-slate-700 uppercase mb-1">La tua email</label>
-                    <input type="email" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-600 text-sm" placeholder="mario@email.it">
+                    <input type="email" name="email" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-600 text-sm" placeholder="mario@email.it">
                 </div>
                 <div>
                     <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Messaggio</label>
-                    <textarea rows="4" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-600 text-sm" placeholder="Scrivi qui la tua richiesta..."></textarea>
+                    <textarea name="messaggio" rows="4" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-600 text-sm" placeholder="Scrivi qui la tua richiesta..."></textarea>
                 </div>
                 <button type="submit" class="w-full py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl shadow-md transition-all cursor-pointer">
                     Invia Messaggio
@@ -387,20 +388,9 @@
                 return;
             }
 
-            // Calcola il totale del carrello
             let prezzoTotale = carrello.reduce((sum, item) => sum + (item.prezzo * item.qta), 0);
-            
-            // Crea il link PayPal.Me con il tuo nome utente e l'importo calcolato (es: https://paypal.me/frastrano/24.99EUR)
             const paypalUrl = `https://paypal.me/frastrano/${prezzoTotale.toFixed(2)}EUR`;
-
-            // Reindirizza l'utente alla tua pagina di pagamento PayPal in una nuova scheda
             window.open(paypalUrl, '_blank');
-        }
-
-        function inviaMessaggio(event) {
-            event.preventDefault();
-            alert("Messaggio inviato con successo! Ti risponderemo presto.");
-            event.target.reset();
         }
 
         mostraProdotti(prodotti);
