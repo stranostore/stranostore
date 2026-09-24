@@ -16,12 +16,28 @@
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased selection:bg-indigo-500 selection:text-white">
 
-    <!-- BARRA NOTIFICA -->
-    <div class="bg-indigo-600 text-white text-xs font-medium py-2.5 px-4 text-center">
-        🚀 Spedizione gratuita sopra i 39€! | Usa il codice <span class="underline font-bold tracking-wide">STRANO10</span> per il 10% di sconto.
+    <!-- BARRA ADMIN ATTIVA (Visibile solo se loggato) -->
+    <div id="admin-bar" class="hidden bg-amber-500 text-slate-950 px-4 py-2.5 text-xs font-bold flex items-center justify-between shadow-md sticky top-0 z-50">
+        <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-950 animate-pulse"></span>
+            <span>MODALITÀ AMMINISTRATORE ATTIVA</span>
+        </div>
+        <div class="flex items-center gap-3">
+            <button onclick="apriModalCreaArticolo()" class="bg-slate-900 text-white px-3 py-1.5 rounded-lg hover:bg-slate-800 transition cursor-pointer flex items-center gap-1.5">
+                <i class="fa-solid fa-plus"></i> Nuovo Articolo
+            </button>
+            <button onclick="logoutAdmin()" class="bg-amber-600 hover:bg-amber-700 text-white px-3 py-1.5 rounded-lg transition cursor-pointer">
+                Logout
+            </button>
+        </div>
     </div>
 
-    <!-- HEADER -->
+    <!-- BARRA PROMOZIONALE NORMALE -->
+    <div class="bg-indigo-600 text-white text-xs font-medium py-2.5 px-4 text-center">
+        🚀 Spedizione gratuita sopra i 39€! | Usa il codice <span class="underline font-bold">STRANO10</span> per il 10% di sconto.
+    </div>
+
+    <!-- HEADER / NAV -->
     <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <!-- Logo -->
@@ -42,63 +58,58 @@
                 <a href="#contatti" class="hover:text-indigo-600 transition-colors">Contatti</a>
             </nav>
 
-            <!-- Azioni -->
+            <!-- Azioni (Login Admin & Carrello) -->
             <div class="flex items-center gap-3">
+                <!-- Tasto Login Lucchetto Admin -->
+                <button id="btn-login-trigger" onclick="apriModalLogin()" title="Accesso Amministratore" class="p-2.5 rounded-2xl bg-slate-100 hover:bg-indigo-50 text-slate-600 hover:text-indigo-600 transition-all cursor-pointer">
+                    <i class="fa-solid fa-lock text-sm"></i>
+                </button>
+
+                <!-- Tasto Carrello -->
                 <button onclick="toggleCart()" class="relative p-2.5 rounded-2xl bg-slate-100 hover:bg-indigo-50 hover:text-indigo-600 transition-all text-slate-700 flex items-center gap-2 cursor-pointer">
                     <i class="fa-solid fa-bag-shopping text-lg"></i>
                     <span id="cart-badge" class="hidden absolute -top-1.5 -right-1.5 bg-indigo-600 text-white text-[11px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow-sm">0</span>
                     <span class="hidden sm:inline text-xs font-semibold pr-1">Carrello</span>
                 </button>
-                <button onclick="toggleMobileMenu()" class="md:hidden p-2.5 rounded-xl bg-slate-100 text-slate-700">
-                    <i class="fa-solid fa-bars text-lg"></i>
-                </button>
             </div>
-        </div>
-
-        <!-- Menu Mobile Dropdown -->
-        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-100 bg-white px-4 py-3 space-y-2 text-sm font-medium text-slate-600">
-            <a href="#prodotti" onclick="toggleMobileMenu()" class="block py-2 hover:text-indigo-600">Catalogo</a>
-            <a href="#storia" onclick="toggleMobileMenu()" class="block py-2 hover:text-indigo-600">Chi Siamo</a>
-            <a href="#recensioni" onclick="toggleMobileMenu()" class="block py-2 hover:text-indigo-600">Recensioni</a>
-            <a href="#contatti" onclick="toggleMobileMenu()" class="block py-2 hover:text-indigo-600">Contatti</a>
         </div>
     </header>
 
-    <!-- SEZIONE HERO -->
-    <section class="relative overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-32 bg-gradient-to-b from-white to-slate-100">
+    <!-- HERO -->
+    <section class="relative overflow-hidden pt-12 pb-20 lg:pt-16 lg:pb-28 bg-gradient-to-b from-white to-slate-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div class="text-center lg:text-left">
                     <span class="inline-flex items-center gap-1.5 py-1.5 px-3.5 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-600 mb-6 border border-indigo-100">
-                        <i class="fa-solid fa-sparkles"></i> Nuovi arrivi bizzarri disponibili
+                        <i class="fa-solid fa-sparkles"></i> Nuovi oggetti assurdi caricati
                     </span>
                     <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 leading-tight mb-6">
-                        Oggetti così <span class="bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">strani</span> che non potrai farne a meno.
+                        Oggetti così <span class="bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">bizzarri</span> che vorrai averli tutti.
                     </h1>
                     <p class="text-lg text-slate-600 mb-8 max-w-xl mx-auto lg:mx-0">
-                        Il negozio per chi cerca idee regalo introvabili, gadget assurdi e oggetti di design stravagante selezionati da tutto il mondo.
+                        Gadget stravaganti, soluzioni ingegnose e regali memorabili testati dal nostro team.
                     </p>
                     <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
                         <a href="#prodotti" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold shadow-lg shadow-indigo-200 transition-all text-center">
-                            Esplora il Catalogo
+                            Sfoglia Catalogo
                         </a>
-                        <a href="#storia" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-white hover:bg-slate-50 text-slate-700 font-semibold border border-slate-200 transition-all text-center">
-                            Perché StranoStore?
-                        </a>
+                        <button id="admin-quick-add" onclick="apriModalCreaArticolo()" class="hidden w-full sm:w-auto px-8 py-4 rounded-2xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold transition-all text-center cursor-pointer">
+                            + Aggiungi Annuncio
+                        </button>
                     </div>
                 </div>
                 <div class="relative flex justify-center">
                     <div class="w-full max-w-md bg-gradient-to-tr from-indigo-500 to-violet-600 rounded-3xl p-2 shadow-2xl">
                         <div class="bg-white rounded-[22px] p-6 text-center">
                             <div class="w-full h-64 bg-slate-100 rounded-2xl overflow-hidden mb-4 relative">
-                                <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=600&auto=format&fit=crop&q=80" alt="Tazza smart" class="w-full h-full object-cover">
+                                <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=600&auto=format&fit=crop&q=80" alt="Tazza" class="w-full h-full object-cover">
                             </div>
-                            <span class="text-xs uppercase tracking-wider font-bold text-indigo-600">Best Seller</span>
-                            <h3 class="text-xl font-bold text-slate-900 mt-1">Tazza Autoriscaldante USB</h3>
-                            <p class="text-sm text-slate-500 mt-2">Mantieni il tuo caffè a temperatura perfetta mentre lavori al PC.</p>
+                            <span class="text-xs uppercase tracking-wider font-bold text-indigo-600">In Evidenza</span>
+                            <h3 class="text-xl font-bold text-slate-900 mt-1">Tazza autoriscaldante USB</h3>
+                            <p class="text-sm text-slate-500 mt-2">Mantieni il tuo caffè caldo fino all'ultimo sorso.</p>
                             <div class="mt-6 flex items-center justify-between">
                                 <span class="text-2xl font-extrabold text-slate-900">€ 24.99</span>
-                                <button onclick="aggiungiAlCarrello(1)" class="px-5 py-2.5 bg-indigo-600 text-white rounded-xl text-sm font-semibold hover:bg-indigo-700 transition-colors cursor-pointer">
+                                <button onclick="aggiungiAlCarrello(1)" class="px-5 py-2.5 bg-indigo-600 text-white rounded-xl text-sm font-semibold hover:bg-indigo-700 transition cursor-pointer">
                                     Aggiungi
                                 </button>
                             </div>
@@ -109,14 +120,14 @@
         </div>
     </section>
 
-    <!-- SEZIONE PRODOTTI -->
+    <!-- CATALOGO PRODOTTI -->
     <section id="prodotti" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
             <div>
-                <h2 class="text-3xl font-bold tracking-tight text-slate-900">Catalogo Curioso</h2>
-                <p class="text-slate-500 mt-2">Tutti i prodotti includono garanzia soddisfatti o rimborsati di 30 giorni.</p>
+                <h2 class="text-3xl font-bold tracking-tight text-slate-900">Catalogo Articoli</h2>
+                <p class="text-slate-500 mt-2">Ogni prodotto è garantito e controllato singolarmente.</p>
             </div>
-            <!-- Filtri -->
+            <!-- Filtri Categorie -->
             <div class="flex flex-wrap gap-2">
                 <button onclick="filtraProdotti('tutti')" class="filtro-btn active px-4 py-2 rounded-xl text-sm font-medium bg-indigo-600 text-white transition-all cursor-pointer">Tutti</button>
                 <button onclick="filtraProdotti('Tech')" class="filtro-btn px-4 py-2 rounded-xl text-sm font-medium bg-white text-slate-600 border border-slate-200 hover:bg-slate-100 transition-all cursor-pointer">Tech</button>
@@ -125,112 +136,111 @@
             </div>
         </div>
 
+        <!-- GRIGLIA PRODOTTI DINAMICA -->
         <div id="griglia-prodotti" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
     </section>
 
-    <!-- CHI SIAMO -->
-    <section id="storia" class="bg-indigo-900 text-white py-20">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl font-bold tracking-tight mb-4">Perché acquistare su StranoStore?</h2>
-            <p class="text-indigo-200 max-w-2xl mx-auto mb-12">Scoviamo gli oggetti più creativi del web per regalare sorrisi e praticità senza noia.</p>
-            <div class="grid sm:grid-cols-3 gap-8 text-left">
-                <div class="bg-indigo-800/50 p-6 rounded-2xl border border-indigo-700/50">
-                    <div class="w-12 h-12 bg-indigo-600 rounded-xl flex items-center justify-center mb-4 text-xl"><i class="fa-solid fa-truck-fast"></i></div>
-                    <h3 class="font-bold text-lg mb-1">Spedizione Espressa 24/48h</h3>
-                    <p class="text-indigo-200 text-sm">Tracciamento rapido per ogni ordine dal nostro magazzino italiano.</p>
+    <!-- MODALE LOGIN ADMIN -->
+    <div id="modal-login" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl p-8 max-w-md w-full shadow-2xl relative">
+            <button onclick="chiudiModalLogin()" class="absolute top-6 right-6 text-slate-400 hover:text-slate-600 cursor-pointer">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            <div class="text-center mb-6">
+                <div class="w-14 h-14 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-3 text-2xl shadow-sm">
+                    <i class="fa-solid fa-user-shield"></i>
                 </div>
-                <div class="bg-indigo-800/50 p-6 rounded-2xl border border-indigo-700/50">
-                    <div class="w-12 h-12 bg-indigo-600 rounded-xl flex items-center justify-center mb-4 text-xl"><i class="fa-solid fa-shield-check"></i></div>
-                    <h3 class="font-bold text-lg mb-1">Pagamento Sicuro al 100%</h3>
-                    <p class="text-indigo-200 text-sm">Protezione acquirenti garantita su tutte le transazioni.</p>
-                </div>
-                <div class="bg-indigo-800/50 p-6 rounded-2xl border border-indigo-700/50">
-                    <div class="w-12 h-12 bg-indigo-600 rounded-xl flex items-center justify-center mb-4 text-xl"><i class="fa-solid fa-rotate-left"></i></div>
-                    <h3 class="font-bold text-lg mb-1">Reso Facile 30 Giorni</h3>
-                    <p class="text-indigo-200 text-sm">Non ti piace? Te lo rimborsiamo senza fare domande.</p>
-                </div>
+                <h3 class="text-2xl font-black text-slate-900">Accesso Amministratore</h3>
+                <p class="text-xs text-slate-500 mt-1">Area riservata al proprietario dello store</p>
             </div>
-        </div>
-    </section>
 
-    <!-- RECENSIONI -->
-    <section id="recensioni" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-2xl mx-auto mb-16">
-            <h2 class="text-3xl font-bold tracking-tight text-slate-900">La parola ai nostri clienti</h2>
-            <p class="text-slate-500 mt-2">Feedback verificati al 100%.</p>
+            <form onsubmit="handleAdminLogin(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Username</label>
+                    <input type="text" id="admin-user" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-600 text-sm" placeholder="Nome utente admin">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Password</label>
+                    <input type="password" id="admin-pass" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-600 text-sm" placeholder="••••••••">
+                </div>
+                <div id="login-error" class="hidden text-xs font-semibold text-rose-500 text-center">
+                    Credenziali non corrette. Riprova.
+                </div>
+                <button type="submit" class="w-full py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl transition cursor-pointer">
+                    Accedi al Pannello
+                </button>
+            </form>
+            <p class="text-center text-[11px] text-slate-400 mt-4">Predefinite per il test: <span class="font-mono text-slate-600">admin / admin123</span></p>
         </div>
-        <div class="grid md:grid-cols-3 gap-8">
-            <div class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm flex flex-col justify-between">
-                <div>
-                    <div class="flex text-amber-400 gap-1 mb-4 text-sm"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                    <p class="text-slate-600 text-sm italic">"Ho preso la lampada a mezz'aria: un effetto ottico incredibile in salotto. Arrivata in 48 ore!"</p>
-                </div>
-                <div class="mt-6 flex items-center gap-3 pt-4 border-t border-slate-100">
-                    <div class="w-10 h-10 rounded-full bg-indigo-100 text-indigo-600 font-bold flex items-center justify-center text-sm">M</div>
-                    <div><h4 class="font-bold text-sm text-slate-900">Marco R.</h4><span class="text-xs text-slate-400">Acquirente verificato</span></div>
-                </div>
-            </div>
-            <div class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm flex flex-col justify-between">
-                <div>
-                    <div class="flex text-amber-400 gap-1 mb-4 text-sm"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                    <p class="text-slate-600 text-sm italic">"Regalo di compleanno perfetto. Servizio clienti super disponibile via form."</p>
-                </div>
-                <div class="mt-6 flex items-center gap-3 pt-4 border-t border-slate-100">
-                    <div class="w-10 h-10 rounded-full bg-violet-100 text-violet-600 font-bold flex items-center justify-center text-sm">S</div>
-                    <div><h4 class="font-bold text-sm text-slate-900">Sara B.</h4><span class="text-xs text-slate-400">Acquirente verificata</span></div>
-                </div>
-            </div>
-            <div class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm flex flex-col justify-between">
-                <div>
-                    <div class="flex text-amber-400 gap-1 mb-4 text-sm"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                    <p class="text-slate-600 text-sm italic">"Il cuscino a forma di pizza è gigante e comodissimo. Top store!"</p>
-                </div>
-                <div class="mt-6 flex items-center gap-3 pt-4 border-t border-slate-100">
-                    <div class="w-10 h-10 rounded-full bg-pink-100 text-pink-600 font-bold flex items-center justify-center text-sm">L</div>
-                    <div><h4 class="font-bold text-sm text-slate-900">Luca M.</h4><span class="text-xs text-slate-400">Acquirente verificato</span></div>
-                </div>
-            </div>
-        </div>
-    </section>
+    </div>
 
-    <!-- CONTATTI -->
-    <section id="contatti" class="bg-slate-100/70 py-20 border-t border-slate-200">
-        <div class="max-w-xl mx-auto px-4 sm:px-6">
-            <div class="text-center mb-8">
-                <h2 class="text-3xl font-bold text-slate-900">Hai una domanda?</h2>
-                <p class="text-slate-500 mt-1">Siamo qui per aiutarti: risponderemo entro poche ore.</p>
+    <!-- MODALE CREAZIONE ANNUNCIO (FOTO / VIDEO) -->
+    <div id="modal-crea" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white rounded-3xl p-8 max-w-xl w-full shadow-2xl relative my-8">
+            <button onclick="chiudiModalCreaArticolo()" class="absolute top-6 right-6 text-slate-400 hover:text-slate-600 cursor-pointer">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            
+            <div class="mb-6">
+                <span class="text-xs font-bold text-amber-600 uppercase tracking-wider bg-amber-50 px-2.5 py-1 rounded-md">Pannello Gestione</span>
+                <h3 class="text-2xl font-black text-slate-900 mt-2">Pubblica Nuovo Annuncio</h3>
+                <p class="text-xs text-slate-500">I dati inseriti compariranno subito nel catalogo dello store.</p>
             </div>
-            <form action="https://formspree.io/f/xvkgavqq" method="POST" class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm grid gap-4">
+
+            <form onsubmit="handleCreaArticolo(event)" class="space-y-4">
                 <div>
-                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Nome</label>
-                    <input type="text" name="nome" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-600 text-sm" placeholder="Mario Rossi">
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Titolo Articolo *</label>
+                    <input type="text" id="nuovo-nome" required placeholder="Es. Guanto laser da cucina" class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-600">
                 </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Categoria *</label>
+                        <select id="nuovo-categoria" class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-600 bg-white">
+                            <option value="Tech">Tech</option>
+                            <option value="Casa">Casa</option>
+                            <option value="Lifestyle">Lifestyle</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Prezzo (€) *</label>
+                        <input type="number" step="0.01" id="nuovo-prezzo" required placeholder="29.99" class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-600">
+                    </div>
+                </div>
+
                 <div>
-                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Email</label>
-                    <input type="email" name="email" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-600 text-sm" placeholder="mario@example.com">
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Descrizione *</label>
+                    <textarea id="nuovo-desc" rows="3" required placeholder="Spiega perché questo prodotto è unico e interessante..." class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-600"></textarea>
                 </div>
-                <div>
-                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Messaggio</label>
-                    <textarea name="messaggio" rows="4" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-600 text-sm" placeholder="Scrivi la tua richiesta..."></textarea>
+
+                <!-- CARICAMENTO MEDIA (FOTO O VIDEO) -->
+                <div class="border-t border-slate-100 pt-4">
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Carica Media (Foto o Video)</label>
+                    <div class="space-y-3">
+                        <div>
+                            <span class="text-xs text-slate-500 block mb-1">Opzione 1: Carica file dal tuo dispositivo (JPG, PNG, MP4, WebM)</span>
+                            <input type="file" id="nuovo-file" accept="image/*,video/*" onchange="anteprimaMedia(event)" class="text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100 cursor-pointer">
+                        </div>
+                        <div class="text-center text-xs text-slate-400 font-bold">— OPPURE —</div>
+                        <div>
+                            <span class="text-xs text-slate-500 block mb-1">Opzione 2: Inserisci Link URL diretto a Foto o Video</span>
+                            <input type="url" id="nuovo-url" placeholder="https://dominio.com/foto.jpg o .mp4" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:ring-2 focus:ring-indigo-600">
+                        </div>
+                    </div>
+                    
+                    <!-- BOX ANTEPRIMA MEDIA -->
+                    <div id="anteprima-container" class="hidden mt-4 p-3 bg-slate-100 rounded-2xl">
+                        <span class="text-[11px] font-bold text-slate-500 uppercase block mb-2">Anteprima Media Selezionato:</span>
+                        <div id="anteprima-output" class="h-44 w-full flex items-center justify-center overflow-hidden rounded-xl bg-white"></div>
+                    </div>
                 </div>
-                <button type="submit" class="w-full py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl shadow-md transition-all cursor-pointer">
-                    Invia Richiesta
+
+                <button type="submit" class="w-full py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow-lg transition cursor-pointer mt-4">
+                    🚀 Pubblica Immediatamente sullo Store
                 </button>
             </form>
         </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="bg-white border-t border-slate-100 py-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500">
-            <p>&copy; 2026 StranoStore. P.IVA e dati legali registrati.</p>
-            <div class="flex gap-6">
-                <a href="#" class="hover:text-indigo-600 transition-colors">Privacy</a>
-                <a href="#" class="hover:text-indigo-600 transition-colors">Termini di Vendita</a>
-                <a href="#" class="hover:text-indigo-600 transition-colors">Spedizioni e Resi</a>
-            </div>
-        </div>
-    </footer>
+    </div>
 
     <!-- DRAWER CARRELLO -->
     <div id="cart-drawer" class="fixed inset-0 z-50 overflow-hidden hidden">
@@ -241,7 +251,7 @@
                     <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
                         <i class="fa-solid fa-bag-shopping text-indigo-600"></i> Il tuo Carrello
                     </h2>
-                    <button onclick="toggleCart()" class="p-2 text-slate-400 hover:text-slate-600 rounded-full hover:bg-slate-100">
+                    <button onclick="toggleCart()" class="p-2 text-slate-400 hover:text-slate-600 rounded-full hover:bg-slate-100 cursor-pointer">
                         <i class="fa-solid fa-xmark text-lg"></i>
                     </button>
                 </div>
@@ -249,89 +259,257 @@
                 <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4"></div>
 
                 <div class="p-6 border-t border-slate-100 bg-slate-50 space-y-4">
-                    <!-- Sconto -->
-                    <div class="flex gap-2">
-                        <input id="coupon-input" type="text" placeholder="Codice sconto" class="w-full px-3 py-2 text-sm bg-white border border-slate-200 rounded-xl uppercase font-semibold">
-                        <button onclick="applicaCoupon()" class="px-4 py-2 bg-slate-800 hover:bg-slate-900 text-white rounded-xl text-xs font-semibold">Applica</button>
-                    </div>
-
-                    <div id="coupon-applied" class="hidden text-xs font-medium text-emerald-600 flex justify-between">
-                        <span>Sconto applicato (10%):</span>
-                        <span id="discount-amount">-€ 0.00</span>
-                    </div>
-
-                    <div class="flex justify-between items-center pt-2 border-t border-slate-200">
+                    <div class="flex justify-between items-center">
                         <span class="text-slate-600 font-medium">Totale:</span>
                         <span id="cart-total" class="text-2xl font-black text-slate-900">€ 0.00</span>
                     </div>
 
-                    <button onclick="procediAlCheckout()" class="w-full py-4 bg-[#0070BA] hover:bg-[#003087] text-white font-semibold rounded-2xl shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer">
-                        <i class="fa-brands fa-paypal text-xl"></i> Completa Ordine con PayPal
+                    <button onclick="checkoutPayPal()" class="w-full py-4 bg-[#0070BA] hover:bg-[#003087] text-white font-semibold rounded-2xl shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer">
+                        <i class="fa-brands fa-paypal text-xl"></i> Paga con PayPal (@frastrano)
                     </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- TOAST -->
+    <!-- TOAST NOTIFICHE -->
     <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-24 opacity-0 transition-all duration-300 bg-slate-900 text-white px-5 py-3 rounded-2xl shadow-xl flex items-center gap-3">
         <i class="fa-solid fa-circle-check text-emerald-400"></i>
         <span id="toast-message" class="text-sm font-medium"></span>
     </div>
 
+    <!-- SCRIPT JAVASCRIPT CON LOGICA ADMIN E MEDIA -->
     <script>
-        const catalogo = [
-            { id: 1, nome: "Tazza autoriscaldante USB", categoria: "Tech", prezzo: 24.99, img: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=500&auto=format&fit=crop&q=80", desc: "Mantiene il tuo caffè bollente mentre lavori." },
-            { id: 2, nome: "Cuscino Fetta di Pizza", categoria: "Casa", prezzo: 19.99, img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500&auto=format&fit=crop&q=80", desc: "Ultra soffice, imbottito e realistico al 100%." },
-            { id: 3, nome: "Mini Ventilatore da Polso", categoria: "Lifestyle", prezzo: 14.99, img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&auto=format&fit=crop&q=80", desc: "Aria fresca e display LED ovunque vai." },
-            { id: 4, nome: "Lampada Levitante Magnetica", categoria: "Tech", prezzo: 49.99, img: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=500&auto=format&fit=crop&q=80", desc: "Fluttua nell'aria senza cavi di alimentazione visibili." },
-            { id: 5, nome: "Pantofole Zampa di Mostro", categoria: "Casa", prezzo: 22.50, img: "https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=500&auto=format&fit=crop&q=80", desc: "Pelose, calde e con artigli morbidi antiscivolo." },
-            { id: 6, nome: "Portachiavi Magnetico Nuvola", categoria: "Lifestyle", prezzo: 9.99, img: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=500&auto=format&fit=crop&q=80", desc: "Si fissa al muro e trattiene le tue chiavi con magneti al neodimio." }
+        // Credenziali Master Amministratore (Personalizzale pure qui)
+        const ADMIN_USER = "admin";
+        const ADMIN_PASS = "admin123";
+
+        // Prodotti di Default
+        const catalogoDefault = [
+            { id: 1, nome: "Tazza autoriscaldante USB", categoria: "Tech", prezzo: 24.99, mediaType: "image", mediaSrc: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=500&auto=format&fit=crop&q=80", desc: "Mantiene il caffè caldo mentre lavori al PC." },
+            { id: 2, nome: "Cuscino Fetta di Pizza", categoria: "Casa", prezzo: 19.99, mediaType: "image", mediaSrc: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500&auto=format&fit=crop&q=80", desc: "Ultra soffice, imbottito e realistico." },
+            { id: 3, nome: "Lampada Levitante Magnetica", categoria: "Tech", prezzo: 49.99, mediaType: "image", mediaSrc: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=500&auto=format&fit=crop&q=80", desc: "Fluttua a mezz'aria senza fili a vista." }
         ];
 
-        let carrello = JSON.parse(localStorage.getItem('stranostore_cart')) || [];
-        let scontoPercentuale = 0;
+        // Caricamento Dati da LocalStorage
+        let catalogo = JSON.parse(localStorage.getItem('stranostore_prodotti')) || catalogoDefault;
+        let carrello = JSON.parse(localStorage.getItem('stranostore_carrello')) || [];
+        let isAdmin = sessionStorage.getItem('stranostore_admin') === 'true';
 
-        function salvaCarrello() {
-            localStorage.setItem('stranostore_cart', JSON.stringify(carrello));
+        let mediaCaricato = null; // Buffer per memorizzare Base64 di foto o video
+
+        function init() {
+            aggiornaStatoAdminUI();
+            mostraProdotti(catalogo);
             aggiornaCarrelloUI();
         }
 
-        function toggleMobileMenu() {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
+        // GESTIONE AUTENTICAZIONE ADMIN
+        function apriModalLogin() {
+            if (isAdmin) {
+                apriModalCreaArticolo();
+            } else {
+                document.getElementById('modal-login').classList.remove('hidden');
+            }
         }
 
-        function toggleCart() {
-            document.getElementById('cart-drawer').classList.toggle('hidden');
+        function chiudiModalLogin() {
+            document.getElementById('modal-login').classList.add('hidden');
+            document.getElementById('login-error').classList.add('hidden');
         }
 
+        function handleAdminLogin(e) {
+            e.preventDefault();
+            const user = document.getElementById('admin-user').value.trim();
+            const pass = document.getElementById('admin-pass').value.trim();
+
+            if (user === ADMIN_USER && pass === ADMIN_PASS) {
+                isAdmin = true;
+                sessionStorage.setItem('stranostore_admin', 'true');
+                chiudiModalLogin();
+                aggiornaStatoAdminUI();
+                mostraToast("Accesso Amministratore effettuato!");
+                mostraProdotti(catalogo);
+            } else {
+                document.getElementById('login-error').classList.remove('hidden');
+            }
+        }
+
+        function logoutAdmin() {
+            isAdmin = false;
+            sessionStorage.removeItem('stranostore_admin');
+            aggiornaStatoAdminUI();
+            mostraToast("Disconnesso dal pannello Admin");
+            mostraProdotti(catalogo);
+        }
+
+        function aggiornaStatoAdminUI() {
+            const adminBar = document.getElementById('admin-bar');
+            const quickAdd = document.getElementById('admin-quick-add');
+            const loginTrigger = document.getElementById('btn-login-trigger');
+
+            if (isAdmin) {
+                adminBar.classList.remove('hidden');
+                quickAdd.classList.remove('hidden');
+                loginTrigger.innerHTML = '<i class="fa-solid fa-gear text-amber-600"></i>';
+                loginTrigger.title = "Pannello di controllo attivo";
+            } else {
+                adminBar.classList.add('hidden');
+                quickAdd.classList.add('hidden');
+                loginTrigger.innerHTML = '<i class="fa-solid fa-lock text-sm"></i>';
+                loginTrigger.title = "Accesso Amministratore";
+            }
+        }
+
+        // MODALE CREAZIONE ANNUNCI
+        function apriModalCreaArticolo() {
+            document.getElementById('modal-crea').classList.remove('hidden');
+        }
+
+        function chiudiModalCreaArticolo() {
+            document.getElementById('modal-crea').classList.add('hidden');
+            mediaCaricato = null;
+            document.getElementById('anteprima-container').classList.add('hidden');
+            document.getElementById('anteprima-output').innerHTML = '';
+        }
+
+        // Anteprima e gestione del file caricato (Foto o Video)
+        function anteprimaMedia(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            const isVideo = file.type.startsWith('video');
+
+            reader.onload = function(evt) {
+                mediaCaricato = {
+                    type: isVideo ? 'video' : 'image',
+                    src: evt.target.result
+                };
+
+                const output = document.getElementById('anteprima-output');
+                document.getElementById('anteprima-container').classList.remove('hidden');
+
+                if (isVideo) {
+                    output.innerHTML = `<video src="${mediaCaricato.src}" controls class="h-full w-full object-cover"></video>`;
+                } else {
+                    output.innerHTML = `<img src="${mediaCaricato.src}" class="h-full w-full object-cover">`;
+                }
+            };
+
+            reader.readAsDataURL(file);
+        }
+
+        function handleCreaArticolo(e) {
+            e.preventDefault();
+
+            const nome = document.getElementById('nuovo-nome').value.trim();
+            const categoria = document.getElementById('nuovo-categoria').value;
+            const prezzo = parseFloat(document.getElementById('nuovo-prezzo').value);
+            const desc = document.getElementById('nuovo-desc').value.trim();
+            const urlManuale = document.getElementById('nuovo-url').value.trim();
+
+            let mediaFinal = {
+                type: 'image',
+                src: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500' // default se vuoto
+            };
+
+            if (mediaCaricato) {
+                mediaFinal = mediaCaricato;
+            } else if (urlManuale) {
+                const isVideo = urlManuale.endsWith('.mp4') || urlManuale.endsWith('.webm');
+                mediaFinal = {
+                    type: isVideo ? 'video' : 'image',
+                    src: urlManuale
+                };
+            }
+
+            const nuovoArticolo = {
+                id: Date.now(),
+                nome: nome,
+                categoria: categoria,
+                prezzo: prezzo,
+                mediaType: mediaFinal.type,
+                mediaSrc: mediaFinal.src,
+                desc: desc
+            };
+
+            catalogo.unshift(nuovoArticolo);
+            localStorage.setItem('stranostore_prodotti', JSON.stringify(catalogo));
+
+            chiudiModalCreaArticolo();
+            mostraProdotti(catalogo);
+            mostraToast("Nuovo annuncio pubblicato con successo!");
+            e.target.reset();
+        }
+
+        function eliminaArticolo(id) {
+            if (confirm("Vuoi rimuovere definitivamente questo articolo dallo store?")) {
+                catalogo = catalogo.filter(p => p.id !== id);
+                localStorage.setItem('stranostore_prodotti', JSON.stringify(catalogo));
+                mostraProdotti(catalogo);
+                mostraToast("Articolo rimosso.");
+            }
+        }
+
+        // VISUALIZZAZIONE CATALOGO & GESTIONE CARD (CON SUPPORTO VIDEO E TASTO ELIMINA ADMIN)
         function mostraProdotti(lista) {
             const griglia = document.getElementById('griglia-prodotti');
-            griglia.innerHTML = lista.map(p => `
-                <div class="bg-white rounded-3xl p-5 border border-slate-100 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
-                    <div>
-                        <div class="w-full h-52 bg-slate-100 rounded-2xl overflow-hidden mb-4">
-                            <img src="${p.img}" alt="${p.nome}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
-                        </div>
-                        <span class="text-xs font-bold px-2.5 py-1 bg-slate-100 text-indigo-600 rounded-md uppercase tracking-wider">${p.categoria}</span>
-                        <h3 class="text-lg font-bold text-slate-900 mt-2">${p.nome}</h3>
-                        <p class="text-sm text-slate-500 mt-1">${p.desc}</p>
-                    </div>
-                    <div class="mt-6 flex items-center justify-between pt-4 border-t border-slate-100">
-                        <span class="text-xl font-black text-slate-900">€ ${p.prezzo.toFixed(2)}</span>
-                        <button onclick="aggiungiAlCarrello(${p.id})" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-sm font-semibold transition-colors cursor-pointer">
-                            Aggiungi
+            if (lista.length === 0) {
+                griglia.innerHTML = `<p class="col-span-full text-center text-slate-400 py-12">Nessun articolo trovato in questa categoria.</p>`;
+                return;
+            }
+
+            griglia.innerHTML = lista.map(p => {
+                // Generazione elemento multimediale (Video o Immagine)
+                let mediaHtml = '';
+                if (p.mediaType === 'video') {
+                    mediaHtml = `
+                        <video controls class="w-full h-full object-cover">
+                            <source src="${p.mediaSrc}">
+                            Il tuo browser non supporta il tag video.
+                        </video>
+                    `;
+                } else {
+                    mediaHtml = `<img src="${p.mediaSrc}" alt="${p.nome}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">`;
+                }
+
+                // Tasto Elimina per l'Admin
+                const adminToolsHtml = isAdmin ? `
+                    <div class="absolute top-3 right-3 z-10">
+                        <button onclick="eliminaArticolo(${p.id})" title="Rimuovi Articolo" class="w-8 h-8 rounded-full bg-rose-600 text-white flex items-center justify-center hover:bg-rose-700 shadow-lg cursor-pointer">
+                            <i class="fa-solid fa-trash text-xs"></i>
                         </button>
                     </div>
-                </div>
-            `).join('');
+                ` : '';
+
+                return `
+                    <div class="relative bg-white rounded-3xl p-5 border border-slate-100 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+                        ${adminToolsHtml}
+                        <div>
+                            <div class="w-full h-52 bg-slate-100 rounded-2xl overflow-hidden mb-4 relative">
+                                ${mediaHtml}
+                            </div>
+                            <span class="text-xs font-bold px-2.5 py-1 bg-slate-100 text-indigo-600 rounded-md uppercase tracking-wider">${p.categoria}</span>
+                            <h3 class="text-lg font-bold text-slate-900 mt-2">${p.nome}</h3>
+                            <p class="text-sm text-slate-500 mt-1 line-clamp-2">${p.desc}</p>
+                        </div>
+                        <div class="mt-6 flex items-center justify-between pt-4 border-t border-slate-100">
+                            <span class="text-xl font-black text-slate-900">€ ${p.prezzo.toFixed(2)}</span>
+                            <button onclick="aggiungiAlCarrello(${p.id})" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-sm font-semibold transition cursor-pointer">
+                                Aggiungi
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
         }
 
         function filtraProdotti(categoria) {
             document.querySelectorAll('.filtro-btn').forEach(btn => {
-                btn.className = "filtro-btn px-4 py-2 rounded-xl text-sm font-medium bg-white text-slate-600 border border-slate-200 hover:bg-slate-100 transition-all cursor-pointer";
+                btn.className = "filtro-btn px-4 py-2 rounded-xl text-sm font-medium bg-white text-slate-600 border border-slate-200 hover:bg-slate-100 transition cursor-pointer";
             });
-            event.target.className = "filtro-btn active px-4 py-2 rounded-xl text-sm font-medium bg-indigo-600 text-white transition-all cursor-pointer";
+            event.target.className = "filtro-btn active px-4 py-2 rounded-xl text-sm font-medium bg-indigo-600 text-white transition cursor-pointer";
 
             if (categoria === 'tutti') {
                 mostraProdotti(catalogo);
@@ -340,44 +518,33 @@
             }
         }
 
+        // CARRELLO & CHECKOUT
+        function toggleCart() {
+            document.getElementById('cart-drawer').classList.toggle('hidden');
+        }
+
         function aggiungiAlCarrello(id) {
             const itemCatalogo = catalogo.find(p => p.id === id);
-            const item = carrello.find(i => i.id === id);
-            if (item) {
-                item.qta += 1;
+            if (!itemCatalogo) return;
+
+            const esistente = carrello.find(i => i.id === id);
+            if (esistente) {
+                esistente.qta += 1;
             } else {
-                carrello.push({ ...itemCatalogo, qta: 1 });
+                carrello.push({
+                    id: itemCatalogo.id,
+                    nome: itemCatalogo.nome,
+                    prezzo: itemCatalogo.prezzo,
+                    mediaSrc: itemCatalogo.mediaSrc,
+                    qta: 1
+                });
             }
             salvaCarrello();
             mostraToast(`${itemCatalogo.nome} aggiunto al carrello!`);
         }
 
-        function modificaQta(id, variazione) {
-            const item = carrello.find(i => i.id === id);
-            if (!item) return;
-            item.qta += variazione;
-            if (item.qta <= 0) {
-                carrello = carrello.filter(i => i.id !== id);
-            }
-            salvaCarrello();
-        }
-
-        function rimuoviDalCarrello(id) {
-            carrello = carrello.filter(i => i.id !== id);
-            salvaCarrello();
-        }
-
-        function applicaCoupon() {
-            const codice = document.getElementById('coupon-input').value.trim().toUpperCase();
-            if (codice === 'STRANO10') {
-                scontoPercentuale = 0.10;
-                document.getElementById('coupon-applied').classList.remove('hidden');
-                mostraToast("Sconto del 10% applicato!");
-            } else {
-                alert("Codice coupon non valido");
-                scontoPercentuale = 0;
-                document.getElementById('coupon-applied').classList.add('hidden');
-            }
+        function salvaCarrello() {
+            localStorage.setItem('stranostore_carrello', JSON.stringify(carrello));
             aggiornaCarrelloUI();
         }
 
@@ -385,12 +552,9 @@
             const container = document.getElementById('cart-items');
             const badge = document.getElementById('cart-badge');
             const totalEl = document.getElementById('cart-total');
-            const discountEl = document.getElementById('discount-amount');
 
             const totaleQta = carrello.reduce((acc, i) => acc + i.qta, 0);
-            let lordo = carrello.reduce((acc, i) => acc + (i.prezzo * i.qta), 0);
-            let scontoValore = lordo * scontoPercentuale;
-            let netto = lordo - scontoValore;
+            const prezzoTotale = carrello.reduce((acc, i) => acc + (i.prezzo * i.qta), 0);
 
             badge.textContent = totaleQta;
             badge.classList.toggle('hidden', totaleQta === 0);
@@ -400,36 +564,34 @@
             } else {
                 container.innerHTML = carrello.map(item => `
                     <div class="flex items-center justify-between bg-slate-50 p-3 rounded-2xl">
-                        <img src="${item.img}" class="w-12 h-12 rounded-xl object-cover" alt="${item.nome}">
+                        <div class="w-12 h-12 rounded-xl bg-slate-200 overflow-hidden flex items-center justify-center">
+                            <img src="${item.mediaSrc}" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=200'">
+                        </div>
                         <div class="flex-1 mx-3">
                             <h4 class="font-bold text-xs text-slate-900 leading-tight">${item.nome}</h4>
-                            <p class="text-xs text-slate-500 mt-0.5">€ ${item.prezzo.toFixed(2)}</p>
-                            <div class="flex items-center gap-2 mt-1">
-                                <button onclick="modificaQta(${item.id}, -1)" class="w-5 h-5 bg-white border border-slate-200 rounded text-xs flex items-center justify-center">-</button>
-                                <span class="text-xs font-semibold">${item.qta}</span>
-                                <button onclick="modificaQta(${item.id}, 1)" class="w-5 h-5 bg-white border border-slate-200 rounded text-xs flex items-center justify-center">+</button>
-                            </div>
+                            <p class="text-xs text-slate-500">€ ${item.prezzo.toFixed(2)} x ${item.qta}</p>
                         </div>
-                        <button onclick="rimuoviDalCarrello(${item.id})" class="text-slate-400 hover:text-rose-500 p-2">
-                            <i class="fa-solid fa-trash-can text-sm"></i>
+                        <button onclick="rimuoviDalCarrello(${item.id})" class="text-slate-400 hover:text-rose-500 p-2 cursor-pointer">
+                            <i class="fa-solid fa-trash text-sm"></i>
                         </button>
                     </div>
                 `).join('');
             }
-
-            discountEl.textContent = `-€ ${scontoValore.toFixed(2)}`;
-            totalEl.textContent = `€ ${netto.toFixed(2)}`;
+            totalEl.textContent = `€ ${prezzoTotale.toFixed(2)}`;
         }
 
-        function procediAlCheckout() {
+        function rimuoviDalCarrello(id) {
+            carrello = carrello.filter(i => i.id !== id);
+            salvaCarrello();
+        }
+
+        function checkoutPayPal() {
             if (carrello.length === 0) {
                 alert("Il carrello è vuoto!");
                 return;
             }
-            let lordo = carrello.reduce((acc, i) => acc + (i.prezzo * i.qta), 0);
-            let netto = lordo * (1 - scontoPercentuale);
-            const paypalUrl = `https://paypal.me/frastrano/${netto.toFixed(2)}EUR`;
-            window.open(paypalUrl, '_blank');
+            const totale = carrello.reduce((acc, i) => acc + (i.prezzo * i.qta), 0);
+            window.open(`https://paypal.me/frastrano/${totale.toFixed(2)}EUR`, '_blank');
         }
 
         function mostraToast(testo) {
@@ -439,9 +601,7 @@
             setTimeout(() => toast.classList.add('translate-y-24', 'opacity-0'), 2500);
         }
 
-        // Init
-        mostraProdotti(catalogo);
-        aggiornaCarrelloUI();
+        window.onload = init;
     </script>
 </body>
 </html>
